@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1138</width>
+    <height>639</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 255, 255, 255));</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <widget class="QLabel" name="logoLabel">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>100</y>
+      <width>161</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../images/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="unibookLabel">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>30</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 255, 255);
+font: italic 9pt &quot;Sans Serif&quot;;
+font: 26pt &quot;Sans Serif&quot;;</string>
+    </property>
+    <property name="text">
+     <string>UniBook.</string>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="loginLabel">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>240</y>
+      <width>211</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);
+font: 11pt &quot;Sans Serif&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Log in with your Academic ID</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="backgrounrLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>280</y>
+      <width>1141</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../images/rectangle.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="loginBut">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>470</y>
+      <width>151</width>
+      <height>37</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 144, 255);</string>
+    </property>
+    <property name="text">
+     <string>Log in</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/feather/Icons/feather/airplay.png</normaloff>:/feather/Icons/feather/airplay.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="usernameIn">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>350</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 255);
+color: rgb(57, 57, 57);</string>
+    </property>
+    <property name="text">
+     <string>Όνομα Χρήστη (username)</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="passwordIn">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>410</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 255, 255);
+color: rgb(57, 57, 57);</string>
+    </property>
+    <property name="text">
+     <string>Κωδικός Χρήστη (password)</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="loginAdmBut">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>530</y>
+      <width>151</width>
+      <height>37</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 144, 255);</string>
+    </property>
+    <property name="text">
+     <string>Log in as an Admin</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/feather/Icons/feather/airplay.png</normaloff>:/feather/Icons/feather/airplay.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
+   <zorder>backgrounrLabel</zorder>
+   <zorder>logoLabel</zorder>
+   <zorder>unibookLabel</zorder>
+   <zorder>loginLabel</zorder>
+   <zorder>loginBut</zorder>
+   <zorder>usernameIn</zorder>
+   <zorder>passwordIn</zorder>
+   <zorder>loginAdmBut</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../Qss/icons/_icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
