@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QMainWindow,
     QPushButton, QSizePolicy, QWidget)
-import _icons_rc
+import os
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,12 +30,18 @@ class Ui_MainWindow(object):
         self.centralwidget.setEnabled(True)
         self.logoLabel = QLabel(self.centralwidget)
         self.logoLabel.setObjectName(u"logoLabel")
-        self.logoLabel.setGeometry(QRect(480, 100, 161, 121))
-        self.logoLabel.setPixmap(QPixmap(u"../images/logo.png"))
+        self.logoLabel.setGeometry(QRect(480, 80, 161, 151))
+        
+        # Get the absolute path to the directory this file is in
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        logo_path = os.path.join(base_dir, "images", "logo.png")
+        self.logoLabel.setPixmap(QPixmap(logo_path))
+        
         self.logoLabel.setScaledContents(True)
         self.unibookLabel = QLabel(self.centralwidget)
         self.unibookLabel.setObjectName(u"unibookLabel")
-        self.unibookLabel.setGeometry(QRect(490, 30, 161, 31))
+        self.unibookLabel.setGeometry(QRect(490, 30, 161, 51))
         self.unibookLabel.setAutoFillBackground(False)
         self.unibookLabel.setStyleSheet(u"color: rgb(0, 255, 255);\n"
 "font: italic 9pt \"Sans Serif\";\n"
@@ -43,14 +49,17 @@ class Ui_MainWindow(object):
         self.unibookLabel.setScaledContents(True)
         self.loginLabel = QLabel(self.centralwidget)
         self.loginLabel.setObjectName(u"loginLabel")
-        self.loginLabel.setGeometry(QRect(460, 240, 211, 21))
+        self.loginLabel.setGeometry(QRect(460, 260, 211, 21))
         self.loginLabel.setStyleSheet(u"color: rgb(0, 0, 0);\n"
 "background-color: rgb(255, 255, 255);\n"
 "font: 11pt \"Sans Serif\";")
         self.backgrounrLabel = QLabel(self.centralwidget)
         self.backgrounrLabel.setObjectName(u"backgrounrLabel")
-        self.backgrounrLabel.setGeometry(QRect(0, 280, 1141, 371))
-        self.backgrounrLabel.setPixmap(QPixmap(u"../images/rectangle.png"))
+        self.backgrounrLabel.setGeometry(QRect(0, 270, 1141, 371))
+        
+        background_path = os.path.join(base_dir, "images", "rectangle.png")
+        self.backgrounrLabel.setPixmap(QPixmap(background_path))
+        
         self.backgrounrLabel.setScaledContents(True)
         self.loginBut = QPushButton(self.centralwidget)
         self.loginBut.setObjectName(u"loginBut")
@@ -94,12 +103,14 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.logoLabel.setText("")
-        self.unibookLabel.setText(QCoreApplication.translate("MainWindow", u"UniBook.", None))
+        self.unibookLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700; font-style:italic;\">UniBook.</span></p></body></html>", None))
         self.loginLabel.setText(QCoreApplication.translate("MainWindow", u"Log in with your Academic ID", None))
         self.backgrounrLabel.setText("")
         self.loginBut.setText(QCoreApplication.translate("MainWindow", u"Log in", None))
-        self.usernameIn.setText(QCoreApplication.translate("MainWindow", u"\u038c\u03bd\u03bf\u03bc\u03b1 \u03a7\u03c1\u03ae\u03c3\u03c4\u03b7 (username)", None))
-        self.passwordIn.setText(QCoreApplication.translate("MainWindow", u"\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03a7\u03c1\u03ae\u03c3\u03c4\u03b7 (password)", None))
+        self.usernameIn.setText("")
+        self.usernameIn.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u038c\u03bd\u03bf\u03bc\u03b1 \u03a7\u03c1\u03ae\u03c3\u03c4\u03b7 (username)", None))
+        self.passwordIn.setText("")
+        self.passwordIn.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u039a\u03c9\u03b4\u03b9\u03ba\u03cc\u03c2 \u03a7\u03c1\u03ae\u03c3\u03c4\u03b7 (password)", None))
         self.loginAdmBut.setText(QCoreApplication.translate("MainWindow", u"Log in as an Admin", None))
     # retranslateUi
 

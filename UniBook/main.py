@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QApplication
 from login_window import LoginWindow
 from home_window import HomeWindow
 
+
 class Controller:
     def __init__(self):
         self.login = LoginWindow()

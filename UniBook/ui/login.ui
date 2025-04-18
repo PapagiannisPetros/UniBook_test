@@ -24,9 +24,9 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>100</y>
+      <y>80</y>
       <width>161</width>
-      <height>121</height>
+      <height>151</height>
      </rect>
     </property>
     <property name="text">
@@ -45,7 +45,7 @@
       <x>490</x>
       <y>30</y>
       <width>161</width>
-      <height>31</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -57,7 +57,7 @@ font: italic 9pt &quot;Sans Serif&quot;;
 font: 26pt &quot;Sans Serif&quot;;</string>
     </property>
     <property name="text">
-     <string>UniBook.</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; font-style:italic;&quot;&gt;UniBook.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -67,7 +67,7 @@ font: 26pt &quot;Sans Serif&quot;;</string>
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>240</y>
+      <y>260</y>
       <width>211</width>
       <height>21</height>
      </rect>
@@ -85,7 +85,7 @@ font: 11pt &quot;Sans Serif&quot;;</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>280</y>
+      <y>270</y>
       <width>1141</width>
       <height>371</height>
      </rect>
@@ -140,6 +140,9 @@ font: 11pt &quot;Sans Serif&quot;;</string>
 color: rgb(57, 57, 57);</string>
     </property>
     <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
      <string>Όνομα Χρήστη (username)</string>
     </property>
    </widget>
@@ -157,6 +160,9 @@ color: rgb(57, 57, 57);</string>
 color: rgb(57, 57, 57);</string>
     </property>
     <property name="text">
+     <string/>
+    </property>
+    <property name="placeholderText">
      <string>Κωδικός Χρήστη (password)</string>
     </property>
    </widget>
