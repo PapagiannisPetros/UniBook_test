@@ -1,0 +1,183 @@
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'upload.ui'
+##
+## Created by: Qt User Interface Compiler version 6.9.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QTextBrowser, QTextEdit, QVBoxLayout, QWidget)
+import _icons_rc
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(1116, 699)
+        MainWindow.setStyleSheet(u"background-color: rgb(0, 70, 70);")
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.groupBox = QGroupBox(self.centralwidget)
+        self.groupBox.setObjectName(u"groupBox")
+        self.groupBox.setGeometry(QRect(9, 79, 471, 571))
+        self.groupBox.setMaximumSize(QSize(500, 16777215))
+        font = QFont()
+        font.setPointSize(8)
+        self.groupBox.setFont(font)
+        self.groupBox.setStyleSheet(u"background-color: rgb(114, 140, 135);")
+        self.groupBox.setFlat(False)
+        self.groupBox.setCheckable(False)
+        self.verticalLayout = QVBoxLayout(self.groupBox)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, -1, -1, 0)
+        self.widget = QWidget(self.groupBox)
+        self.widget.setObjectName(u"widget")
+        self.horizontalLayout_2 = QHBoxLayout(self.widget)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label = QLabel(self.widget)
+        self.label.setObjectName(u"label")
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+        self.textEdit_2 = QTextEdit(self.widget)
+        self.textEdit_2.setObjectName(u"textEdit_2")
+        self.textEdit_2.setMaximumSize(QSize(16777215, 35))
+
+        self.horizontalLayout_2.addWidget(self.textEdit_2)
+
+
+        self.verticalLayout.addWidget(self.widget, 0, Qt.AlignTop)
+
+        self.widget_4 = QWidget(self.groupBox)
+        self.widget_4.setObjectName(u"widget_4")
+        self.horizontalLayout_5 = QHBoxLayout(self.widget_4)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.label_4 = QLabel(self.widget_4)
+        self.label_4.setObjectName(u"label_4")
+
+        self.horizontalLayout_5.addWidget(self.label_4, 0, Qt.AlignTop)
+
+        self.textEdit = QTextEdit(self.widget_4)
+        self.textEdit.setObjectName(u"textEdit")
+
+        self.horizontalLayout_5.addWidget(self.textEdit)
+
+
+        self.verticalLayout.addWidget(self.widget_4)
+
+        self.widget_2 = QWidget(self.groupBox)
+        self.widget_2.setObjectName(u"widget_2")
+        self.horizontalLayout_3 = QHBoxLayout(self.widget_2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.label_2 = QLabel(self.widget_2)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout_3.addWidget(self.label_2)
+
+        self.textBrowser_2 = QTextBrowser(self.widget_2)
+        self.textBrowser_2.setObjectName(u"textBrowser_2")
+        self.textBrowser_2.setMaximumSize(QSize(16777215, 35))
+
+        self.horizontalLayout_3.addWidget(self.textBrowser_2)
+
+        self.pushButton = QPushButton(self.widget_2)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout_3.addWidget(self.pushButton)
+
+
+        self.verticalLayout.addWidget(self.widget_2, 0, Qt.AlignTop)
+
+        self.widget_3 = QWidget(self.groupBox)
+        self.widget_3.setObjectName(u"widget_3")
+        self.horizontalLayout_4 = QHBoxLayout(self.widget_3)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label_3 = QLabel(self.widget_3)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_4.addWidget(self.label_3)
+
+        self.textBrowser_3 = QTextBrowser(self.widget_3)
+        self.textBrowser_3.setObjectName(u"textBrowser_3")
+        self.textBrowser_3.setMaximumSize(QSize(16777215, 35))
+
+        self.horizontalLayout_4.addWidget(self.textBrowser_3)
+
+        self.pushButtonLoadPDF = QPushButton(self.widget_3)
+        self.pushButtonLoadPDF.setObjectName(u"pushButtonLoadPDF")
+
+        self.horizontalLayout_4.addWidget(self.pushButtonLoadPDF)
+
+
+        self.verticalLayout.addWidget(self.widget_3, 0, Qt.AlignTop)
+
+        self.label_5 = QLabel(self.centralwidget)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(12, 10, 461, 23))
+        font1 = QFont()
+        font1.setPointSize(12)
+        self.label_5.setFont(font1)
+        self.label_6 = QLabel(self.centralwidget)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setGeometry(QRect(10, 50, 461, 17))
+        self.scrollArea = QScrollArea(self.centralwidget)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setGeometry(QRect(489, 9, 621, 651))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 619, 649))
+        self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.scrollAreaWidgetContents_4 = QWidget(self.scrollAreaWidgetContents_3)
+        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
+        self.scrollAreaWidgetContents_4.setMinimumSize(QSize(550, 0))
+        self.scrollAreaWidgetContents_4.setStyleSheet(u"background-color: rgb(114, 140, 135);")
+
+        self.verticalLayout_2.addWidget(self.scrollAreaWidgetContents_4)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
+        self.pushButton_2 = QPushButton(self.centralwidget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(930, 660, 171, 31))
+        self.pushButton_2.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+"background-color: rgb(19, 163, 171);")
+        self.pushButton_3 = QPushButton(self.centralwidget)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setGeometry(QRect(750, 660, 171, 31))
+        self.pushButton_3.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"color: rgb(0, 0, 0);")
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
+
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"File Details", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Title:           ", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Description:", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Image:        ", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Choose", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"File:             ", None))
+        self.pushButtonLoadPDF.setText(QCoreApplication.translate("MainWindow", u"Load PDF", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700;\">Upload File</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt;\">Select and upload file of your choice</span></p></body></html>", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Upload", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+    # retranslateUi
+
