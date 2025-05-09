@@ -19,6 +19,8 @@ class HomeWindow(QMainWindow):
         self.ui.sendBut.clicked.connect(self.send_message)
         
         self.ui.newBut.clicked.connect(self.upload_file)
+        
+        self.ui.postBut.clicked.connect(self.post_open)
 
     def show_profile(self):
         self.controller.show_profile()
@@ -40,3 +42,6 @@ class HomeWindow(QMainWindow):
             
     def upload_file(self):
         self.controller.show_upload()
+        
+    def post_open(self):
+        self.controller.open_post()

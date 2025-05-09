@@ -7,6 +7,7 @@ from senior_window import SeniorWindow
 from payment_window import PaymentWindow
 from edit_profile_window import EditProfileWindow
 from upload_window import UploadWindow
+from postopen_window import PostOpenWindow
 
 class Controller:
     def __init__(self):
@@ -67,3 +68,7 @@ class Controller:
     def show_upload(self):
         self.upload = UploadWindow(self)
         self.upload.show()
+        
+    def open_post(self):
+        self.post_open = PostOpenWindow(self)
+        self.post_open.show()
