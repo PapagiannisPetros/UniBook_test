@@ -8,9 +8,17 @@ from payment_window import PaymentWindow
 from edit_profile_window import EditProfileWindow
 from upload_window import UploadWindow
 from postopen_window import PostOpenWindow
+from db_manager import DatabaseManager
 
 class Controller:
     def __init__(self):
+        self.db = DatabaseManager()
+        try:
+            self.db.create_tables()
+        except Exception as e:
+            print(f"Error creating tables: {e}")
+        self.db.insert_sample_data()
+
         self.login = LoginWindow(self)
         self.home = HomeWindow(self)
         self.admin_home = AdminReportsWindow(self)
