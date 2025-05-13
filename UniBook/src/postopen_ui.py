@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QHBoxLayout, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QTextBrowser, QVBoxLayout, QWidget)
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QTextBrowser, QVBoxLayout, QWidget)
 import _icons_rc
 import _icons_rc
 
@@ -32,8 +32,11 @@ class Ui_MainWindow(object):
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(25, 25, 25, 25)
-        self.widget_4 = QWidget(self.centralwidget)
+        self.widget = QWidget(self.centralwidget)
+        self.widget.setObjectName(u"widget")
+        self.widget_4 = QWidget(self.widget)
         self.widget_4.setObjectName(u"widget_4")
+        self.widget_4.setGeometry(QRect(10, 0, 1066, 211))
         self.widget_4.setStyleSheet(u"background-color: rgb(183, 177, 191);")
         self.verticalLayout_3 = QVBoxLayout(self.widget_4)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -62,9 +65,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.label_36 = QLabel(self.widget_43)
-        self.label_36.setObjectName(u"label_36")
-        self.label_36.setMaximumSize(QSize(16777215, 51))
+        self.post_title = QLabel(self.widget_43)
+        self.post_title.setObjectName(u"post_title")
+        self.post_title.setMaximumSize(QSize(16777215, 51))
         font = QFont()
         font.setPointSize(12)
         font.setBold(True)
@@ -72,21 +75,21 @@ class Ui_MainWindow(object):
         font.setUnderline(False)
         font.setStrikeOut(False)
         font.setKerning(True)
-        self.label_36.setFont(font)
-        self.label_36.setTextFormat(Qt.AutoText)
-        self.label_36.setScaledContents(False)
-        self.label_36.setWordWrap(False)
+        self.post_title.setFont(font)
+        self.post_title.setTextFormat(Qt.AutoText)
+        self.post_title.setScaledContents(False)
+        self.post_title.setWordWrap(False)
 
-        self.verticalLayout_6.addWidget(self.label_36, 0, Qt.AlignVCenter)
+        self.verticalLayout_6.addWidget(self.post_title, 0, Qt.AlignVCenter)
 
-        self.label_35 = QLabel(self.widget_43)
-        self.label_35.setObjectName(u"label_35")
-        self.label_35.setMaximumSize(QSize(16777215, 34))
+        self.post_date = QLabel(self.widget_43)
+        self.post_date.setObjectName(u"post_date")
+        self.post_date.setMaximumSize(QSize(16777215, 34))
         font1 = QFont()
         font1.setPointSize(9)
-        self.label_35.setFont(font1)
+        self.post_date.setFont(font1)
 
-        self.verticalLayout_6.addWidget(self.label_35, 0, Qt.AlignTop)
+        self.verticalLayout_6.addWidget(self.post_date)
 
 
         self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.widget_43)
@@ -107,11 +110,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_36.setSpacing(0)
         self.verticalLayout_36.setObjectName(u"verticalLayout_36")
         self.verticalLayout_36.setContentsMargins(0, 0, 2, 2)
-        self.textBrowser_8 = QTextBrowser(self.widget_44)
-        self.textBrowser_8.setObjectName(u"textBrowser_8")
-        self.textBrowser_8.setMaximumSize(QSize(16777215, 150))
+        self.post_text = QTextBrowser(self.widget_44)
+        self.post_text.setObjectName(u"post_text")
+        self.post_text.setMaximumSize(QSize(16777215, 150))
 
-        self.verticalLayout_36.addWidget(self.textBrowser_8, 0, Qt.AlignBottom)
+        self.verticalLayout_36.addWidget(self.post_text, 0, Qt.AlignBottom)
 
 
         self.verticalLayout_35.addWidget(self.widget_44)
@@ -119,97 +122,110 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.widget_42)
 
-
-        self.verticalLayout.addWidget(self.widget_4)
-
-        self.horizontalLayout_input = QHBoxLayout()
-        self.horizontalLayout_input.setObjectName(u"horizontalLayout_input")
-
-        self.verticalLayout.addLayout(self.horizontalLayout_input)
-
-        self.horizontalLayout_stats = QHBoxLayout()
+        self.widget1 = QWidget(self.widget)
+        self.widget1.setObjectName(u"widget1")
+        self.widget1.setGeometry(QRect(10, 210, 1066, 41))
+        self.horizontalLayout_stats = QHBoxLayout(self.widget1)
         self.horizontalLayout_stats.setObjectName(u"horizontalLayout_stats")
-        self.likeButton = QPushButton(self.centralwidget)
+        self.horizontalLayout_stats.setContentsMargins(0, 0, 0, 0)
+        self.likeButton = QPushButton(self.widget1)
         self.likeButton.setObjectName(u"likeButton")
         icon = QIcon()
-        icon.addFile(u"../24-design/Qss/icons/black/feather/thumbs-up.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/feather/icons/feather/thumbs-up.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.likeButton.setIcon(icon)
 
         self.horizontalLayout_stats.addWidget(self.likeButton)
 
-        self.commentButton = QPushButton(self.centralwidget)
+        self.commentButton = QPushButton(self.widget1)
         self.commentButton.setObjectName(u"commentButton")
         icon1 = QIcon()
-        icon1.addFile(u"../24-design/Qss/icons/black/feather/message-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon1.addFile(u":/font_awesome/regular/icons/font_awesome/regular/comment-dots.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.commentButton.setIcon(icon1)
 
         self.horizontalLayout_stats.addWidget(self.commentButton)
 
-        self.downloadButton = QPushButton(self.centralwidget)
+        self.downloadButton = QPushButton(self.widget1)
         self.downloadButton.setObjectName(u"downloadButton")
         icon2 = QIcon()
-        icon2.addFile(u"../24-design/Qss/icons/black/feather/download.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon2.addFile(u":/feather/icons/feather/arrow-down-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.downloadButton.setIcon(icon2)
 
         self.horizontalLayout_stats.addWidget(self.downloadButton)
 
-        self.likeButton_2 = QPushButton(self.centralwidget)
+        self.likeButton_2 = QPushButton(self.widget1)
         self.likeButton_2.setObjectName(u"likeButton_2")
         icon3 = QIcon()
-        icon3.addFile(u"../24-design/Qss/icons/black/feather/bookmark.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon3.addFile(u":/feather/icons/feather/bookmark.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.likeButton_2.setIcon(icon3)
 
         self.horizontalLayout_stats.addWidget(self.likeButton_2)
 
-        self.shareButton = QPushButton(self.centralwidget)
+        self.shareButton = QPushButton(self.widget1)
         self.shareButton.setObjectName(u"shareButton")
         icon4 = QIcon()
-        icon4.addFile(u"../24-design/Qss/icons/black/feather/flag.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon4.addFile(u":/feather/icons/feather/flag.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.shareButton.setIcon(icon4)
 
         self.horizontalLayout_stats.addWidget(self.shareButton)
 
+        self.rightMenu = QWidget(self.widget)
+        self.rightMenu.setObjectName(u"rightMenu")
+        self.rightMenu.setGeometry(QRect(340, 350, 350, 521))
+        self.rightMenu.setMinimumSize(QSize(300, 0))
+        self.rightMenu.setMaximumSize(QSize(350, 16777215))
+        self.rightMenu.setStyleSheet(u"background-color: rgb(12, 126, 124);")
+        self.verticalLayout_13 = QVBoxLayout(self.rightMenu)
+        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 3)
+        self.widget_47 = QWidget(self.widget)
+        self.widget_47.setObjectName(u"widget_47")
+        self.widget_47.setGeometry(QRect(10, 270, 1051, 381))
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_47.sizePolicy().hasHeightForWidth())
+        self.widget_47.setSizePolicy(sizePolicy)
+        self.widget_47.setMinimumSize(QSize(0, 0))
+        self.verticalLayout_14 = QVBoxLayout(self.widget_47)
+        self.verticalLayout_14.setSpacing(7)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(3, 0, 3, 0)
+        self.widget_8 = QWidget(self.widget_47)
+        self.widget_8.setObjectName(u"widget_8")
+        self.widget_8.setMinimumSize(QSize(0, 24))
+        self.widget_8.setStyleSheet(u"background-color: rgb(6, 71, 69);")
+        self.horizontalLayout_8 = QHBoxLayout(self.widget_8)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.label_8 = QLabel(self.widget_8)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setMinimumSize(QSize(0, 24))
 
-        self.verticalLayout.addLayout(self.horizontalLayout_stats)
+        self.horizontalLayout_8.addWidget(self.label_8)
 
-        self.commentsScroll = QScrollArea(self.centralwidget)
-        self.commentsScroll.setObjectName(u"commentsScroll")
-        self.commentsScroll.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.commentsScroll.setWidgetResizable(True)
-        self.commentsContainer = QWidget()
-        self.commentsContainer.setObjectName(u"commentsContainer")
-        self.commentsContainer.setGeometry(QRect(0, 0, 1064, 349))
-        self.verticalLayout_comments = QVBoxLayout(self.commentsContainer)
-        self.verticalLayout_comments.setObjectName(u"verticalLayout_comments")
-        self.comment1 = QLabel(self.commentsContainer)
-        self.comment1.setObjectName(u"comment1")
 
-        self.verticalLayout_comments.addWidget(self.comment1)
+        self.verticalLayout_14.addWidget(self.widget_8)
 
-        self.comment2 = QLabel(self.commentsContainer)
-        self.comment2.setObjectName(u"comment2")
+        self.chatDisplay = QTextBrowser(self.widget_47)
+        self.chatDisplay.setObjectName(u"chatDisplay")
 
-        self.verticalLayout_comments.addWidget(self.comment2)
+        self.verticalLayout_14.addWidget(self.chatDisplay)
 
-        self.commentsScroll.setWidget(self.commentsContainer)
+        self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.chatInput = QLineEdit(self.widget_47)
+        self.chatInput.setObjectName(u"chatInput")
 
-        self.verticalLayout.addWidget(self.commentsScroll)
+        self.horizontalLayout_9.addWidget(self.chatInput)
 
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.horizontalLayout = QHBoxLayout(self.widget)
-        self.horizontalLayout.setSpacing(10)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, -1, 0, 0)
-        self.commentLineEdit = QLineEdit(self.widget)
-        self.commentLineEdit.setObjectName(u"commentLineEdit")
+        self.sendBut = QPushButton(self.widget_47)
+        self.sendBut.setObjectName(u"sendBut")
 
-        self.horizontalLayout.addWidget(self.commentLineEdit)
+        self.horizontalLayout_9.addWidget(self.sendBut)
 
-        self.sendButton = QPushButton(self.widget)
-        self.sendButton.setObjectName(u"sendButton")
 
-        self.horizontalLayout.addWidget(self.sendButton)
+        self.verticalLayout_14.addLayout(self.horizontalLayout_9)
 
 
         self.verticalLayout.addWidget(self.widget)
@@ -224,9 +240,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label_3.setText("")
-        self.label_36.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 \u2013 \u039d\u03ad\u03b1 \u0394\u03b7\u03bc\u03bf\u03c3\u03af\u03b5\u03c5\u03c3\u03b7", None))
-        self.label_35.setText(QCoreApplication.translate("MainWindow", u"18/04/2025", None))
-        self.textBrowser_8.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.post_title.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 \u2013 \u039d\u03ad\u03b1 \u0394\u03b7\u03bc\u03bf\u03c3\u03af\u03b5\u03c5\u03c3\u03b7", None))
+        self.post_date.setText(QCoreApplication.translate("MainWindow", u"18/04/2025", None))
+        self.post_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
@@ -238,11 +254,11 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.likeButton.setToolTip(QCoreApplication.translate("MainWindow", u"Like", None))
 #endif // QT_CONFIG(tooltip)
-        self.likeButton.setText(QCoreApplication.translate("MainWindow", u"126 ", None))
+        self.likeButton.setText(QCoreApplication.translate("MainWindow", u"129", None))
 #if QT_CONFIG(tooltip)
         self.commentButton.setToolTip(QCoreApplication.translate("MainWindow", u"Comments", None))
 #endif // QT_CONFIG(tooltip)
-        self.commentButton.setText(QCoreApplication.translate("MainWindow", u"54 ", None))
+        self.commentButton.setText(QCoreApplication.translate("MainWindow", u"54", None))
 #if QT_CONFIG(tooltip)
         self.downloadButton.setToolTip(QCoreApplication.translate("MainWindow", u"Download", None))
 #endif // QT_CONFIG(tooltip)
@@ -255,9 +271,18 @@ class Ui_MainWindow(object):
         self.shareButton.setToolTip(QCoreApplication.translate("MainWindow", u"Report", None))
 #endif // QT_CONFIG(tooltip)
         self.shareButton.setText("")
-        self.comment1.setText(QCoreApplication.translate("MainWindow", u"\u03a0\u03bf\u03bb\u03cd \u03ba\u03b1\u03bb\u03ae \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03b9\u03b1 \u03c4\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03bc\u03bc\u03b1\u03c4\u03b1 \u03b5\u03c5\u03c1\u03c9\u03c3\u03c4\u03af\u03b1\u03c2!!!", None))
-        self.comment2.setText(QCoreApplication.translate("MainWindow", u"\u03a5\u03c0\u03ac\u03c1\u03c7\u03bf\u03c5\u03bd \u03b1\u03bd\u03ac\u03bb\u03bf\u03b3\u03b5\u03c2 \u03c3\u03b7\u03bc\u03b5\u03b9\u03ce\u03c3\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 sequence diagrams?", None))
-        self.commentLineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type your comment...", None))
-        self.sendButton.setText(QCoreApplication.translate("MainWindow", u"\u2708", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:700; font-style:italic;\">Comments</span></p></body></html>", None))
+        self.chatDisplay.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:7.8pt;\"><br /></p></body></html>", None))
+        self.chatInput.setText("")
+        self.chatInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Write a message...", None))
+        self.sendBut.setText(QCoreApplication.translate("MainWindow", u"\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae", None))
     # retranslateUi
 

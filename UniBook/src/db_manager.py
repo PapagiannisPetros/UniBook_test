@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from models import Course, Post
 
 class DatabaseManager:
     def __init__(self):
@@ -9,10 +10,29 @@ class DatabaseManager:
         self.conn = sqlite3.connect(db_path)
         self.conn.row_factory = sqlite3.Row  # To get dict-like rows
         self.cursor = self.conn.cursor()
-        
+        pass
+    
     def get_all_courses(self):
-        self.cursor.execute("SELECT course_id, course_name FROM Course")
-        return self.cursor.fetchall()
+        self.cursor.execute("SELECT * FROM Course")
+        courses = []
+        for row in self.cursor.fetchall():
+            course = Course(row["course_id"], row["course_name"], row["semester"])
+            courses.append(course)
+        return courses
+
+    def get_posts_by_course(self, course_id):
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            SELECT post_id, course_id, student_id, post_title, post_text, post_time, likes, comments
+            FROM Post
+            WHERE course_id = ?
+            ORDER BY post_time DESC
+        """, (course_id,))
+        rows = cursor.fetchall()
+        posts = [
+            Post(*row) for row in rows
+        ]
+        return posts
 
         
     def create_tables(self):
@@ -73,6 +93,11 @@ class DatabaseManager:
                 post_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
                 course_id INTEGER NOT NULL,
                 student_id INTEGER NOT NULL,
+                post_title VARCHAR(50),
+                post_text TEXT,
+                post_time DATETIME,
+                likes INTEGER NOT NULL,
+                comments INTEGER NOT NULL,
                 FOREIGN KEY(course_id) REFERENCES Course(course_id),
                 FOREIGN KEY(student_id) REFERENCES Student(student_id)
             );
@@ -169,8 +194,8 @@ class DatabaseManager:
 
             # Insert into Post
             self.cursor.execute('''
-                INSERT INTO Post (course_id, student_id) VALUES (?, ?)
-            ''', (1, 1))
+                INSERT INTO Post (course_id, student_id, post_title, post_text, post_time, likes, comments) VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', (1, 1, 'Sample Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55))
 
             # Insert into Subscription
             self.cursor.execute('''

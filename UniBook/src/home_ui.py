@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
-    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QScrollArea, QSizePolicy, QStackedWidget,
-    QTextBrowser, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QHBoxLayout,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QScrollArea, QSizePolicy, QStackedWidget, QTextBrowser,
+    QVBoxLayout, QWidget)
 import _icons_rc
 
 class Ui_MainWindow(object):
@@ -78,7 +78,7 @@ class Ui_MainWindow(object):
         self.lessonsBut = QPushButton(self.widget_2)
         self.lessonsBut.setObjectName(u"lessonsBut")
         icon2 = QIcon()
-        icon2.addFile(u":/feather/icons/feather/list.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon2.addFile(u":/font_awesome/brands/icons/font_awesome/brands/rocketchat.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.lessonsBut.setIcon(icon2)
         self.lessonsBut.setIconSize(QSize(25, 25))
 
@@ -248,102 +248,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(7, 2, 7, 0)
-        self.widget_40 = QWidget(self.scrollAreaWidgetContents)
-        self.widget_40.setObjectName(u"widget_40")
-        self.widget_40.setMinimumSize(QSize(0, 0))
-        self.widget_40.setMaximumSize(QSize(16777215, 200))
-        self.widget_40.setStyleSheet(u"background-color: rgb(150, 150, 150);")
-        self.horizontalLayout_15 = QHBoxLayout(self.widget_40)
-        self.horizontalLayout_15.setSpacing(7)
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.widget_41 = QWidget(self.widget_40)
-        self.widget_41.setObjectName(u"widget_41")
-        self.verticalLayout_34 = QVBoxLayout(self.widget_41)
-        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
-        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
-        self.label_34 = QLabel(self.widget_41)
-        self.label_34.setObjectName(u"label_34")
-        self.label_34.setMinimumSize(QSize(170, 100))
-        self.label_34.setStyleSheet(u"")
-        self.label_34.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_34.addWidget(self.label_34)
-
-
-        self.horizontalLayout_15.addWidget(self.widget_41, 0, Qt.AlignLeft)
-
-        self.widget_42 = QWidget(self.widget_40)
-        self.widget_42.setObjectName(u"widget_42")
-        self.widget_42.setMinimumSize(QSize(0, 0))
-        self.verticalLayout_35 = QVBoxLayout(self.widget_42)
-        self.verticalLayout_35.setSpacing(0)
-        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
-        self.verticalLayout_35.setContentsMargins(-1, 0, 2, 0)
-        self.widget_43 = QWidget(self.widget_42)
-        self.widget_43.setObjectName(u"widget_43")
-        self.gridLayout_8 = QGridLayout(self.widget_43)
-        self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.gridLayout_8.setVerticalSpacing(0)
-        self.gridLayout_8.setContentsMargins(0, 0, 0, -1)
-        self.postBut = QPushButton(self.widget_43)
-        self.postBut.setObjectName(u"postBut")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.postBut.sizePolicy().hasHeightForWidth())
-        self.postBut.setSizePolicy(sizePolicy)
-        icon6 = QIcon()
-        icon6.addFile(u":/feather/icons/feather/arrow-right.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.postBut.setIcon(icon6)
-        self.postBut.setAutoDefault(False)
-
-        self.gridLayout_8.addWidget(self.postBut, 0, 2, 1, 1)
-
-        self.label_35 = QLabel(self.widget_43)
-        self.label_35.setObjectName(u"label_35")
-
-        self.gridLayout_8.addWidget(self.label_35, 1, 0, 1, 1)
-
-        self.label_36 = QLabel(self.widget_43)
-        self.label_36.setObjectName(u"label_36")
-        font = QFont()
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setStrikeOut(False)
-        font.setKerning(True)
-        self.label_36.setFont(font)
-        self.label_36.setTextFormat(Qt.AutoText)
-        self.label_36.setScaledContents(False)
-        self.label_36.setWordWrap(False)
-
-        self.gridLayout_8.addWidget(self.label_36, 0, 0, 1, 2)
-
-
-        self.verticalLayout_35.addWidget(self.widget_43, 0, Qt.AlignTop)
-
-        self.widget_44 = QWidget(self.widget_42)
-        self.widget_44.setObjectName(u"widget_44")
-        self.verticalLayout_36 = QVBoxLayout(self.widget_44)
-        self.verticalLayout_36.setSpacing(0)
-        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
-        self.verticalLayout_36.setContentsMargins(0, 0, 2, 2)
-        self.textBrowser_8 = QTextBrowser(self.widget_44)
-        self.textBrowser_8.setObjectName(u"textBrowser_8")
-
-        self.verticalLayout_36.addWidget(self.textBrowser_8)
-
-
-        self.verticalLayout_35.addWidget(self.widget_44)
-
-
-        self.horizontalLayout_15.addWidget(self.widget_42)
-
-
-        self.verticalLayout_7.addWidget(self.widget_40)
-
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
         self.verticalLayout_9.addWidget(self.scrollArea)
@@ -375,7 +279,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 3)
-        self.widget_8 = QWidget(self.rightMenu)
+        self.widget_47 = QWidget(self.rightMenu)
+        self.widget_47.setObjectName(u"widget_47")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_47.sizePolicy().hasHeightForWidth())
+        self.widget_47.setSizePolicy(sizePolicy)
+        self.widget_47.setMinimumSize(QSize(0, 0))
+        self.verticalLayout_14 = QVBoxLayout(self.widget_47)
+        self.verticalLayout_14.setSpacing(7)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(3, 0, 3, 0)
+        self.widget_8 = QWidget(self.widget_47)
         self.widget_8.setObjectName(u"widget_8")
         self.widget_8.setMinimumSize(QSize(0, 24))
         self.widget_8.setStyleSheet(u"background-color: rgb(6, 71, 69);")
@@ -388,29 +304,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.label_8)
 
-        self.pushButton_8 = QPushButton(self.widget_8)
-        self.pushButton_8.setObjectName(u"pushButton_8")
-        icon7 = QIcon()
-        icon7.addFile(u":/feather/icons/feather/x-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.pushButton_8.setIcon(icon7)
 
-        self.horizontalLayout_8.addWidget(self.pushButton_8, 0, Qt.AlignRight)
+        self.verticalLayout_14.addWidget(self.widget_8)
 
-
-        self.verticalLayout_13.addWidget(self.widget_8)
-
-        self.widget_47 = QWidget(self.rightMenu)
-        self.widget_47.setObjectName(u"widget_47")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.widget_47.sizePolicy().hasHeightForWidth())
-        self.widget_47.setSizePolicy(sizePolicy1)
-        self.widget_47.setMinimumSize(QSize(0, 0))
-        self.verticalLayout_14 = QVBoxLayout(self.widget_47)
-        self.verticalLayout_14.setSpacing(7)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(3, 0, 3, 0)
         self.chatDisplay = QTextBrowser(self.widget_47)
         self.chatDisplay.setObjectName(u"chatDisplay")
 
@@ -476,25 +372,8 @@ class Ui_MainWindow(object):
         self.searchBtn.setText("")
         self.searchLine.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Search...", None))
         self.newBut.setText(QCoreApplication.translate("MainWindow", u"New", None))
-#if QT_CONFIG(whatsthis)
-        self.label_34.setWhatsThis(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><img src=\":/material_design/icons/material_design/unsplash_IyaNci0CyRk.png\"/></p></body></html>", None))
-#endif // QT_CONFIG(whatsthis)
-        self.label_34.setText("")
-        self.postBut.setText("")
-        self.label_35.setText(QCoreApplication.translate("MainWindow", u"18/04/2025", None))
-        self.label_36.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 \u2013 \u039d\u03ad\u03b1 \u0394\u03b7\u03bc\u03bf\u03c3\u03af\u03b5\u03c5\u03c3\u03b7", None))
-        self.textBrowser_8.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">\u03bd\u03ad\u03bf \u03c5\u03bb\u03b9\u03ba\u03cc \u03bc\u03b5 \u03c0\u03b1\u03c1\u03b1\u03b4\u03b5\u03af\u03b3\u03bc\u03b1\u03c4\u03b1 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae\u03c2 \u03c0\u03af\u03bd\u03b1\u03ba\u03c9\u03bd \u03ba\u03b1\u03b9 \u03b4\u03b9\u03b1\u03bd\u03c5\u03c3\u03bc\u03ac\u03c4\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u03b5\u03c0"
-                        "\u03af\u03bb\u03c5\u03c3\u03b7 \u03c3\u03c5\u03c3\u03c4\u03b7\u03bc\u03ac\u03c4\u03c9\u03bd \u03b3\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ce\u03bd \u03b5\u03be\u03b9\u03c3\u03ce\u03c3\u03b5\u03c9\u03bd. \u03a0\u03c1\u03bf\u03c4\u03b5\u03af\u03bd\u03b5\u03c4\u03b1\u03b9 \u03b7 \u03bc\u03b5\u03bb\u03ad\u03c4\u03b7 \u03c0\u03c1\u03b9\u03bd \u03c4\u03bf \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03ba\u03b1\u03b8\u03ce\u03c2 \u03c0\u03b5\u03c1\u03b9\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03b5\u03b9 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b9\u03c2 \u03b5\u03bd\u03b4\u03b9\u03ac\u03bc\u03b5\u03c3\u03b5\u03c2 \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2.</span></p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Profile Page", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Chat", None))
-        self.pushButton_8.setText("")
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:700; font-style:italic;\">Chat</span></p></body></html>", None))
         self.chatDisplay.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

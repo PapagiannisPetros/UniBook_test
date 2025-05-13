@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QPushButton
 from PySide6.QtGui import QIcon, QFont
 from PySide6.QtCore import QSize
 
+
 class HomeWindow(QMainWindow):
     def __init__(self, controller, courses):
         super().__init__()
@@ -16,15 +17,17 @@ class HomeWindow(QMainWindow):
         self.ui.logoutBut.clicked.connect(self.logout)
         self.ui.sendBut.clicked.connect(self.send_message)
         self.ui.newBut.clicked.connect(self.upload_file)
-        self.ui.postBut.clicked.connect(self.post_open)
 
         self.display_message("System", "Welcome to the chat!")
         self.add_course_buttons(courses)
+        
+        self.ui.rightMenu.hide()
+        self.ui.lessonsBut.clicked.connect(self.toggle_chat)
 
     def add_course_buttons(self, courses):
         for course in courses:
-            course_id = course['course_id']
-            course_name = course['course_name']
+            course_id = course.course_id  # Accessing attribute directly
+            course_name = course.course_name
 
             button = QPushButton(course_name, self.ui.scrollAreaWidgetContents_2)
             button.setMinimumSize(QSize(0, 45))
@@ -37,7 +40,7 @@ class HomeWindow(QMainWindow):
             button.setIcon(icon)
             button.setIconSize(QSize(20, 20))
 
-            # Connect to course selection handler
+            # Connect button click to controller method
             button.clicked.connect(lambda _, cid=course_id: self.controller.course_selected(cid))
 
             self.ui.verticalLayout_37.addWidget(button)
@@ -65,3 +68,11 @@ class HomeWindow(QMainWindow):
         
     def post_open(self):
         self.controller.open_post()
+        
+    def toggle_chat(self):
+        if self.ui.rightMenu.isVisible():
+            self.ui.rightMenu.hide()
+        else:
+            self.ui.rightMenu.show()
+
+

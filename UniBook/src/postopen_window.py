@@ -7,3 +7,8 @@ class PostOpenWindow(QMainWindow):
         self.controller = controller
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        
+        self.ui.shareButton.clicked.connect(self.reportPost)
+        
+    def reportPost(self):
+        self.controller.show_reportPost()
