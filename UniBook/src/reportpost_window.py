@@ -1,5 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 from reportpost_ui import Ui_MainWindow  # Adjust the import based on your UI file
+from datetime import datetime
+
 
 class ReportPostWindow(QMainWindow):
     def __init__(self, controller):
@@ -7,3 +9,27 @@ class ReportPostWindow(QMainWindow):
         self.controller = controller
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        
+        self.ui.submitBut.clicked.connect(self.send_report_details)
+        
+    def send_report_details(self):
+        # Collect report details
+        checked_items = []
+
+        for checkbox in [
+            self.ui.checkBox, self.ui.checkBox_2, self.ui.checkBox_3,
+            self.ui.checkBox_4, self.ui.checkBox_5
+        ]:
+            if checkbox.isChecked():
+                checked_items.append(checkbox.text())
+
+        result_string = ", ".join(checked_items)
+        print(result_string)
+
+        report_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Send the report details to the controller
+        self.controller.save_report(result_string, report_time)
+        
+        # Close the window after sending the report
+        self.close()

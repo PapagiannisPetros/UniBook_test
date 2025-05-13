@@ -31,6 +31,11 @@ class Controller:
 
         self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
         
+    def save_report(self, report_type, report_time):
+        # Save the report details to the database
+        self.db.save_report(self.current_post.post_id, 1, report_type, 'TEST',report_time)
+        print("Report saved successfully.")
+        
     def show_reportPost(self):
         self.report_post_window = ReportPostWindow(self)
         self.report_post_window.ui.post_title.setText(self.current_post.title)

@@ -33,6 +33,14 @@ class DatabaseManager:
             Post(*row) for row in rows
         ]
         return posts
+    
+    def save_report(self, post_id, reporter_id, report_type, status, report_time):
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            INSERT INTO Report (post_id, reporter_id, report_type, status, report_time)
+            VALUES (?, ?, ?, ?, ?)
+        """, (post_id, reporter_id, report_type, status, report_time))
+        self.conn.commit()
 
         
     def create_tables(self):
@@ -153,7 +161,6 @@ class DatabaseManager:
                 reporter_id INTEGER NOT NULL,
                 report_type TEXT,
                 status TEXT,
-                comment_text TEXT,
                 report_time DATE,
                 FOREIGN KEY(post_id) REFERENCES Post(post_id),
                 FOREIGN KEY(reporter_id) REFERENCES Student(student_id)
@@ -222,9 +229,9 @@ class DatabaseManager:
 
             # Insert into Report
             self.cursor.execute('''
-                INSERT INTO Report (post_id, reporter_id, report_type, status, comment_text, report_time)
+                INSERT INTO Report (post_id, reporter_id, report_type, status, report_time)
                 VALUES (?, ?, ?, ?, ?, ?)
-            ''', (1, 1, 'Spam', 'Open', 'This post looks like spam.', '2025-05-10'))
+            ''', (1, 1, 'Spam', 'Open', '2025-05-10'))
 
             self.conn.commit()
             print("Sample data inserted successfully.")
