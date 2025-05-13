@@ -10,6 +10,11 @@ class DatabaseManager:
         self.conn.row_factory = sqlite3.Row  # To get dict-like rows
         self.cursor = self.conn.cursor()
         
+    def get_all_courses(self):
+        self.cursor.execute("SELECT course_id, course_name FROM Course")
+        return self.cursor.fetchall()
+
+        
     def create_tables(self):
         self.cursor.execute('''
             CREATE TABLE User (

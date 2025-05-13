@@ -20,22 +20,29 @@ class Controller:
         self.db.insert_sample_data()
 
         self.login = LoginWindow(self)
-        self.home = HomeWindow(self)
+        
         self.admin_home = AdminReportsWindow(self)
         self.upload = UploadWindow(self)
 
-        self.login.ui.loginBut.clicked.connect(self.show_home)
         self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
 
     def show_login(self):
-        self.home.hide()
+        #self.home.hide()
        # self.rookie.hide()
         self.admin_home.hide()
         self.login.show()
-
+        
     def show_home(self):
         self.login.hide()
-        self.home.show()
+        courses = self.db.get_all_courses()
+        self.home_window = HomeWindow(self, courses)
+        self.home_window.show()
+        
+    def course_selected(self, course_id):
+        print("Course selected:", course_id)
+    # Here, you could load posts for that course, open a course view, etc.
+
+
 
     def show_admin_reports(self):
         self.login.hide()
