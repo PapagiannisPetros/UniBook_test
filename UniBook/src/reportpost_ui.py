@@ -87,8 +87,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.label_36 = QLabel(self.widget_43)
-        self.label_36.setObjectName(u"label_36")
+        self.post_title = QLabel(self.widget_43)
+        self.post_title.setObjectName(u"post_title")
         font1 = QFont()
         font1.setPointSize(12)
         font1.setBold(True)
@@ -96,20 +96,20 @@ class Ui_MainWindow(object):
         font1.setUnderline(False)
         font1.setStrikeOut(False)
         font1.setKerning(True)
-        self.label_36.setFont(font1)
-        self.label_36.setTextFormat(Qt.AutoText)
-        self.label_36.setScaledContents(False)
-        self.label_36.setWordWrap(False)
+        self.post_title.setFont(font1)
+        self.post_title.setTextFormat(Qt.AutoText)
+        self.post_title.setScaledContents(False)
+        self.post_title.setWordWrap(False)
 
-        self.verticalLayout_6.addWidget(self.label_36)
+        self.verticalLayout_6.addWidget(self.post_title)
 
-        self.label_35 = QLabel(self.widget_43)
-        self.label_35.setObjectName(u"label_35")
+        self.post_time = QLabel(self.widget_43)
+        self.post_time.setObjectName(u"post_time")
         font2 = QFont()
         font2.setPointSize(9)
-        self.label_35.setFont(font2)
+        self.post_time.setFont(font2)
 
-        self.verticalLayout_6.addWidget(self.label_35)
+        self.verticalLayout_6.addWidget(self.post_time)
 
 
         self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.widget_43)
@@ -130,11 +130,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_36.setSpacing(0)
         self.verticalLayout_36.setObjectName(u"verticalLayout_36")
         self.verticalLayout_36.setContentsMargins(0, 0, 2, 2)
-        self.textBrowser_8 = QTextBrowser(self.widget_44)
-        self.textBrowser_8.setObjectName(u"textBrowser_8")
-        self.textBrowser_8.setMaximumSize(QSize(16777215, 180))
+        self.post_text = QTextBrowser(self.widget_44)
+        self.post_text.setObjectName(u"post_text")
+        self.post_text.setMaximumSize(QSize(16777215, 180))
 
-        self.verticalLayout_36.addWidget(self.textBrowser_8, 0, Qt.AlignBottom)
+        self.verticalLayout_36.addWidget(self.post_text, 0, Qt.AlignBottom)
 
 
         self.verticalLayout_35.addWidget(self.widget_44)
@@ -192,20 +192,20 @@ class Ui_MainWindow(object):
         self.widget_2.setObjectName(u"widget_2")
         self.horizontalLayout = QHBoxLayout(self.widget_2)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.pushButton_3 = QPushButton(self.widget_2)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+        self.cancelBut = QPushButton(self.widget_2)
+        self.cancelBut.setObjectName(u"cancelBut")
+        self.cancelBut.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);")
 
-        self.horizontalLayout.addWidget(self.pushButton_3)
+        self.horizontalLayout.addWidget(self.cancelBut)
 
-        self.pushButton_2 = QPushButton(self.widget_2)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(0, 0))
-        self.pushButton_2.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+        self.submitBut = QPushButton(self.widget_2)
+        self.submitBut.setObjectName(u"submitBut")
+        self.submitBut.setMinimumSize(QSize(0, 0))
+        self.submitBut.setStyleSheet(u"color: rgb(0, 0, 0);\n"
 "background-color: rgb(19, 163, 171);")
 
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.horizontalLayout.addWidget(self.submitBut)
 
 
         self.verticalLayout_5.addWidget(self.widget_2, 0, Qt.AlignRight|Qt.AlignBottom)
@@ -224,20 +224,23 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Report Post", None))
         self.label_3.setText("")
-        self.label_36.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 \u2013 \u039d\u03ad\u03b1 \u0394\u03b7\u03bc\u03bf\u03c3\u03af\u03b5\u03c5\u03c3\u03b7", None))
-        self.label_35.setText(QCoreApplication.translate("MainWindow", u"18/04/2025", None))
-        self.textBrowser_8.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+        self.post_title.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 \u2013 \u039d\u03ad\u03b1 \u0394\u03b7\u03bc\u03bf\u03c3\u03af\u03b5\u03c5\u03c3\u03b7", None))
+        self.post_time.setText(QCoreApplication.translate("MainWindow", u"18/04/2025", None))
+        self.post_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">\u03bd\u03ad\u03bf \u03c5\u03bb\u03b9\u03ba\u03cc \u03bc\u03b5 \u03c0\u03b1\u03c1\u03b1\u03b4\u03b5\u03af\u03b3\u03bc\u03b1\u03c4\u03b1 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae\u03c2 \u03c0\u03af\u03bd\u03b1\u03ba\u03c9\u03bd \u03ba\u03b1\u03b9 \u03b4\u03b9\u03b1\u03bd\u03c5\u03c3\u03bc\u03ac\u03c4\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u03b5\u03c0\u03af\u03bb\u03c5\u03c3\u03b7 \u03c3\u03c5\u03c3\u03c4\u03b7\u03bc\u03ac\u03c4\u03c9\u03bd \u03b3\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ce\u03bd \u03b5\u03be\u03b9\u03c3\u03ce"
-                        "\u03c3\u03b5\u03c9\u03bd. \u03a0\u03c1\u03bf\u03c4\u03b5\u03af\u03bd\u03b5\u03c4\u03b1\u03b9 \u03b7 \u03bc\u03b5\u03bb\u03ad\u03c4\u03b7 \u03c0\u03c1\u03b9\u03bd \u03c4\u03bf \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03ba\u03b1\u03b8\u03ce\u03c2 \u03c0\u03b5\u03c1\u03b9\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03b5\u03b9 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b9\u03c2 \u03b5\u03bd\u03b4\u03b9\u03ac\u03bc\u03b5\u03c3\u03b5\u03c2 \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2.</span></p></body></html>", None))
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2';\">\u03bd\u03ad\u03bf \u03c5\u03bb\u03b9\u03ba\u03cc \u03bc\u03b5 \u03c0\u03b1\u03c1\u03b1\u03b4\u03b5\u03af\u03b3\u03bc\u03b1\u03c4\u03b1 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae\u03c2 \u03c0\u03af\u03bd\u03b1\u03ba\u03c9\u03bd \u03ba\u03b1\u03b9 \u03b4\u03b9\u03b1\u03bd\u03c5\u03c3\u03bc\u03ac\u03c4\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u03b5\u03c0"
+                        "\u03af\u03bb\u03c5\u03c3\u03b7 \u03c3\u03c5\u03c3\u03c4\u03b7\u03bc\u03ac\u03c4\u03c9\u03bd \u03b3\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ce\u03bd \u03b5\u03be\u03b9\u03c3\u03ce\u03c3\u03b5\u03c9\u03bd. \u03a0\u03c1\u03bf\u03c4\u03b5\u03af\u03bd\u03b5\u03c4\u03b1\u03b9 \u03b7 \u03bc\u03b5\u03bb\u03ad\u03c4\u03b7 \u03c0\u03c1\u03b9\u03bd \u03c4\u03bf \u03b5\u03c0\u03cc\u03bc\u03b5\u03bd\u03bf \u03bc\u03ac\u03b8\u03b7\u03bc\u03b1 \u03ba\u03b1\u03b8\u03ce\u03c2 \u03c0\u03b5\u03c1\u03b9\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03b5\u03b9 \u03b2\u03b1\u03c3\u03b9\u03ba\u03ad\u03c2 \u03ad\u03bd\u03bd\u03bf\u03b9\u03b5\u03c2 \u03b3\u03b9\u03b1 \u03c4\u03b9\u03c2 \u03b5\u03bd\u03b4\u03b9\u03ac\u03bc\u03b5\u03c3\u03b5\u03c2 \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2.</span></p></body></html>", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"I don't like it", None))
         self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Spam", None))
         self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"Abuse or harassment", None))
         self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"Harmful misinformation or glorifying violence", None))
         self.checkBox_5.setText(QCoreApplication.translate("MainWindow", u"Exposing private identifying information", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Sumbit", None))
+        self.cancelBut.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.submitBut.setText(QCoreApplication.translate("MainWindow", u"Sumbit", None))
     # retranslateUi
 

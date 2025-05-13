@@ -32,8 +32,12 @@ class Controller:
         self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
         
     def show_reportPost(self):
-        self.report_open = ReportPostWindow(self)
-        self.report_open.show()
+        self.report_post_window = ReportPostWindow(self)
+        self.report_post_window.ui.post_title.setText(self.current_post.title)
+        self.report_post_window.ui.post_time.setText(self.current_post.date)
+        self.report_post_window.ui.post_text.setText(self.current_post.description)
+        
+        self.report_post_window.show()
         
     def _create_post_widget(self, post):
         post_widget = QWidget()
@@ -98,6 +102,7 @@ class Controller:
     def post_selected(self, post_id):
         # Find the selected post from the cached posts
         post = next((p for p in self.posts_cache if p.post_id == post_id), None)
+        self.current_post=post
 
         if post:
             self.show_post_window(post)
@@ -167,7 +172,7 @@ class Controller:
         self.senior.show()
         
     def show_profile(self):
-        self.home.hide()
+        self.home_window.hide()
         self.profile = ProfileWindow(self)
         self.profile.show()
         
