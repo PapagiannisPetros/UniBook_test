@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         self.loginBut.setGeometry(QRect(480, 470, 151, 37))
         self.loginBut.setStyleSheet(u"background-color: rgb(0, 144, 255);")
         icon = QIcon()
-        icon.addFile(u":/feather/icons/feather/airplay.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/feather/i cons/feather/airplay.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.loginBut.setIcon(icon)
         self.loginBut.setIconSize(QSize(32, 32))
         self.usernameIn = QLineEdit(self.centralwidget)
