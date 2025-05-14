@@ -258,6 +258,9 @@ class Controller:
         self.edit_profile.show()
     
     def show_upload(self):
+        if self.selected_course_id is None:
+            QMessageBox.warning(None, "Error", "No course selected.")
+            return
         self.upload = UploadWindow(self)
         self.upload.show()
         
