@@ -29,14 +29,14 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet(u"background-color: rgb(0, 70, 70);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout = QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(25, 25, 25, 25)
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(25, 25, 25, 25)
         self.widget = QWidget(self.centralwidget)
         self.widget.setObjectName(u"widget")
         self.widget_4 = QWidget(self.widget)
         self.widget_4.setObjectName(u"widget_4")
-        self.widget_4.setGeometry(QRect(10, 0, 1066, 211))
+        self.widget_4.setGeometry(QRect(10, 10, 491, 211))
         self.widget_4.setStyleSheet(u"background-color: rgb(183, 177, 191);")
         self.verticalLayout_3 = QVBoxLayout(self.widget_4)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -46,19 +46,6 @@ class Ui_MainWindow(object):
         self.formLayout = QFormLayout(self.widget_6)
         self.formLayout.setObjectName(u"formLayout")
         self.formLayout.setContentsMargins(-1, 0, -1, -1)
-        self.widget_7 = QWidget(self.widget_6)
-        self.widget_7.setObjectName(u"widget_7")
-        self.verticalLayout_4 = QVBoxLayout(self.widget_7)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.label_3 = QLabel(self.widget_7)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setPixmap(QPixmap(u"../24-design/Qss/icons/black/feather/align-left.png"))
-
-        self.verticalLayout_4.addWidget(self.label_3)
-
-
-        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.widget_7)
-
         self.widget_43 = QWidget(self.widget_6)
         self.widget_43.setObjectName(u"widget_43")
         self.verticalLayout_6 = QVBoxLayout(self.widget_43)
@@ -80,7 +67,7 @@ class Ui_MainWindow(object):
         self.post_title.setScaledContents(False)
         self.post_title.setWordWrap(False)
 
-        self.verticalLayout_6.addWidget(self.post_title, 0, Qt.AlignVCenter)
+        self.verticalLayout_6.addWidget(self.post_title)
 
         self.post_date = QLabel(self.widget_43)
         self.post_date.setObjectName(u"post_date")
@@ -93,6 +80,19 @@ class Ui_MainWindow(object):
 
 
         self.formLayout.setWidget(0, QFormLayout.ItemRole.FieldRole, self.widget_43)
+
+        self.widget_7 = QWidget(self.widget_6)
+        self.widget_7.setObjectName(u"widget_7")
+        self.verticalLayout_4 = QVBoxLayout(self.widget_7)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.label_3 = QLabel(self.widget_7)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setPixmap(QPixmap(u"../24-design/Qss/icons/black/feather/align-left.png"))
+
+        self.verticalLayout_4.addWidget(self.label_3)
+
+
+        self.formLayout.setWidget(0, QFormLayout.ItemRole.LabelRole, self.widget_7)
 
 
         self.verticalLayout_3.addWidget(self.widget_6)
@@ -114,7 +114,7 @@ class Ui_MainWindow(object):
         self.post_text.setObjectName(u"post_text")
         self.post_text.setMaximumSize(QSize(16777215, 150))
 
-        self.verticalLayout_36.addWidget(self.post_text, 0, Qt.AlignBottom)
+        self.verticalLayout_36.addWidget(self.post_text)
 
 
         self.verticalLayout_35.addWidget(self.widget_44)
@@ -122,13 +122,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addWidget(self.widget_42)
 
-        self.widget1 = QWidget(self.widget)
-        self.widget1.setObjectName(u"widget1")
-        self.widget1.setGeometry(QRect(10, 210, 1066, 41))
-        self.horizontalLayout_stats = QHBoxLayout(self.widget1)
+        self.layoutWidget = QWidget(self.widget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(10, 220, 481, 41))
+        self.horizontalLayout_stats = QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_stats.setObjectName(u"horizontalLayout_stats")
         self.horizontalLayout_stats.setContentsMargins(0, 0, 0, 0)
-        self.likeButton = QPushButton(self.widget1)
+        self.likeButton = QPushButton(self.layoutWidget)
         self.likeButton.setObjectName(u"likeButton")
         icon = QIcon()
         icon.addFile(u":/feather/icons/feather/thumbs-up.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -136,7 +136,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_stats.addWidget(self.likeButton)
 
-        self.commentButton = QPushButton(self.widget1)
+        self.commentButton = QPushButton(self.layoutWidget)
         self.commentButton.setObjectName(u"commentButton")
         icon1 = QIcon()
         icon1.addFile(u":/font_awesome/regular/icons/font_awesome/regular/comment-dots.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -144,7 +144,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_stats.addWidget(self.commentButton)
 
-        self.downloadButton = QPushButton(self.widget1)
+        self.downloadButton = QPushButton(self.layoutWidget)
         self.downloadButton.setObjectName(u"downloadButton")
         icon2 = QIcon()
         icon2.addFile(u":/feather/icons/feather/arrow-down-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -152,7 +152,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_stats.addWidget(self.downloadButton)
 
-        self.likeButton_2 = QPushButton(self.widget1)
+        self.likeButton_2 = QPushButton(self.layoutWidget)
         self.likeButton_2.setObjectName(u"likeButton_2")
         icon3 = QIcon()
         icon3.addFile(u":/feather/icons/feather/bookmark.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -160,7 +160,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_stats.addWidget(self.likeButton_2)
 
-        self.shareButton = QPushButton(self.widget1)
+        self.shareButton = QPushButton(self.layoutWidget)
         self.shareButton.setObjectName(u"shareButton")
         icon4 = QIcon()
         icon4.addFile(u":/feather/icons/feather/flag.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
@@ -168,67 +168,46 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_stats.addWidget(self.shareButton)
 
-        self.rightMenu = QWidget(self.widget)
-        self.rightMenu.setObjectName(u"rightMenu")
-        self.rightMenu.setGeometry(QRect(340, 350, 350, 521))
-        self.rightMenu.setMinimumSize(QSize(300, 0))
-        self.rightMenu.setMaximumSize(QSize(350, 16777215))
-        self.rightMenu.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.verticalLayout_13 = QVBoxLayout(self.rightMenu)
-        self.verticalLayout_13.setSpacing(0)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(0, 0, 0, 3)
-        self.widget_47 = QWidget(self.widget)
-        self.widget_47.setObjectName(u"widget_47")
-        self.widget_47.setGeometry(QRect(10, 270, 1051, 381))
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget_47.sizePolicy().hasHeightForWidth())
-        self.widget_47.setSizePolicy(sizePolicy)
-        self.widget_47.setMinimumSize(QSize(0, 0))
-        self.verticalLayout_14 = QVBoxLayout(self.widget_47)
-        self.verticalLayout_14.setSpacing(7)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(3, 0, 3, 0)
-        self.widget_8 = QWidget(self.widget_47)
-        self.widget_8.setObjectName(u"widget_8")
-        self.widget_8.setMinimumSize(QSize(0, 24))
-        self.widget_8.setStyleSheet(u"background-color: rgb(6, 71, 69);")
-        self.horizontalLayout_8 = QHBoxLayout(self.widget_8)
-        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
-        self.label_8 = QLabel(self.widget_8)
+        self.widget_2 = QWidget(self.widget)
+        self.widget_2.setObjectName(u"widget_2")
+        self.widget_2.setGeometry(QRect(10, 279, 491, 361))
+        self.verticalLayout = QVBoxLayout(self.widget_2)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.label_8 = QLabel(self.widget_2)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setMinimumSize(QSize(0, 24))
 
-        self.horizontalLayout_8.addWidget(self.label_8)
+        self.verticalLayout.addWidget(self.label_8)
 
-
-        self.verticalLayout_14.addWidget(self.widget_8)
-
-        self.chatDisplay = QTextBrowser(self.widget_47)
+        self.chatDisplay = QTextBrowser(self.widget_2)
         self.chatDisplay.setObjectName(u"chatDisplay")
 
-        self.verticalLayout_14.addWidget(self.chatDisplay)
+        self.verticalLayout.addWidget(self.chatDisplay)
 
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.chatInput = QLineEdit(self.widget_47)
+        self.chatInput = QLineEdit(self.widget_2)
         self.chatInput.setObjectName(u"chatInput")
 
         self.horizontalLayout_9.addWidget(self.chatInput)
 
-        self.sendBut = QPushButton(self.widget_47)
+        self.sendBut = QPushButton(self.widget_2)
         self.sendBut.setObjectName(u"sendBut")
 
         self.horizontalLayout_9.addWidget(self.sendBut)
 
 
-        self.verticalLayout_14.addLayout(self.horizontalLayout_9)
+        self.verticalLayout.addLayout(self.horizontalLayout_9)
 
 
-        self.verticalLayout.addWidget(self.widget)
+        self.horizontalLayout.addWidget(self.widget)
+
+        self.scrollAreaWidgetContents_4 = QWidget(self.centralwidget)
+        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
+        self.scrollAreaWidgetContents_4.setMinimumSize(QSize(550, 0))
+        self.scrollAreaWidgetContents_4.setStyleSheet(u"background-color: rgb(114, 140, 135);")
+
+        self.horizontalLayout.addWidget(self.scrollAreaWidgetContents_4)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -239,9 +218,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label_3.setText("")
         self.post_title.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 \u2013 \u039d\u03ad\u03b1 \u0394\u03b7\u03bc\u03bf\u03c3\u03af\u03b5\u03c5\u03c3\u03b7", None))
         self.post_date.setText(QCoreApplication.translate("MainWindow", u"18/04/2025", None))
+        self.label_3.setText("")
         self.post_text.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

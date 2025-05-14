@@ -1,3 +1,5 @@
+import fitz
+
 from login_window import LoginWindow
 from home_window import HomeWindow
 from admin_home_window import AdminReportsWindow  
@@ -15,6 +17,7 @@ from PySide6.QtWidgets import QWidget, QLabel, QTextBrowser, QPushButton, QHBoxL
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QFont, QIcon
 from PySide6.QtWidgets import QFileDialog, QMessageBox
+from PySide6.QtGui import QPixmap, QImage
 
 class Controller:
     def __init__(self):
@@ -32,7 +35,47 @@ class Controller:
         self.admin_home = AdminReportsWindow(self)
 
         self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
+    
+    def load_pdf(self):
+        file_path = self.current_post.file_name
+        if file_path:
+            print(f"File path: {file_path}")
+            self.display_pdf(file_path)
+        else:
+            print("No file path provided.")
+            QMessageBox.warning(self.post_open_window, "Error", "No file found.")
         
+    def display_pdf(self, file_path):
+        try:
+            print(f"Loading PDF from: {file_path}")
+            doc = fitz.open(file_path)
+
+            # Καθαρίζουμε το scroll area
+            layout = self.ui.scrollAreaWidgetContents_4.layout()
+            if layout is None:
+                layout = QVBoxLayout(self.ui.scrollAreaWidgetContents_4)
+            else:
+                while layout.count():
+                    child = layout.takeAt(0)
+                    if child.widget():
+                        child.widget().deleteLater()
+
+            # Προσθέτουμε κάθε σελίδα
+            for page_num in range(len(doc)):
+                page = doc.load_page(page_num)
+                pix = page.get_pixmap()
+                image = QImage(pix.samples, pix.width, pix.height, pix.stride, QImage.Format.Format_RGB888)
+                pixmap = QPixmap.fromImage(image)
+
+                label = QLabel()
+                label.setMinimumHeight(800)  # or any value you prefer
+
+                label.setPixmap(pixmap)
+                layout.addWidget(label)
+
+        except Exception as e:
+            print(f"Σφάλμα κατά τη φόρτωση PDF: {e}")
+            
     def queryUploadPost(self, title, description, file_data, file_name):
         from datetime import datetime
         post_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

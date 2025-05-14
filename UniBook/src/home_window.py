@@ -23,7 +23,7 @@ class HomeWindow(QMainWindow):
         
         self.ui.rightMenu.hide()
         self.ui.lessonsBut.clicked.connect(self.toggle_chat)
-
+        
     def add_course_buttons(self, courses):
         for course in courses:
             course_id = course.course_id  # Accessing attribute directly
