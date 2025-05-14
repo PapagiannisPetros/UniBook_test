@@ -85,6 +85,18 @@ class DatabaseManager:
         """, (post_id, reporter_id, report_type, status, report_time))
         self.conn.commit()
 
+    def is_valid_student(self, username, password):
+        cursor = self.conn.cursor()
+        cursor.execute('SELECT s.student_id FROM User u JOIN Student s ON u.id = s.user_id WHERE u.username = ? AND u.password = ?', (username, password))
+        result = cursor.fetchone()
+        return result is not None
+
+    def is_valid_admin(self, username, password):
+        cursor = self.conn.cursor()
+        cursor.execute('SELECT a.id FROM User u JOIN Admin a ON u.id = a.user_id WHERE u.username = ? AND u.password = ?', (username, password))
+        result = cursor.fetchone()
+        return result is not None
+
         
     def create_tables(self):
         self.cursor.execute('''

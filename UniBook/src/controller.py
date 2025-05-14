@@ -34,7 +34,6 @@ class Controller:
         
         self.admin_home = AdminReportsWindow(self)
 
-        self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
     
     def load_pdf(self):
         file_path = self.current_post.file_name
@@ -310,3 +309,9 @@ class Controller:
     def open_post(self):
         self.post_open = PostOpenWindow(self)
         self.post_open.show()
+
+    def student_authentication(self, username, password):
+        return self.db.is_valid_student(username, password)
+
+    def admin_authentication(self, username, password):
+        return self.db.is_valid_admin(username, password)
