@@ -24,13 +24,28 @@ class Controller:
         except Exception as e:
             print(f"Error creating tables: {e}")
         self.db.insert_sample_data()
+        
+        self.selected_course_id =  None
 
         self.login = LoginWindow(self)
         
         self.admin_home = AdminReportsWindow(self)
-        self.upload = UploadWindow(self)
 
         self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
+        
+    def queryUploadPost(self, title, description, file_data, file_name):
+        from datetime import datetime
+        post_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        if self.selected_course_id is None:
+            QMessageBox.warning(None, "Error", "No course selected.")
+            return
+        course_id = self.selected_course_id
+        student_id = 1  # Assuming student_id is 1 for now, you might want to change this based on your logic #TODO 
+
+        self.db.create_post(course_id, student_id, title, description, post_time, 0, 0, file_data, file_name)
+
+        QMessageBox.information(self.home_window, "Success", "Post uploaded successfully.")
         
     def download_post(self):
         self.checkSubscription()

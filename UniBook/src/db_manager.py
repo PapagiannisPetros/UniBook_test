@@ -12,6 +12,18 @@ class DatabaseManager:
         self.cursor = self.conn.cursor()
         pass
     
+    def create_post(self, course_id, student_id, title, description, date, likes, comments, post_file, file_name):
+        try:
+            self.cursor.execute('''
+                INSERT INTO Post (
+                    course_id, student_id, title, description, date, likes, comments, post_file, file_name
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (course_id, student_id, title, description, date, likes, comments, post_file, file_name))
+            self.conn.commit()
+            print("Post inserted successfully.")
+        except Exception as e:
+            print("Error inserting post:", e)
+    
     def get_subscription_type_by_student_id(self, student_id):
         print(f"[DEBUG] Querying subscription type for student_id: {student_id}")
 

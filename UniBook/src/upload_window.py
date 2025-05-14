@@ -5,6 +5,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtGui import QPixmap, QImage
 from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QFileDialog, QMessageBox
 
 from upload_ui import Ui_MainWindow  # Adjust as needed
 
@@ -17,6 +18,8 @@ class UploadWindow(QMainWindow):
         self.ui.setupUi(self)
         
         self.ui.pushButtonLoadPDF.clicked.connect(self.load_pdf)
+        self.ui.pushButton_2.clicked.connect(self.uploadPost)
+        print("Upload window initialized")
         
     def load_pdf(self):
         file_path, _ = QFileDialog.getOpenFileName(
@@ -54,4 +57,25 @@ class UploadWindow(QMainWindow):
 
         except Exception as e:
             print(f"Σφάλμα κατά τη φόρτωση PDF: {e}")
+
+    def uploadPost(self):
+        # Get the post details from the UI
+        title = self.ui.textEdit_2.toPlainText()
+        description = self.ui.textEdit.toPlainText()
+        file_name = self.ui.textBrowser_3.toPlainText()
+
+        
+            # Optional: Load the file data as bytes
+        file_data = None
+        if file_name:
+            try:
+                with open(file_name, "rb") as f:
+                    file_data = f.read()
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to read file:\n{str(e)}")
+                return
+
+        # Call the controller method
+        self.controller.queryUploadPost(title, description, file_data, file_name)
+        self.close()
 
