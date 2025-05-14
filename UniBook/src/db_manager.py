@@ -12,6 +12,25 @@ class DatabaseManager:
         self.cursor = self.conn.cursor()
         pass
     
+    def get_subscription_type_by_student_id(self, student_id):
+        print(f"[DEBUG] Querying subscription type for student_id: {student_id}")
+
+        self.cursor.execute('''
+            SELECT Subscription.subscription_type
+            FROM Student
+            JOIN Subscription ON Student.subscription_id = Subscription.subscription_id
+            WHERE Student.student_id = ?
+        ''', (student_id,))
+        
+        result = self.cursor.fetchone()
+        
+        if result:
+            print(f"[DEBUG] Subscription type found: {result[0]}")
+            return result[0]
+        else:
+            print("[DEBUG] No subscription type found for the given student_id.")
+            return None
+    
     def get_all_courses(self):
         self.cursor.execute("SELECT * FROM Course")
         courses = []
@@ -21,19 +40,31 @@ class DatabaseManager:
         return courses
 
     def get_posts_by_course(self, course_id):
-        cursor = self.conn.cursor()
-        cursor.execute("""
-            SELECT post_id, course_id, student_id, post_title, post_text, post_time, likes, comments
+        self.cursor.execute('''
+            SELECT post_id, course_id, student_id, title, description, date, likes, comments, post_file, file_name
             FROM Post
             WHERE course_id = ?
-            ORDER BY post_time DESC
-        """, (course_id,))
-        rows = cursor.fetchall()
-        posts = [
-            Post(*row) for row in rows
-        ]
+        ''', (course_id,))
+        rows = self.cursor.fetchall()
+
+        posts = []
+        for row in rows:
+            post = Post(
+                post_id=row[0],
+                course_id=row[1],
+                student_id=row[2],
+                title=row[3],
+                description=row[4],
+                date=row[5],
+                likes=row[6],
+                comments=row[7],
+                post_file=row[8],  # Include PDF as binary
+                file_name=row[9]  # Include file name
+            )
+            posts.append(post)
+
         return posts
-    
+        
     def save_report(self, post_id, reporter_id, report_type, status, report_time):
         cursor = self.conn.cursor()
         cursor.execute("""
@@ -56,11 +87,13 @@ class DatabaseManager:
            CREATE TABLE Student (
                 student_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
                 user_id INTEGER UNIQUE NOT NULL,
+                subscription_id INTEGER UNIQUE NOT NULL,
                 am INTEGER UNIQUE NOT NULL,
                 university VARCHAR(30),
                 department VARCHAR(20),
                 enrollment_year INTEGER,
                 FOREIGN KEY(user_id) REFERENCES User(id)
+                FOREIGN KEY(subscription_id) REFERENCES Subscription(subscription_id)
             );
         ''')
         
@@ -101,11 +134,13 @@ class DatabaseManager:
                 post_id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
                 course_id INTEGER NOT NULL,
                 student_id INTEGER NOT NULL,
-                post_title VARCHAR(50),
-                post_text TEXT,
-                post_time DATETIME,
+                title VARCHAR(50),
+                description TEXT,
+                date DATETIME,
                 likes INTEGER NOT NULL,
                 comments INTEGER NOT NULL,
+                post_file BLOB,
+                file_name TEXT,
                 FOREIGN KEY(course_id) REFERENCES Course(course_id),
                 FOREIGN KEY(student_id) REFERENCES Student(student_id)
             );
@@ -178,9 +213,9 @@ class DatabaseManager:
 
             # Insert into Student
             self.cursor.execute('''
-                INSERT INTO Student (user_id, am, university, department, enrollment_year)
-                VALUES (?, ?, ?, ?, ?)
-            ''', (1, 1001, 'Example University', 'Computer Science', 2021))
+                INSERT INTO Student (user_id, subscription_id, am, university, department, enrollment_year)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (1, 1, 1001, 'Example University', 'Computer Science', 2021))
 
             # Insert into Admin
             self.cursor.execute('''
@@ -199,10 +234,13 @@ class DatabaseManager:
                 INSERT INTO Course (course_name, semester) VALUES (?, ?)
             ''', ('Introduction to Databases', 2))
 
+            with open("Robustness-diagram-v0.1.pdf", "rb") as file:
+                pdf_data = file.read()
+            
             # Insert into Post
             self.cursor.execute('''
-                INSERT INTO Post (course_id, student_id, post_title, post_text, post_time, likes, comments) VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (1, 1, 'Sample Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55))
+                INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (1, 1, 'Sample Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55, pdf_data, 'Robustness-diagram-v0.1.pdf'))
 
             # Insert into Subscription
             self.cursor.execute('''
@@ -228,10 +266,12 @@ class DatabaseManager:
             ''', (1, 1, 'Hello everyone!', '2025-05-10 10:05:00'))
 
             # Insert into Report
+            # Corrected line
             self.cursor.execute('''
                 INSERT INTO Report (post_id, reporter_id, report_type, status, report_time)
-                VALUES (?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?)
             ''', (1, 1, 'Spam', 'Open', '2025-05-10'))
+
 
             self.conn.commit()
             print("Sample data inserted successfully.")

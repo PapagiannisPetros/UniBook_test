@@ -14,6 +14,7 @@ from reportpost_window import ReportPostWindow
 from PySide6.QtWidgets import QWidget, QLabel, QTextBrowser, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QSizePolicy
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QFont, QIcon
+from PySide6.QtWidgets import QFileDialog, QMessageBox
 
 class Controller:
     def __init__(self):
@@ -31,6 +32,48 @@ class Controller:
 
         self.login.ui.loginAdmBut.clicked.connect(self.show_admin_reports)
         
+    def download_post(self):
+        self.checkSubscription()
+    
+        file_data = self.current_post.post_file
+        file_name = self.current_post.file_name
+        print (f"File name: {file_name}")
+        if file_data:
+            self.displaySelectFolderWindow(f"{file_name}.pdf", file_data)
+        else:
+            QMessageBox.warning(self.home_window, "Error", "Subscription not found.")
+            
+    def displaySelectFolderWindow(self, filename, filedata):
+        file_path, _ = QFileDialog.getSaveFileName(
+            parent=self.home_window,  # or another QWidget like self.main_window
+            caption="Save PDF",
+            dir=filename,
+            filter="PDF Files (*.pdf)"
+        )
+
+        print(f"Selected file path: {file_path}")
+        if file_path:
+            try:
+                with open(file_path, "wb") as f:
+                    f.write(filedata)
+                QMessageBox.information(self.home_window, "Success", f"Downloaded to:\n{file_path}")
+            except Exception as e:
+                QMessageBox.critical(self.home_window, "Error", f"Failed to save file:\n{str(e)}")
+        else:
+            print("User canceled the save dialog.") 
+            
+    def checkSubscription(self):
+        subscription_type = self.db.get_subscription_type_by_student_id(self.current_post.student_id)
+        print(f"Subscription type: {subscription_type}")
+        if not subscription_type:
+            QMessageBox.warning(self.home_window, "Error", "Subscription not found.")
+            return
+
+        if subscription_type.lower() not in ['rookie', 'premium']:
+            QMessageBox.warning(self.home_window, "Error", f"Invalid subscription type: {subscription_type}")
+            return
+        return subscription_type
+
     def save_report(self, report_type, report_time):
         # Save the report details to the database
         self.db.save_report(self.current_post.post_id, 1, report_type, 'TEST',report_time)

@@ -10,7 +10,7 @@ class Course:
 
 
 class Post:
-    def __init__(self, post_id, course_id, student_id, title, description, date, likes, comments):
+    def __init__(self, post_id, course_id, student_id, title, description, date, likes, comments, post_file, file_name):
         self.post_id = post_id
         self.course_id = course_id
         self.student_id = student_id
@@ -18,6 +18,9 @@ class Post:
         self.description = description
         self.date = date
         self.likes = likes
+        self.post_file = post_file  # Binary data of the PDF
+        self.file_name = file_name
+
         #self.image_path = image_path  # Optional: path to image file
 
     def __repr__(self):

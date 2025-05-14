@@ -11,5 +11,6 @@ class LoginWindow(QMainWindow):
         self.ui.loginBut.clicked.connect(self.request_home)
         
     def request_home(self):
+        
         self.controller.show_home()
         self.close()

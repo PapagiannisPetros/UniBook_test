@@ -10,5 +10,10 @@ class PostOpenWindow(QMainWindow):
         
         self.ui.shareButton.clicked.connect(self.reportPost)
         
+        self.ui.downloadButton.clicked.connect(self.requestDownloadPost)
+        
     def reportPost(self):
         self.controller.show_reportPost()
+        
+    def requestDownloadPost(self):
+        self.controller.download_post()
