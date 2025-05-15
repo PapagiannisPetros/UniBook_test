@@ -53,7 +53,7 @@ class Controller:
             QMessageBox.warning(None, "Error", "No course selected.")
             return
         course_id = self.selected_course_id
-        student_id = 1  # Assuming student_id is 1 for now, you might want to change this based on your logic #TODO 
+        student_id = self.db.student.student_id # Assuming student_id is 1 for now, you might want to change this based on your logic #TODO 
 
         self.db.create_post(course_id, student_id, title, description, post_time, 0, 0, file_data, file_name)
 

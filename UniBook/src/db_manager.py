@@ -11,7 +11,7 @@ class DatabaseManager:
         self.conn.row_factory = sqlite3.Row  # To get dict-like rows
         self.cursor = self.conn.cursor()
         self.admins = []
-        self.students = []
+        self.student =  None 
         pass
     
     def create_post(self, course_id, student_id, title, description, date, likes, comments, post_file, file_name):
@@ -94,7 +94,7 @@ class DatabaseManager:
 
         if result:
             new_student = Student(result["student_id"],result["user_id"],result["subscription_id"],result["am"],result["university"],result["department"],result["enrollment_year"])
-            self.students.append(new_student)
+            self.student = new_student
 
         return result is not None
 
