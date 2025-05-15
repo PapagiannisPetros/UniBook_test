@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QMainWindow
 from postopen_ui import Ui_MainWindow  # Adjust the import based on your UI file
 from PySide6.QtWidgets import QFileDialog, QVBoxLayout, QLabel
 from PySide6.QtGui import QPixmap, QImage
+from PySide6.QtCore import Qt
 
 class PostOpenWindow(QMainWindow):
     def __init__(self, controller):
@@ -18,15 +19,15 @@ class PostOpenWindow(QMainWindow):
         self.ui.downloadButton.clicked.connect(self.requestDownloadPost)
     
     def load_pdf(self):
-        file_path = self.controller.load_pdf()
-        self.display_pdf(file_path)
-        
-    def display_pdf(self, file_path):
-        try:
-            print(f"Loading PDF from: {file_path}")
-            doc = fitz.open(file_path)
+        file_data = self.controller.load_pdf()
+        self.display_pdf(file_data)
 
-            # Καθαρίζουμε το scroll area
+        
+    def display_pdf(self, file_data: bytes):
+        try:
+            doc = fitz.open(stream=file_data, filetype="pdf")
+
+            # Clear the scroll area layout
             layout = self.ui.scrollAreaWidgetContents_4.layout()
             if layout is None:
                 layout = QVBoxLayout(self.ui.scrollAreaWidgetContents_4)
@@ -36,7 +37,7 @@ class PostOpenWindow(QMainWindow):
                     if child.widget():
                         child.widget().deleteLater()
 
-            # Προσθέτουμε κάθε σελίδα
+            # Add each page to the layout
             for page_num in range(len(doc)):
                 page = doc.load_page(page_num)
                 pix = page.get_pixmap()
@@ -44,13 +45,13 @@ class PostOpenWindow(QMainWindow):
                 pixmap = QPixmap.fromImage(image)
 
                 label = QLabel()
-                label.setMinimumHeight(800)  # or any value you prefer
-
                 label.setPixmap(pixmap)
+                label.setAlignment(Qt.AlignCenter)
                 layout.addWidget(label)
 
         except Exception as e:
             print(f"Σφάλμα κατά τη φόρτωση PDF: {e}")
+
         
     def reportPost(self):
         self.controller.show_reportPost()

@@ -32,16 +32,11 @@ class Controller:
         
         self.admin_home = AdminReportsWindow(self)
 
-    
+
     def load_pdf(self):
-        file_path = self.current_post.file_name
-        if file_path:
-            print(f"File path: {file_path}")
-            return file_path
-        else:
-            print("No file path provided.")
-            QMessageBox.warning(self.home_window, "Error", "No file found.")
-            return
+        print("")
+        return self.current_post.post_file  # assuming it's already in memory
+
         
     def queryUploadPost(self, title, description, file_data, file_name):
         from datetime import datetime
