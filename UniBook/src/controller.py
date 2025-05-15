@@ -40,12 +40,14 @@ class Controller:
             return file_path
         else:
             print("No file path provided.")
-            QMessageBox.warning(self.post_open_window, "Error", "No file found.")
+            QMessageBox.warning(self.home_window, "Error", "No file found.")
             return
         
     def queryUploadPost(self, title, description, file_data, file_name):
         from datetime import datetime
         post_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        print("!!!!!!!! file_name: ", file_name)
         
         if self.selected_course_id is None:
             QMessageBox.warning(None, "Error", "No course selected.")

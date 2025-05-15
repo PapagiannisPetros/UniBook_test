@@ -27,6 +27,7 @@ class UploadWindow(QMainWindow):
             self, "Άνοιγμα PDF", "", "PDF Files (*.pdf)"
         )
         if file_path:
+            self.ui.textBrowser_3.setPlainText(file_path)
             self.display_pdf(file_path)
             
     def display_pdf(self, file_path):
