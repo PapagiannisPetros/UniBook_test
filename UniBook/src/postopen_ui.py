@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QHBoxLayout, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
-    QTextBrowser, QVBoxLayout, QWidget)
+    QLineEdit, QMainWindow, QPushButton, QScrollArea,
+    QSizePolicy, QTextBrowser, QVBoxLayout, QWidget)
 import _icons_rc
 import _icons_rc
 
@@ -199,15 +199,25 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.horizontalLayout_9)
 
-
-        self.horizontalLayout.addWidget(self.widget)
-
-        self.scrollAreaWidgetContents_4 = QWidget(self.centralwidget)
+        self.scrollArea = QScrollArea(self.widget)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setGeometry(QRect(510, 10, 551, 621))
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 568, 605))
+        self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.scrollAreaWidgetContents_4 = QWidget(self.scrollAreaWidgetContents_3)
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
         self.scrollAreaWidgetContents_4.setMinimumSize(QSize(550, 0))
         self.scrollAreaWidgetContents_4.setStyleSheet(u"background-color: rgb(114, 140, 135);")
 
-        self.horizontalLayout.addWidget(self.scrollAreaWidgetContents_4)
+        self.verticalLayout_2.addWidget(self.scrollAreaWidgetContents_4)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
+
+        self.horizontalLayout.addWidget(self.widget)
 
         MainWindow.setCentralWidget(self.centralwidget)
 

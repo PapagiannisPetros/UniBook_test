@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (
 from PySide6.QtGui import QPixmap, QImage
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QFileDialog, QMessageBox
+from PySide6.QtWidgets import QSizePolicy
 
 from upload_ui import Ui_MainWindow  # Adjust as needed
 
@@ -32,7 +33,6 @@ class UploadWindow(QMainWindow):
         try:
             doc = fitz.open(file_path)
 
-            # Καθαρίζουμε το scroll area
             layout = self.ui.scrollAreaWidgetContents_4.layout()
             if layout is None:
                 layout = QVBoxLayout(self.ui.scrollAreaWidgetContents_4)
@@ -42,7 +42,6 @@ class UploadWindow(QMainWindow):
                     if child.widget():
                         child.widget().deleteLater()
 
-            # Προσθέτουμε κάθε σελίδα
             for page_num in range(len(doc)):
                 page = doc.load_page(page_num)
                 pix = page.get_pixmap()
@@ -50,13 +49,14 @@ class UploadWindow(QMainWindow):
                 pixmap = QPixmap.fromImage(image)
 
                 label = QLabel()
-                label.setMinimumHeight(800)  # or any value you prefer
-
                 label.setPixmap(pixmap)
+                label.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+
                 layout.addWidget(label)
 
         except Exception as e:
-            print(f"Σφάλμα κατά τη φόρτωση PDF: {e}")
+            print(f"Error loading PDF: {e}")
+
 
     def uploadPost(self):
         # Get the post details from the UI
