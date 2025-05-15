@@ -1,3 +1,19 @@
+class Student:
+    def __init__(self,student_id,user_id,subscription_id,am,university,department,enrollment_year):
+        self.student_id = student_id
+        self.user_id = user_id
+        self.subscription_id = subscription_id
+        self.am = am
+        self.university = university
+        self.department = department
+        self.enrollment_year = enrollment_year
+
+class Admin:
+    def __init__(self,admin_id,user_id,name):
+        self.admin_id = admin_id
+        self.user_id = user_id
+        self.name = name
+
 class Course:
     def __init__(self, course_id, course_name, semester):
         self.course_id = course_id

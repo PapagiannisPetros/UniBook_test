@@ -17,6 +17,7 @@ class LoginWindow(QMainWindow):
 
         if self.controller.student_authentication(username, password):
             self.controller.show_home()
+            QMessageBox.information(self," ","Student Login Succesful!\n\nWelcome to UniBook, " + username)
             self.close()
         else:
             QMessageBox.warning(self, "Login Failed", "Invalid username or password for student login.")
@@ -27,6 +28,7 @@ class LoginWindow(QMainWindow):
 
         if self.controller.admin_authentication(username, password):
             self.controller.show_home()
+            QMessageBox.information(self," ","Admin Login Succesful!\n\nWelcome to UniBook, " + username)
             self.close()
         else:
             QMessageBox.warning(self, "Login Failed", "Invalid username or password for admin login.")

@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from models import Course, Post
+from models import Course, Post, Admin, Student
 
 class DatabaseManager:
     def __init__(self):
@@ -10,6 +10,8 @@ class DatabaseManager:
         self.conn = sqlite3.connect(db_path)
         self.conn.row_factory = sqlite3.Row  # To get dict-like rows
         self.cursor = self.conn.cursor()
+        self.admins = []
+        self.students = []
         pass
     
     def create_post(self, course_id, student_id, title, description, date, likes, comments, post_file, file_name):
@@ -87,14 +89,24 @@ class DatabaseManager:
 
     def is_valid_student(self, username, password):
         cursor = self.conn.cursor()
-        cursor.execute('SELECT s.student_id FROM User u JOIN Student s ON u.id = s.user_id WHERE u.username = ? AND u.password = ?', (username, password))
+        cursor.execute('SELECT * FROM User u JOIN Student s ON u.id = s.user_id WHERE u.username = ? AND u.password = ?', (username, password))
         result = cursor.fetchone()
+
+        if result:
+            new_student = Student(result["student_id"],result["user_id"],result["subscription_id"],result["am"],result["university"],result["department"],result["enrollment_year"])
+            self.students.append(new_student)
+
         return result is not None
 
     def is_valid_admin(self, username, password):
         cursor = self.conn.cursor()
-        cursor.execute('SELECT a.id FROM User u JOIN Admin a ON u.id = a.user_id WHERE u.username = ? AND u.password = ?', (username, password))
+        cursor.execute('SELECT * FROM User u JOIN Admin a ON u.id = a.user_id WHERE u.username = ? AND u.password = ?', (username, password))
         result = cursor.fetchone()
+
+        if result:
+            new_admin = Admin(result["admin_id"],result["user_id"],result["name"])
+            self.admins.append(new_admin)
+
         return result is not None
 
         
