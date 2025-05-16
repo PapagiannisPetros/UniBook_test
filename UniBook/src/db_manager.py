@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from models import Course, Post, Admin, Student
+from models import Course, Post, Admin, Student, Chat, Message
 
 class DatabaseManager:
     def __init__(self):
@@ -13,6 +13,39 @@ class DatabaseManager:
         self.admins = []
         self.student =  None 
         pass
+    
+    def insert_message(self, message):
+        self.cursor.execute('''
+            INSERT INTO Message (chat_id, student_id, message_text, send_time)
+            VALUES (?, ?, ?, ?)
+        ''', (message.chat_id, message.student_id, message.message_text, message.send_time))
+        self.conn.commit()
+
+    
+    def get_or_create_chat_by_course_id(self, course_id):
+        self.cursor.execute("SELECT * FROM Chat WHERE course_id = ?", (course_id,))
+        row = self.cursor.fetchone()
+
+        if row:
+            return Chat(chat_id=row[0], course_id=row[1])
+        
+        # Chat does not exist; create it
+        self.cursor.execute("INSERT INTO Chat (course_id) VALUES (?)", (course_id,))
+        self.connection.commit()
+
+        chat_id = self.cursor.lastrowid
+        return Chat(chat_id=chat_id, course_id=course_id)
+
+
+    def get_messages_by_chat_id(self, chat_id):
+        self.cursor.execute('''
+            SELECT message_id, chat_id, student_id, message_text, send_time
+            FROM Message WHERE chat_id = ?
+            ORDER BY send_time ASC
+        ''', (chat_id,))
+        rows = self.cursor.fetchall()
+        return [Message(*row) for row in rows]
+
     
     def create_post(self, course_id, student_id, title, description, date, likes, comments, post_file, file_name):
         try:

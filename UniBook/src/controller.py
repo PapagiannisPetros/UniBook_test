@@ -10,6 +10,8 @@ from upload_window import UploadWindow
 from postopen_window import PostOpenWindow
 from db_manager import DatabaseManager
 from reportpost_window import ReportPostWindow
+from datetime import datetime
+from models import Message
 
 from PySide6.QtWidgets import QWidget, QLabel, QTextBrowser, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QSizePolicy
 from PySide6.QtCore import QSize, Qt
@@ -27,12 +29,47 @@ class Controller:
         self.db.insert_sample_data()
         
         self.selected_course_id =  None
+        self.chat_id = None
 
         self.login = LoginWindow(self)
         
         self.admin_home = AdminReportsWindow(self)
+        
+    def querySaveMessage(self, message_text):
 
+        message = Message(
+            message_id=None,
+            chat_id=self.chat_id,
+            student_id=self.db.student.student_id,
+            message_text=message_text,
+            send_time=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        )
 
+        self.db.insert_message(message)
+        
+        
+    def queryFetchChat(self, course_id):
+        if self.selected_course_id is None:
+            QMessageBox.warning(None, "Error", "No course selected.")
+            return
+        chat = self.db.get_or_create_chat_by_course_id(course_id)
+        self.chat_id = chat.chat_id
+        messages = self.db.get_messages_by_chat_id(chat.chat_id)
+        self.displayChatWindow(chat, messages)
+        
+    def displayChatWindow(self, chat, messages):
+        if self.home_window.ui.rightMenu.isVisible():
+            self.home_window.ui.rightMenu.hide()
+        else:
+            chat_display = self.home_window.ui.chatDisplay
+            chat_display.clear()
+
+            for message in messages:
+                time_str = message.send_time  # or format it with datetime
+                chat_display.append(f"<b>Student {message.student_id}</b> ({time_str}):<br>{message.message_text}<br><br>")
+
+            self.home_window.ui.rightMenu.show()
+            
     def load_pdf(self):
         print("")
         return self.current_post.post_file  # assuming it's already in memory

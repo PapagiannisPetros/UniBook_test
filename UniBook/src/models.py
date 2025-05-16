@@ -41,3 +41,24 @@ class Post:
 
     def __repr__(self):
         return f"<Post #{self.post_id} by Student #{self.student_id}>"
+    
+class Chat:
+    def __init__(self, chat_id, course_id):
+        self.chat_id = chat_id
+        self.course_id = course_id
+        self.messages = []
+
+    def __repr__(self):
+        return f"<Chat from {self.sender_id} to {self.receiver_id}>"
+    
+class Message:
+    def __init__(self, message_id, chat_id, student_id, message_text, send_time):
+        self.message_id = message_id
+        self.chat_id = chat_id
+        self.student_id = student_id
+        self.message_text = message_text
+        self.send_time = send_time
+
+    def __repr__(self):
+        return f"<Message from {self.sender_id} to {self.receiver_id}>"
+    

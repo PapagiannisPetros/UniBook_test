@@ -4,6 +4,7 @@ from home_ui import Ui_MainWindow
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtGui import QIcon, QFont
 from PySide6.QtCore import QSize
+from PySide6.QtWidgets import QMessageBox
 
 
 class HomeWindow(QMainWindow):
@@ -22,7 +23,9 @@ class HomeWindow(QMainWindow):
         self.add_course_buttons(courses)
         
         self.ui.rightMenu.hide()
-        self.ui.lessonsBut.clicked.connect(self.toggle_chat)
+        self.ui.lessonsBut.clicked.connect(self.requestDisplayChatWindow)
+        
+        
         
     def add_course_buttons(self, courses):
         for course in courses:
@@ -60,8 +63,12 @@ class HomeWindow(QMainWindow):
     def send_message(self):
         message = self.ui.chatInput.text()
         if message:
+            self.handleNewMessage(message)
             self.display_message("You", message)
             self.ui.chatInput.clear()
+    
+    def handleNewMessage(self, message):
+        self.controller.querySaveMessage(message)
             
     def upload_file(self):
         self.controller.show_upload()
@@ -69,10 +76,8 @@ class HomeWindow(QMainWindow):
     def post_open(self):
         self.controller.open_post()
         
-    def toggle_chat(self):
-        if self.ui.rightMenu.isVisible():
-            self.ui.rightMenu.hide()
-        else:
-            self.ui.rightMenu.show()
+    def requestDisplayChatWindow(self):
+        self.controller.queryFetchChat(self.controller.selected_course_id)
+       
 
 
