@@ -5,6 +5,7 @@ from postopen_ui import Ui_MainWindow  # Adjust the import based on your UI file
 from PySide6.QtWidgets import QFileDialog, QVBoxLayout, QLabel
 from PySide6.QtGui import QPixmap, QImage
 from PySide6.QtCore import Qt
+from datetime import datetime
 
 class PostOpenWindow(QMainWindow):
     def __init__(self, controller):
@@ -13,10 +14,28 @@ class PostOpenWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.load_pdf()
+        self.ui.widget_2.hide()
         
         self.ui.shareButton.clicked.connect(self.reportPost)
         
         self.ui.downloadButton.clicked.connect(self.requestDownloadPost)
+        
+        self.ui.commentButton.clicked.connect(self.show_commentWindow)
+        
+        self.ui.sendBut.clicked.connect (self.newComment)
+        
+    def newComment(self):
+        comment_text = self.ui.chatInput.text()
+        if comment_text:
+            self.controller.saveComment(comment_text)
+            self.ui.chatInput.clear()
+            
+    def display_comment(self, author, text):
+        comment_display = self.ui.commentDisplay
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        comment_display.append(
+            f"<b>{author}</b> ({current_time}):<br>{text}<br><br>"
+        )
     
     def load_pdf(self):
         file_data = self.controller.load_pdf()
@@ -58,3 +77,6 @@ class PostOpenWindow(QMainWindow):
         
     def requestDownloadPost(self):
         self.controller.download_post()
+        
+    def show_commentWindow(self):
+        self.controller.queryFetchComments()

@@ -1,6 +1,7 @@
 import sqlite3
 import os
-from models import Course, Post, Admin, Student, Chat, Message
+from models import Course, Post, Admin, Student, Chat, Message, Comment
+from datetime import datetime
 
 class DatabaseManager:
     def __init__(self):
@@ -13,6 +14,39 @@ class DatabaseManager:
         self.admins = []
         self.student =  None 
         pass
+    
+    def querySaveComment(self, comment_text):
+        if not self.current_post:
+            return
+
+        post_id = self.current_post.post_id
+        student_id = self.logged_in_student.student_id
+        send_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        self.db.insert_comment(post_id, student_id, comment_text, send_time)
+
+        # Refresh comments cache
+        comments = self.db.get_comments_by_post_id(post_id)
+        self.comments_cache[post_id] = comments
+        self.displayComments(comments)
+        
+    def insert_comment(self, post_id, author_id, comment_text, upload_time):
+        self.cursor.execute('''
+            INSERT INTO Comment (post_id, author_id, comment_text, upload_time)
+            VALUES (?, ?, ?, ?)
+        ''', (post_id, author_id, comment_text, upload_time))
+        self.conn.commit()
+    
+    def get_comments_by_post_id(self, post_id):
+        self.cursor.execute('''
+            SELECT comment_id, author_id, comment_text, upload_time, post_id
+            FROM Comment
+            WHERE post_id = ?
+            ORDER BY upload_time ASC
+        ''', (post_id,))
+        
+        rows = self.cursor.fetchall()
+        return [Comment(*row) for row in rows]
     
     def insert_message(self, message):
         self.cursor.execute('''

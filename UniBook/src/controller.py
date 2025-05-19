@@ -12,6 +12,7 @@ from db_manager import DatabaseManager
 from reportpost_window import ReportPostWindow
 from datetime import datetime
 from models import Message
+from models import Comment
 
 from PySide6.QtWidgets import QWidget, QLabel, QTextBrowser, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QSizePolicy
 from PySide6.QtCore import QSize, Qt
@@ -32,6 +33,61 @@ class Controller:
         self.chat_id = None
 
         self.login = LoginWindow(self)
+        
+        self.comments_cache = {}
+        
+    def display_comment(self, author, text, timestamp):
+        comment_display = self.post_open_window.ui.chatDisplay
+        comment_display.append(f"<b>{author}</b> ({timestamp}):<br>{text}<br><br>")
+        
+    def saveComment(self, comment_text):
+        
+        from datetime import datetime
+        post_id = self.current_post.post_id
+        student_id = self.db.student.student_id
+        send_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # Create Comment object
+        comment = Comment(
+            comment_id=None,  # Let DB assign it
+            post_id=post_id,
+            student_id=student_id,
+            comment_text=comment_text,
+            upload_time=send_time
+        )
+
+        # Cache it
+        if post_id not in self.comments_cache:
+            self.comments_cache[post_id] = []
+        self.comments_cache[post_id].append(comment)
+
+        # Save to DB
+        self.db.insert_comment(comment.post_id, comment.student_id, comment.comment_text, comment.upload_time)
+        
+        
+        self.display_comment("You", comment_text, send_time)
+    
+    def queryFetchComments(self):
+    
+        comments = self.db.get_comments_by_post_id(self.current_post.post_id)
+        self.comments_cache[self.current_post.post_id] = comments
+        self.displayComments(comments)
+            
+    def displayComments(self, comments):
+        if self.post_open_window.ui.widget_2.isVisible():
+            self.post_open_window.ui.widget_2.hide()
+        else:
+            comment_display = self.post_open_window.ui.chatDisplay
+            comment_display.clear()
+
+            for comment in comments:
+                time_str = comment.upload_time  # Format if needed
+                comment_display.append(
+                    f"<b>Student {comment.student_id}</b> ({time_str}):<br>{comment.comment_text}<br><br>"
+                )
+
+            self.post_open_window.ui.widget_2.show()
+            
         
     def querySaveMessage(self, message_text):
 

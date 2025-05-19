@@ -24,7 +24,6 @@ class Course:
     def __repr__(self):
         return f"<Course {self.course_name} (Semester {self.semester})>"
 
-
 class Post:
     def __init__(self, post_id, course_id, student_id, title, description, date, likes, comments, post_file, file_name):
         self.post_id = post_id
@@ -62,3 +61,15 @@ class Message:
     def __repr__(self):
         return f"<Message from {self.sender_id} to {self.receiver_id}>"
     
+
+class Comment:
+    def __init__(self, comment_id, student_id, comment_text, upload_time, post_id):
+        self.comment_id = comment_id
+        self.student_id = student_id
+        self.comment_text = comment_text
+        self.upload_time = upload_time if isinstance(upload_time, str) else upload_time.strftime("%Y-%m-%d %H:%M:%S")
+        self.post_id = post_id
+
+    def __repr__(self):
+        return f"<Comment by student {self.author_id} on post {self.post_id}: {self.comment_text}>"
+
