@@ -280,9 +280,15 @@ class Controller:
         
     def show_profile(self):
         self.home_window.hide()
-        self.profile = ProfileWindow(self)
-        self.profile.show()
-        
+
+        profile_data = self.db.query_fetch_profile()
+        if profile_data:
+            self.profile = ProfileWindow(self)
+            self.profile.set_profile_data(profile_data)
+            self.profile.show()
+        else:
+            QMessageBox.warning(None, "Error", "Profile not found.")
+
     def show_payment_rookie(self):
         self.rookie.hide()
         self.payment = PaymentWindow(self)
@@ -298,9 +304,14 @@ class Controller:
         self.profile.show()
         
     def show_edit_profile(self):
-        self.edit_profile = EditProfileWindow(self)
-        self.edit_profile.show()
-    
+        profile_data = self.db.query_fetch_profile()
+        if profile_data:
+            self.edit_profile = EditProfileWindow(self)
+            self.edit_profile.set_profile_data(profile_data)
+            self.edit_profile.show()
+        else:
+            QMessageBox.warning(None, "Σφάλμα", "Δεν ήταν δυνατή η φόρτωση του προφίλ.")
+
     def show_upload(self):
         if self.selected_course_id is None:
             QMessageBox.warning(None, "Error", "No course selected.")
@@ -317,3 +328,10 @@ class Controller:
 
     def admin_authentication(self, username, password):
         return self.db.is_valid_admin(username, password)
+
+    def queryFetchProfile(self):
+        profile_data = self.db.query_fetch_profile()
+        if profile_data:
+            self.displayProfileWindow(profile_data)
+        else:
+            QMessageBox.warning(None, "Error", "Profile not found.")

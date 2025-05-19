@@ -393,7 +393,7 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>345</width>
+                  <width>376</width>
                   <height>633</height>
                  </rect>
                 </property>
@@ -1334,8 +1334,8 @@ text-align: left; padding-left: 5px;
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>1059</width>
-                         <height>764</height>
+                         <width>1051</width>
+                         <height>907</height>
                         </rect>
                        </property>
                        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1492,6 +1492,7 @@ text-align: left; padding-left: 5px;
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
+                                     <weight>50</weight>
                                      <italic>false</italic>
                                      <bold>false</bold>
                                      <underline>false</underline>
@@ -1538,13 +1539,10 @@ text-align: left; padding-left: 5px;
                                   <widget class="QTextBrowser" name="textBrowser_8">
                                    <property name="html">
                                     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;νέο υλικό με παραδείγματα εφαρμογής πίνακων και διανυσμάτων στην επίλυση συστημάτων γραμμικών εξισώσεων. Προτείνεται η μελέτη πριν το επόμενο μάθημα καθώς περιλαμβάνει βασικές έννοιες για τις ενδιάμεσες εξετάσεις.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;νέο υλικό με παραδείγματα εφαρμογής πίνακων και διανυσμάτων στην επίλυση συστημάτων γραμμικών εξισώσεων. Προτείνεται η μελέτη πριν το επόμενο μάθημα καθώς περιλαμβάνει βασικές έννοιες για τις ενδιάμεσες εξετάσεις.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -1698,6 +1696,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
+                                     <weight>50</weight>
                                      <italic>false</italic>
                                      <bold>false</bold>
                                      <underline>false</underline>
@@ -1744,13 +1743,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                   <widget class="QTextBrowser" name="textBrowser_7">
                                    <property name="html">
                                     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Αναρτήθηκε λίστα με ενδεικτικά θέματα που πιθανόν να εμφανιστούν στην τελική εξέταση του μαθήματος. Περιλαμβάνονται ασκήσεις πάνω σε συστήματα γραμμικών εξισώσεων, ιδιοτιμές και ιδιοδιανύσματα, ορθογώνιες προβολές και διαγωνιοποίηση πίνακων. Η εξάσκηση σε αυτά τα θέματα θα βοηθήσει σημαντικά στην κατανόηση των βασικών εννοιών και στη σωστή προετοιμασία για την εξέταση. Συνιστάται η συζήτηση αποριών στο επόμενο εργαστήριο ή μέσω του chat.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Αναρτήθηκε λίστα με ενδεικτικά θέματα που πιθανόν να εμφανιστούν στην τελική εξέταση του μαθήματος. Περιλαμβάνονται ασκήσεις πάνω σε συστήματα γραμμικών εξισώσεων, ιδιοτιμές και ιδιοδιανύσματα, ορθογώνιες προβολές και διαγωνιοποίηση πίνακων. Η εξάσκηση σε αυτά τα θέματα θα βοηθήσει σημαντικά στην κατανόηση των βασικών εννοιών και στη σωστή προετοιμασία για την εξέταση. Συνιστάται η συζήτηση αποριών στο επόμενο εργαστήριο ή μέσω του chat.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -1904,6 +1900,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
+                                     <weight>50</weight>
                                      <italic>false</italic>
                                      <bold>false</bold>
                                      <underline>false</underline>
@@ -1950,13 +1947,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                   <widget class="QTextBrowser" name="textBrowser_6">
                                    <property name="html">
                                     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Νέα δημοσίευση με θεωρία και παραδείγματα για τον πολλαπλασιασμό μητρωών, μια βασική έννοια της γραμμικής άλγεβρας με ευρεία εφαρμογή σε μαθηματικά, φυσική και υπολογιστικά συστήματα. Το υλικό περιλαμβάνει οδηγίες για τον υπολογισμό του γινομένου δύο μητρωών, τις συνθήκες υπό τις οποίες είναι δυνατός ο πολλαπλασιασμός, καθώς και ασκήσεις με λύσεις για εξάσκηση. Είναι ιδιαίτερα χρήσιμο για την κατανόηση εννοιών όπως οι γραμμικοί μετασχηματισμοί και η σύνθεση πράξεων.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Νέα δημοσίευση με θεωρία και παραδείγματα για τον πολλαπλασιασμό μητρωών, μια βασική έννοια της γραμμικής άλγεβρας με ευρεία εφαρμογή σε μαθηματικά, φυσική και υπολογιστικά συστήματα. Το υλικό περιλαμβάνει οδηγίες για τον υπολογισμό του γινομένου δύο μητρωών, τις συνθήκες υπό τις οποίες είναι δυνατός ο πολλαπλασιασμός, καθώς και ασκήσεις με λύσεις για εξάσκηση. Είναι ιδιαίτερα χρήσιμο για την κατανόηση εννοιών όπως οι γραμμικοί μετασχηματισμοί και η σύνθεση πράξεων.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2110,6 +2104,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
+                                     <weight>50</weight>
                                      <italic>false</italic>
                                      <bold>false</bold>
                                      <underline>false</underline>
@@ -2156,13 +2151,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                   <widget class="QTextBrowser" name="textBrowser_5">
                                    <property name="html">
                                     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Αναρτήθηκε νέο υλικό που παρουσιάζει αναλυτικά τις βασικές μεθόδους πολλαπλασιασμού μητρωών, τόσο σε θεωρητικό επίπεδο όσο και με πρακτικά παραδείγματα. Περιλαμβάνονται η κλασική μέθοδος γραμμών-στηλών, η χρήση ιδιοτήτων για απλοποίηση υπολογισμών, καθώς και μια εισαγωγή σε πιο αποδοτικούς αλγορίθμους όπως ο Strassen. Το υλικό είναι ιδανικό για την εμβάθυνση στην έννοια του πολλαπλασιασμού και τη σύνδεσή του με εφαρμογές στη γραμμική απεικόνιση και την αριθμητική ανάλυση. Προτείνεται για προετοιμασία ενόψει της τελικής εξέτασης.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Αναρτήθηκε νέο υλικό που παρουσιάζει αναλυτικά τις βασικές μεθόδους πολλαπλασιασμού μητρωών, τόσο σε θεωρητικό επίπεδο όσο και με πρακτικά παραδείγματα. Περιλαμβάνονται η κλασική μέθοδος γραμμών-στηλών, η χρήση ιδιοτήτων για απλοποίηση υπολογισμών, καθώς και μια εισαγωγή σε πιο αποδοτικούς αλγορίθμους όπως ο Strassen. Το υλικό είναι ιδανικό για την εμβάθυνση στην έννοια του πολλαπλασιασμού και τη σύνδεσή του με εφαρμογές στη γραμμική απεικόνιση και την αριθμητική ανάλυση. Προτείνεται για προετοιμασία ενόψει της τελικής εξέτασης.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2316,6 +2308,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
+                                     <weight>50</weight>
                                      <italic>false</italic>
                                      <bold>false</bold>
                                      <underline>false</underline>
@@ -2362,13 +2355,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                   <widget class="QTextBrowser" name="textBrowser_4">
                                    <property name="html">
                                     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Δημοσιεύτηκε νέο υλικό που αφορά τη διαδικασία διαγωνοποίησης πινάκων, μια από τις σημαντικότερες τεχνικές της γραμμικής άλγεβρας με πλήθος εφαρμογών σε φυσικές επιστήμες, μηχανική και πληροφορική. Στο υλικό παρουσιάζονται οι συνθήκες υπό τις οποίες ένας πίνακας είναι διαγωνοποιήσιμος, ο ρόλος των ιδιοτιμών και ιδιοδιανυσμάτων, καθώς και παραδείγματα βήμα-βήμα. Επιπλέον, περιλαμβάνονται σύντομες θεωρητικές επαναλήψεις και ασκήσεις για εξάσκηση. Η κατανόηση της διαγωνοποίησης είναι θεμελιώδης για την ανάλυση δυναμικών συστημάτων και τη λύση διαφορικών εξισώσεων.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Δημοσιεύτηκε νέο υλικό που αφορά τη διαδικασία διαγωνοποίησης πινάκων, μια από τις σημαντικότερες τεχνικές της γραμμικής άλγεβρας με πλήθος εφαρμογών σε φυσικές επιστήμες, μηχανική και πληροφορική. Στο υλικό παρουσιάζονται οι συνθήκες υπό τις οποίες ένας πίνακας είναι διαγωνοποιήσιμος, ο ρόλος των ιδιοτιμών και ιδιοδιανυσμάτων, καθώς και παραδείγματα βήμα-βήμα. Επιπλέον, περιλαμβάνονται σύντομες θεωρητικές επαναλήψεις και ασκήσεις για εξάσκηση. Η κατανόηση της διαγωνοποίησης είναι θεμελιώδης για την ανάλυση δυναμικών συστημάτων και τη λύση διαφορικών εξισώσεων.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -2522,6 +2512,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                    <property name="font">
                                     <font>
                                      <pointsize>10</pointsize>
+                                     <weight>50</weight>
                                      <italic>false</italic>
                                      <bold>false</bold>
                                      <underline>false</underline>
@@ -2568,14 +2559,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
                                   <widget class="QTextBrowser" name="textBrowser">
                                    <property name="html">
                                     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Νέα ανάρτηση με επικεντρωμένη παρουσίαση στις ιδιοτιμές και τα ιδιοδιανύσματα, έννοιες-κλειδιά για την κατανόηση της συμπεριφοράς γραμμικών μετασχηματισμών. Στο υλικό περιλαμβάνεται θεωρία, γεωμετρική ερμηνεία, καθώς και οδηγίες για τον υπολογισμό τους μέσα από χαρακτηριστικά πολυώνυμα. Οι ιδιοτιμές και τα ιδιοδιανύσματα έχουν κρίσιμη σημασία σε πληθώρα εφαρμογών, όπως η διαγωνοποίηση, η σταθερότητα συστημάτων και η ανάλυση δεδομένων (π.χ. PCA). Προτείνεται η μελέτη τους ως προετοιμασία για τις εξετάσεις και για τη σύνδεση της θεωρίας με πρακτικές εφαρμογές.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Νέα ανάρτηση με επικεντρωμένη παρουσίαση στις ιδιοτιμές και τα ιδιοδιανύσματα, έννοιες-κλειδιά για την κατανόηση της συμπεριφοράς γραμμικών μετασχηματισμών. Στο υλικό περιλαμβάνεται θεωρία, γεωμετρική ερμηνεία, καθώς και οδηγίες για τον υπολογισμό τους μέσα από χαρακτηριστικά πολυώνυμα. Οι ιδιοτιμές και τα ιδιοδιανύσματα έχουν κρίσιμη σημασία σε πληθώρα εφαρμογών, όπως η διαγωνοποίηση, η σταθερότητα συστημάτων και η ανάλυση δεδομένων (π.χ. PCA). Προτείνεται η μελέτη τους ως προετοιμασία για τις εξετάσεις και για τη σύνδεση της θεωρίας με πρακτικές εφαρμογές.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                                    </property>
                                   </widget>
                                  </item>

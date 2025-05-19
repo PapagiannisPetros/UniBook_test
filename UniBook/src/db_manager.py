@@ -161,7 +161,7 @@ class DatabaseManager:
                 university VARCHAR(30),
                 department VARCHAR(20),
                 enrollment_year INTEGER,
-                FOREIGN KEY(user_id) REFERENCES User(id)
+                FOREIGN KEY(user_id) REFERENCES User(id),
                 FOREIGN KEY(subscription_id) REFERENCES Subscription(subscription_id)
             );
         ''')
@@ -353,3 +353,28 @@ class DatabaseManager:
 
     def close(self):
         self.conn.close()
+
+    def query_fetch_profile(self):
+        if not self.student:
+            print("No student loaded.")
+            return None
+
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute("SELECT * FROM Profile WHERE am = ?", (self.student.am,))
+            profile = cursor.fetchone()
+
+            if profile:
+                return {
+                    "name": profile["name"],
+                    "email": profile["email"],
+                    "birth_date": profile["birth_date"],
+                    "gender": profile["gender"],
+                    "address": profile["address"],
+                    "phone": profile["tel_num"],
+                    "am": self.student.am,
+                    "university": self.student.university
+                }
+        except Exception as e:
+            print("DB Error:", e)
+        return None

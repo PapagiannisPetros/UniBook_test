@@ -78,6 +78,3 @@ class HomeWindow(QMainWindow):
         
     def requestDisplayChatWindow(self):
         self.controller.queryFetchChat(self.controller.selected_course_id)
-       
-
-
