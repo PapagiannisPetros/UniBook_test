@@ -307,16 +307,34 @@ class DatabaseManager:
                 INSERT INTO User (username, password) VALUES (?, ?)
             ''', ('jdoe', 'securepassword123'))
 
+            self.cursor.execute('''
+                INSERT INTO User (username, password) VALUES (?, ?)
+            ''', ('kef', 'argie'))
+
+            self.cursor.execute('''
+                INSERT INTO User (username, password) VALUES (?, ?)
+            ''', ('mitro', 'vag'))
+
             # Insert into Student
             self.cursor.execute('''
                 INSERT INTO Student (user_id, subscription_id, am, university, department, enrollment_year)
                 VALUES (?, ?, ?, ?, ?, ?)
             ''', (1, 1, 1001, 'Example University', 'Computer Science', 2021))
 
+            self.cursor.execute('''
+                INSERT INTO Student (user_id, subscription_id, am, university, department, enrollment_year)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (2, 2, 1010, 'Legen University', 'Computer Engineering', 2022))
+
+
             # Insert into Admin
             self.cursor.execute('''
                 INSERT INTO Admin (user_id, name) VALUES (?, ?)
             ''', (1, 'John Doe'))
+
+            self.cursor.execute('''
+                INSERT INTO Admin (user_id, name) VALUES (?, ?)
+            ''', (3, 'Vaggelis Mitrogiannis'))
 
             # Insert into Profile
             self.cursor.execute('''
@@ -324,6 +342,12 @@ class DatabaseManager:
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ''', (1001, 'John Doe', 'jdoe@example.com', '2000-01-01', 'Male',
                 '123 Main St', 1234567890, 'Hello, I\'m John.'))
+            
+            self.cursor.execute('''
+                INSERT INTO Profile (am, name, email, birth_date, gender, address, tel_num, bio)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (1010, 'Argiris Kefalonitis', 'gigikef@example.com', '2004-12-01', 'Male',
+                'Kanakari Roufa 16', 6987878787, 'Hello, I\'m Kef.'))
 
             # Insert into Course
             self.cursor.execute('''
