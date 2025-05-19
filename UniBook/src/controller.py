@@ -33,8 +33,6 @@ class Controller:
 
         self.login = LoginWindow(self)
         
-        self.admin_home = AdminReportsWindow(self)
-        
     def querySaveMessage(self, message_text):
 
         message = Message(
@@ -229,13 +227,19 @@ class Controller:
     def show_login(self):
         #self.home.hide()
        # self.rookie.hide()
-        self.admin_home.hide()
+        #self.admin_home.hide()
         self.login.show()
         
     def show_home(self):
         self.login.hide()
         self.queryFetchCourses()
         self.displayCourses()
+
+    def show_admin_reports(self):
+        self.login.hide()
+        self.queryFetchCourses()
+        self.admin_window = AdminReportsWindow(self, self.courses_cache)
+        self.admin_window.show()
         
     def queryFetchCourses(self):
         self.db.get_all_courses()
@@ -245,15 +249,19 @@ class Controller:
         self.home_window = HomeWindow(self, self.courses_cache)
         self.home_window.show()
         
-    def course_selected(self, course_id):
+    def course_selected(self, course_id, window):
         # Store selected course if needed
         self.selected_course_id = course_id
-        self.display_posts_for_course(course_id)
+
+        if(window==1):
+            self.display_posts_for_course(course_id)
+        elif(window==2):
+            self.display_not_uploaded_posts_for_course(course_id)
         
     def display_posts_for_course(self, course_id):
         posts = self.db.get_posts_by_course(course_id)
         self.posts_cache = posts  # Cache the posts in the controller
-
+        
         # Clear previous posts
         layout = self.home_window.ui.verticalLayout_7
         while layout.count():
@@ -265,9 +273,20 @@ class Controller:
         for post in posts:
             layout.addWidget(self._create_post_widget(post))
 
-    def show_admin_reports(self):
-        self.login.hide()
-        self.admin_home.show()
+    def display_not_uploaded_posts_for_course(self, course_id):
+        nu_posts = self.db.get_not_uploaded_posts_by_course(course_id)
+        self.nu_posts_cache = nu_posts  # Cache the posts in the controller
+        
+        # Clear previous posts
+        layout = self.admin_window.ui.verticalLayout_8
+        while layout.count():
+            item = layout.takeAt(0)
+            widget = item.widget()
+        if widget:                    
+            widget.deleteLater()
+
+        for post in nu_posts:
+            layout.addWidget(self._create_post_widget(post))
         
     def show_rookie(self):
         #self.home.hide()

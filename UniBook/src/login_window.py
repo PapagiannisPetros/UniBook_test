@@ -27,7 +27,7 @@ class LoginWindow(QMainWindow):
         password = self.ui.passwordIn.text()
 
         if self.controller.admin_authentication(username, password):
-            self.controller.show_home()
+            self.controller.show_admin_reports()
             QMessageBox.information(self," ","Admin Login Succesful!\n\nWelcome to UniBook, " + username)
             self.close()
         else:

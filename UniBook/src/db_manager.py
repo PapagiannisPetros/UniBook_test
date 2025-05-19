@@ -90,7 +90,33 @@ class DatabaseManager:
         self.cursor.execute('''
             SELECT post_id, course_id, student_id, title, description, date, likes, comments, post_file, file_name
             FROM Post
-            WHERE course_id = ?
+            WHERE course_id = ? AND status = 'Uploaded'
+        ''', (course_id,))
+        rows = self.cursor.fetchall()
+
+        posts = []
+        for row in rows:
+            post = Post(
+                post_id=row[0],
+                course_id=row[1],
+                student_id=row[2],
+                title=row[3],
+                description=row[4],
+                date=row[5],
+                likes=row[6],
+                comments=row[7],
+                post_file=row[8],  # Include PDF as binary
+                file_name=row[9]  # Include file name
+            )
+            posts.append(post)
+
+        return posts
+
+    def get_not_uploaded_posts_by_course(self, course_id):
+        self.cursor.execute('''
+            SELECT post_id, course_id, student_id, title, description, date, likes, comments, post_file, file_name
+            FROM Post
+            WHERE course_id = ? AND status = 'Not Uploaded'
         ''', (course_id,))
         rows = self.cursor.fetchall()
 
@@ -137,7 +163,7 @@ class DatabaseManager:
         result = cursor.fetchone()
 
         if result:
-            new_admin = Admin(result["admin_id"],result["user_id"],result["name"])
+            new_admin = Admin(result["id"],result["user_id"],result["name"])
             self.admins.append(new_admin)
 
         return result is not None
@@ -210,6 +236,7 @@ class DatabaseManager:
                 comments INTEGER NOT NULL,
                 post_file BLOB,
                 file_name TEXT,
+                status TEXT,
                 FOREIGN KEY(course_id) REFERENCES Course(course_id),
                 FOREIGN KEY(student_id) REFERENCES Student(student_id)
             );
@@ -308,8 +335,13 @@ class DatabaseManager:
             
             # Insert into Post
             self.cursor.execute('''
-                INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (1, 1, 'Sample Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55, pdf_data, 'Robustness-diagram-v0.1.pdf'))
+                INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (1, 1, 'Sample Not Uploaded Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55, pdf_data, 'Robustness-diagram-v0.1.pdf', 'Not Uploaded'))
+
+            self.cursor.execute('''
+                INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (1, 1, 'Sample Uploaded Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55, pdf_data, 'Robustness-diagram-v0.1.pdf', 'Uploaded'))
+
 
             # Insert into Subscription
             self.cursor.execute('''

@@ -44,7 +44,7 @@ class HomeWindow(QMainWindow):
             button.setIconSize(QSize(20, 20))
 
             # Connect button click to controller method
-            button.clicked.connect(lambda _, cid=course_id: self.controller.course_selected(cid))
+            button.clicked.connect(lambda _, cid=course_id: self.controller.course_selected(cid,1))
 
             self.ui.verticalLayout_37.addWidget(button)
     
