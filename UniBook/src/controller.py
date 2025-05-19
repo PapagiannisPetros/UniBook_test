@@ -31,6 +31,7 @@ class Controller:
         
         self.selected_course_id =  None
         self.chat_id = None
+        self.current_profile = None
 
         self.login = LoginWindow(self)
         
@@ -352,17 +353,26 @@ class Controller:
     def show_senior(self):
         self.senior = SeniorWindow(self)
         self.senior.show()
-        
+
     def show_profile(self):
         self.home_window.hide()
-
-        profile_data = self.db.query_fetch_profile()
-        if profile_data:
-            self.profile = ProfileWindow(self)
-            self.profile.set_profile_data(profile_data)
-            self.profile.show()
+        profile = self.db.query_fetch_profile()
+        if profile:
+            self.current_profile = profile  # αποθηκεύουμε το αντικείμενο
+            self.display_profile(profile)
         else:
-            QMessageBox.warning(None, "Error", "Profile not found.")
+            QMessageBox.warning(None, "Σφάλμα", "Δεν βρέθηκαν στοιχεία προφίλ.")
+
+    def display_profile(self, profile):
+        self.profile = ProfileWindow(self)
+        self.profile.ui.label_5.setText(f"<b>{profile.name}</b><br>@{profile.am}")
+        self.profile.ui.label_7.setText(profile.gender)
+        self.profile.ui.label_8.setText(f"Born {profile.birth_date}")
+        self.profile.ui.label_9.setText(profile.address)
+        self.profile.ui.label_10.setText(self.db.student.university)
+        self.profile.ui.label_11.setText(str(profile.tel_num))
+        self.profile.ui.label_12.setText(profile.email)
+        self.profile.show()
 
     def show_payment_rookie(self):
         self.rookie.hide()
@@ -379,13 +389,36 @@ class Controller:
         self.profile.show()
         
     def show_edit_profile(self):
-        profile_data = self.db.query_fetch_profile()
-        if profile_data:
-            self.edit_profile = EditProfileWindow(self)
-            self.edit_profile.set_profile_data(profile_data)
-            self.edit_profile.show()
-        else:
-            QMessageBox.warning(None, "Σφάλμα", "Δεν ήταν δυνατή η φόρτωση του προφίλ.")
+        if not self.current_profile:
+            QMessageBox.warning(None, "Σφάλμα", "Τα στοιχεία του προφίλ δεν είναι διαθέσιμα.")
+            return
+
+        profile = self.current_profile
+        self.edit_profile = EditProfileWindow(self)
+
+        # Χωρισμός ονόματος σε δύο πεδία (όνομα, επώνυμο)
+        name_parts = profile.name.split()
+        first_name = name_parts[0] if len(name_parts) > 0 else ""
+        last_name = name_parts[1] if len(name_parts) > 1 else ""
+
+        # Γέμισμα πεδίων επεξεργασίας
+        self.edit_profile.ui.lineEdit.setText(first_name)
+        self.edit_profile.ui.lineEdit_2.setText(last_name)
+        self.edit_profile.ui.lineEdit_3.setText(str(profile.tel_num))
+        self.edit_profile.ui.lineEdit_4.setText(profile.birth_date)
+        self.edit_profile.ui.lineEdit_5.setText(profile.email)
+        self.edit_profile.ui.lineEdit_6.setText(profile.address)
+
+        # Ενημέρωση στατικών labels στην αριστερή στήλη
+        self.edit_profile.ui.label_5.setText(f"<b>{profile.name}</b><br>@{profile.am}")
+        self.edit_profile.ui.label_7.setText(str(profile.gender))
+        self.edit_profile.ui.label_8.setText(f"Born {profile.birth_date}")
+        self.edit_profile.ui.label_10.setText(str(profile.address))
+        self.edit_profile.ui.label_11.setText(str(profile.tel_num))
+        self.edit_profile.ui.label_12.setText(str(profile.email))
+
+        self.edit_profile.show()
+
 
     def show_upload(self):
         if self.selected_course_id is None:
@@ -403,10 +436,3 @@ class Controller:
 
     def admin_authentication(self, username, password):
         return self.db.is_valid_admin(username, password)
-
-    def queryFetchProfile(self):
-        profile_data = self.db.query_fetch_profile()
-        if profile_data:
-            self.displayProfileWindow(profile_data)
-        else:
-            QMessageBox.warning(None, "Error", "Profile not found.")

@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from models import Course, Post, Admin, Student, Chat, Message, Comment
+from models import Course, Post, Admin, Student, Chat, Message, Comment, Profile
 from datetime import datetime
 
 class DatabaseManager:
@@ -447,24 +447,27 @@ class DatabaseManager:
     def query_fetch_profile(self):
         if not self.student:
             print("No student loaded.")
-            return None
 
         try:
             cursor = self.conn.cursor()
             cursor.execute("SELECT * FROM Profile WHERE am = ?", (self.student.am,))
-            profile = cursor.fetchone()
+            row = cursor.fetchone()
 
-            if profile:
-                return {
-                    "name": profile["name"],
-                    "email": profile["email"],
-                    "birth_date": profile["birth_date"],
-                    "gender": profile["gender"],
-                    "address": profile["address"],
-                    "phone": profile["tel_num"],
-                    "am": self.student.am,
-                    "university": self.student.university
-                }
+            if row:
+                profile = Profile(
+                    profile_id=row["profile_id"],
+                    am=row["am"],
+                    name=row["name"],
+                    email=row["email"],
+                    birth_date=row["birth_date"],
+                    gender=row["gender"],
+                    address=row["address"],
+                    tel_num=row["tel_num"],
+                    bio=row["bio"]
+                )
+                return profile
         except Exception as e:
-            print("DB Error:", e)
+            print("DB Error in query_fetch_profile:", e)
+
         return None
+

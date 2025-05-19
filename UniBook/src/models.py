@@ -14,6 +14,18 @@ class Admin:
         self.user_id = user_id
         self.name = name
 
+class Profile:
+    def __init__(self,profile_id,am,name,email,birth_date,gender,address,tel_num,bio):
+        self.profile_id = profile_id
+        self.am = am
+        self.name = name
+        self.email = email
+        self.birth_date = birth_date
+        self.gender = gender
+        self.address = address
+        self.tel_num = tel_num
+        self.bio = bio
+
 class Course:
     def __init__(self, course_id, course_name, semester):
         self.course_id = course_id

@@ -26,12 +26,3 @@ class ProfileWindow(QMainWindow):
     def logout(self):
         self.controller.show_login()
         self.close()
-
-    def set_profile_data(self, data):
-        self.ui.label_5.setText(f"<b>{data['name']}</b><br>@{data['am']}")
-        self.ui.label_7.setText(data['gender'])
-        self.ui.label_8.setText(f"Born {data['birth_date']}")
-        self.ui.label_9.setText(data['address'])
-        self.ui.label_10.setText(data['university'])
-        self.ui.label_11.setText(str(data['phone']))
-        self.ui.label_12.setText(data['email'])
