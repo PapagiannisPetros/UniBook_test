@@ -14,6 +14,34 @@ class DatabaseManager:
         self.admins = []
         self.student =  None 
         pass
+    def get_students_posts_by_student_id(self, student_id):
+        self.cursor.execute("""
+            SELECT post_id, course_id, student_id, title, description, date, likes, comments, post_file, file_name, date
+            FROM Post
+            WHERE student_id = ?
+            ORDER BY date DESC
+        """, (student_id,))
+        
+        rows = self.cursor.fetchall()
+
+        posts = []
+        for row in rows:
+            post = Post(
+                post_id=row[0],
+                course_id=row[1],
+                student_id=row[2],
+                title=row[3],
+                description=row[4],
+                date=row[5],
+                likes=row[6],
+                comments=row[7],
+                post_file=row[8],  # Include PDF as binary
+                file_name=row[9]  # Include file name
+            )
+            posts.append(post)
+        
+        return posts
+
     
     def querySaveComment(self, comment_text):
         if not self.current_post:
@@ -85,9 +113,9 @@ class DatabaseManager:
         try:
             self.cursor.execute('''
                 INSERT INTO Post (
-                    course_id, student_id, title, description, date, likes, comments, post_file, file_name
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (course_id, student_id, title, description, date, likes, comments, post_file, file_name))
+                    course_id, student_id, title, description, date, likes, comments, post_file, file_name, status
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (course_id, student_id, title, description, date, likes, comments, post_file, file_name, "Not Uploaded"))
             self.conn.commit()
             print("Post inserted successfully.")
         except Exception as e:

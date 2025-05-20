@@ -20,6 +20,7 @@ from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QFont, QIcon
 from PySide6.QtWidgets import QFileDialog, QMessageBox
 from PySide6.QtGui import QPixmap, QImage
+from PySide6.QtCore import QSize, QRect
 
 class Controller:
     def __init__(self):
@@ -283,6 +284,7 @@ class Controller:
 
     
     def show_post_window(self, post):
+        self.current_post = post
         self.post_open_window = PostOpenWindow(self)
         self.post_open_window.ui.post_title.setText(post.title)
         self.post_open_window.ui.post_date.setText(post.date)
@@ -376,11 +378,72 @@ class Controller:
     def show_profile(self):
         self.home_window.hide()
         profile = self.db.query_fetch_profile()
+        self.students_posts = self.db.get_students_posts_by_student_id(self.db.student.student_id)
         if profile:
             self.current_profile = profile
             self.display_profile(profile)
+            self.displayStudentPosts()
+            self.profile.show()
         else:
             QMessageBox.warning(None, "Error", "No profile information found.")
+
+    def displayStudentPosts(self):
+        layout = self.profile.ui.scrollAreaWidgetContents_3.layout()
+        
+        # Clear existing posts
+        if layout is None:
+            layout = QVBoxLayout(self.home_window.ui.scrollAreaWidgetContents_3)
+        else:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
+
+        for post in self.students_posts:
+            post_widget = QWidget()
+            post_widget.setMinimumSize(QSize(450, 140))
+            post_widget.setMaximumSize(QSize(300, 125))
+            post_widget.setStyleSheet("background-color: rgb(150, 150, 150);")
+
+            # Post Image
+            postimg = QLabel(post_widget)
+            postimg.setGeometry(QRect(0, 0, 61, 141))
+            postimg.setMinimumSize(QSize(0, 125))
+            postimg.setPixmap(QPixmap(":/img/default_post.png"))  # Provide a default image path or load dynamically
+            postimg.setScaledContents(True)
+
+            # Title
+            title_label = QLabel(post_widget)
+            title_label.setGeometry(QRect(70, 0, 351, 41))
+            title_label.setStyleSheet("color: rgb(0, 0, 0);")
+            title_label.setText(post.title)
+
+            # Author Label
+            date_label = QLabel(post_widget)
+            date_label.setGeometry(QRect(70, 30, 71, 17))
+            date_label.setText(f" {post.date}")
+
+            # Description
+            text_browser = QTextBrowser(post_widget)
+            text_browser.setGeometry(QRect(70, 50, 371, 81))
+            text_browser.setText(post.description)
+
+            # View Button
+            view_button = QPushButton(post_widget)
+            view_button.setGeometry(QRect(420, 0, 28, 24))
+            icon = QIcon(":/feather/icons/feather/arrow-right.png")
+            view_button.setIcon(icon)
+            view_button.setAutoDefault(False)
+            view_button.clicked.connect(lambda _, p=post: self.show_post_window(p))
+
+            # Comment Button
+            comment_button = QPushButton(post_widget)
+            comment_button.setGeometry(QRect(370, 20, 80, 25))
+            comment_button.setText("Edit")
+            comment_button.clicked.connect(lambda _, p=post: self.handleCommentPost(p))
+
+            layout.addWidget(post_widget)
+
 
     def display_profile(self, profile):
         self.profile = ProfileWindow(self)
@@ -391,7 +454,6 @@ class Controller:
         self.profile.ui.label_10.setText(self.db.student.university)
         self.profile.ui.label_11.setText(str(profile.tel_num))
         self.profile.ui.label_12.setText(profile.email)
-        self.profile.show()
 
     def show_payment_rookie(self):
         self.rookie.hide()
