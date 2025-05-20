@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'edit_profile.ui'
+## Form generated from reading UI file 'edit_profileSyCXIg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.0
 ##
@@ -32,18 +32,18 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setGeometry(QRect(10, 20, 181, 161))
         self.frame_2.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.label_5 = QLabel(self.frame_2)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(40, 110, 121, 51))
+        self.label_5.setGeometry(QRect(40, 110, 141, 51))
         self.label_5.setStyleSheet(u"color: rgb(0, 0, 0);")
         self.pushButton_3 = QPushButton(self.frame_2)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setGeometry(QRect(730, 150, 91, 31))
         self.profimage = QLabel(self.frame_2)
         self.profimage.setObjectName(u"profimage")
-        self.profimage.setGeometry(QRect(50, 10, 101, 91))
+        self.profimage.setGeometry(QRect(40, 10, 101, 91))
         self.profimage.setPixmap(QPixmap(u"../images/ProfileImage.png"))
         self.profimage.setScaledContents(True)
         self.pushButton = QPushButton(self.frame_2)
@@ -59,8 +59,8 @@ class Ui_MainWindow(object):
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setGeometry(QRect(210, 20, 741, 561))
         self.frame_4.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
         self.label_18 = QLabel(self.frame_4)
         self.label_18.setObjectName(u"label_18")
         self.label_18.setGeometry(QRect(20, 10, 131, 31))
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
         self.label_21.setStyleSheet(u"color: rgb(0, 0, 0);")
         self.label_22 = QLabel(self.frame_4)
         self.label_22.setObjectName(u"label_22")
-        self.label_22.setGeometry(QRect(30, 50, 54, 17))
+        self.label_22.setGeometry(QRect(30, 50, 91, 17))
         self.label_22.setStyleSheet(u"color: rgb(0, 0, 0);")
         self.savechangesBut = QPushButton(self.frame_4)
         self.savechangesBut.setObjectName(u"savechangesBut")
@@ -136,7 +136,7 @@ class Ui_MainWindow(object):
 "color: rgb(0, 0, 0);")
         self.textEdit_2 = QTextEdit(self.widget_5)
         self.textEdit_2.setObjectName(u"textEdit_2")
-        self.textEdit_2.setGeometry(QRect(10, 60, 161, 61))
+        self.textEdit_2.setGeometry(QRect(10, 60, 191, 61))
         self.rookieBut = QPushButton(self.widget_5)
         self.rookieBut.setObjectName(u"rookieBut")
         self.rookieBut.setGeometry(QRect(40, 130, 111, 31))
@@ -158,7 +158,7 @@ class Ui_MainWindow(object):
 "color: rgb(0, 0, 0);")
         self.textEdit_4 = QTextEdit(self.widget_6)
         self.textEdit_4.setObjectName(u"textEdit_4")
-        self.textEdit_4.setGeometry(QRect(10, 60, 161, 61))
+        self.textEdit_4.setGeometry(QRect(10, 60, 191, 61))
         self.widget_7 = QWidget(self.frame_4)
         self.widget_7.setObjectName(u"widget_7")
         self.widget_7.setGeometry(QRect(520, 390, 211, 161))
@@ -175,7 +175,7 @@ class Ui_MainWindow(object):
 "color: rgb(0, 0, 0);")
         self.textEdit_3 = QTextEdit(self.widget_7)
         self.textEdit_3.setObjectName(u"textEdit_3")
-        self.textEdit_3.setGeometry(QRect(10, 60, 161, 61))
+        self.textEdit_3.setGeometry(QRect(10, 60, 191, 61))
         self.seniorBut = QPushButton(self.widget_7)
         self.seniorBut.setObjectName(u"seniorBut")
         self.seniorBut.setGeometry(QRect(40, 130, 111, 31))
@@ -193,24 +193,24 @@ class Ui_MainWindow(object):
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setGeometry(QRect(10, 200, 181, 381))
         self.frame_3.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.label_6 = QLabel(self.frame_3)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setGeometry(QRect(10, 30, 91, 21))
         self.label_6.setStyleSheet(u"font: 10pt \"Sans Serif\";")
         self.label_7 = QLabel(self.frame_3)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(40, 80, 54, 17))
+        self.label_7.setGeometry(QRect(40, 80, 131, 17))
         self.label_8 = QLabel(self.frame_3)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(40, 130, 121, 41))
+        self.label_8.setGeometry(QRect(40, 130, 141, 41))
         self.label_10 = QLabel(self.frame_3)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(40, 200, 54, 17))
+        self.label_10.setGeometry(QRect(40, 200, 141, 17))
         self.label_11 = QLabel(self.frame_3)
         self.label_11.setObjectName(u"label_11")
-        self.label_11.setGeometry(QRect(40, 330, 101, 17))
+        self.label_11.setGeometry(QRect(40, 330, 141, 17))
         self.label_12 = QLabel(self.frame_3)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setGeometry(QRect(40, 270, 141, 17))
@@ -263,7 +263,7 @@ class Ui_MainWindow(object):
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"Telephone Number", None))
         self.label_20.setText(QCoreApplication.translate("MainWindow", u"Birth Date", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Last Name", None))
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Name", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"First Name", None))
         self.savechangesBut.setText(QCoreApplication.translate("MainWindow", u"Save Changes", None))
         self.cancelBut.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Select your plan now!</p></body></html>", None))
@@ -275,10 +275,11 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt; Analytics</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt; Basic Search Functionality</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">&gt;&gt; Analytics</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">&gt;&gt; Basic Search Functionality</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-b"
+                        "lock-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.rookieBut.setText(QCoreApplication.translate("MainWindow", u"Start 30 days trial", None))
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; font-style:italic;\">Basic</span></p><p><br/></p></body></html>", None))
         self.label_30.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:9pt;\">Plan includes</span></p><p><span style=\" font-size:9pt;\"><br/></span></p></body></html>", None))
@@ -288,10 +289,11 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt; Analytics</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt; Basic Search Functionality</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">&gt;&gt; Analytics</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">&gt;&gt; Basic Search Functionality</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-b"
+                        "lock-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_26.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; font-style:italic;\">Senior</span></p><p><br/></p></body></html>", None))
         self.label_29.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:9pt;\">Plan includes</span></p><p><span style=\" font-size:9pt;\"><br/></span></p></body></html>", None))
         self.textEdit_3.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -300,13 +302,14 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt; Analytics</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt; Basic Search Functionality</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">&gt;&gt; Analytics</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">&gt;&gt; Basic Search Functionality</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-b"
+                        "lock-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.seniorBut.setText(QCoreApplication.translate("MainWindow", u"Start 30 days trial", None))
         self.lineEdit_6.setText(QCoreApplication.translate("MainWindow", u"\u03a0\u03ac\u03c4\u03c1\u03b1", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"City", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Address", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700;\">About me</span></p></body></html>", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Male", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Born 18/02/2004 ", None))
@@ -319,4 +322,3 @@ class Ui_MainWindow(object):
         self.label_16.setText("")
         self.label_17.setText("")
     # retranslateUi
-

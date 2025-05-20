@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'profile.ui'
+## Form generated from reading UI file 'profilecIeaGO.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.0
 ##
@@ -34,11 +34,11 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName(u"frame_2")
         self.frame_2.setGeometry(QRect(90, 10, 1211, 201))
         self.frame_2.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.label_5 = QLabel(self.frame_2)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(280, 140, 131, 51))
+        self.label_5.setGeometry(QRect(280, 140, 231, 51))
         self.label_5.setStyleSheet(u"color: rgb(0, 0, 0);")
         self.editProfBut = QPushButton(self.frame_2)
         self.editProfBut.setObjectName(u"editProfBut")
@@ -59,24 +59,24 @@ class Ui_MainWindow(object):
         self.frame_3.setObjectName(u"frame_3")
         self.frame_3.setGeometry(QRect(90, 220, 181, 501))
         self.frame_3.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
         self.label_6 = QLabel(self.frame_3)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setGeometry(QRect(10, 30, 91, 21))
         self.label_6.setStyleSheet(u"font: 10pt \"Sans Serif\";")
         self.label_7 = QLabel(self.frame_3)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(40, 80, 54, 17))
+        self.label_7.setGeometry(QRect(40, 80, 131, 17))
         self.label_8 = QLabel(self.frame_3)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setGeometry(QRect(40, 130, 121, 41))
+        self.label_8.setGeometry(QRect(40, 130, 141, 41))
         self.label_9 = QLabel(self.frame_3)
         self.label_9.setObjectName(u"label_9")
-        self.label_9.setGeometry(QRect(40, 200, 81, 17))
+        self.label_9.setGeometry(QRect(40, 200, 141, 17))
         self.label_10 = QLabel(self.frame_3)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setGeometry(QRect(40, 220, 54, 17))
+        self.label_10.setGeometry(QRect(40, 220, 141, 17))
         self.label_11 = QLabel(self.frame_3)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setGeometry(QRect(40, 330, 101, 17))
@@ -112,8 +112,8 @@ class Ui_MainWindow(object):
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setGeometry(QRect(280, 220, 1021, 501))
         self.frame_4.setStyleSheet(u"background-color: rgb(12, 126, 124);")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.frame_4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Shadow.Raised)
         self.label_18 = QLabel(self.frame_4)
         self.label_18.setObjectName(u"label_18")
         self.label_18.setGeometry(QRect(20, 0, 111, 21))
@@ -141,7 +141,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, -25, 468, 450))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 468, 450))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.widget_6 = QWidget(self.scrollAreaWidgetContents_3)
@@ -250,7 +250,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, -25, 468, 450))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 468, 450))
         self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContents_4)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.widget_8 = QWidget(self.scrollAreaWidgetContents_4)
@@ -361,23 +361,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QVBoxLayout(self.widget)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.menuBtn = QPushButton(self.widget)
-        self.menuBtn.setObjectName(u"menuBtn")
-        icon1 = QIcon()
-        icon1.addFile(u":/material_design/icons/material_design/menu.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.menuBtn.setIcon(icon1)
-        self.menuBtn.setIconSize(QSize(25, 25))
 
-        self.verticalLayout_2.addWidget(self.menuBtn, 0, Qt.AlignTop)
-
-
-        self.verticalLayout.addWidget(self.widget, 0, Qt.AlignLeft|Qt.AlignTop)
+        self.verticalLayout.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.homeBut = QPushButton(self.leftMenu)
         self.homeBut.setObjectName(u"homeBut")
-        icon2 = QIcon()
-        icon2.addFile(u":/material_design/icons/material_design/home.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.homeBut.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/material_design/icons/material_design/home.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.homeBut.setIcon(icon1)
         self.homeBut.setIconSize(QSize(25, 25))
 
         self.verticalLayout.addWidget(self.homeBut)
@@ -390,24 +381,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.profileBut = QPushButton(self.widget_2)
         self.profileBut.setObjectName(u"profileBut")
-        icon3 = QIcon()
-        icon3.addFile(u":/material_design/icons/material_design/co_present.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.profileBut.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/material_design/icons/material_design/co_present.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.profileBut.setIcon(icon2)
         self.profileBut.setIconSize(QSize(25, 25))
 
         self.verticalLayout_5.addWidget(self.profileBut)
 
-        self.lessonsBut = QPushButton(self.widget_2)
-        self.lessonsBut.setObjectName(u"lessonsBut")
-        icon4 = QIcon()
-        icon4.addFile(u":/feather/icons/feather/list.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.lessonsBut.setIcon(icon4)
-        self.lessonsBut.setIconSize(QSize(25, 25))
 
-        self.verticalLayout_5.addWidget(self.lessonsBut)
-
-
-        self.verticalLayout.addWidget(self.widget_2, 0, Qt.AlignLeft|Qt.AlignTop)
+        self.verticalLayout.addWidget(self.widget_2, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignTop)
 
         self.widget_3 = QWidget(self.leftMenu)
         self.widget_3.setObjectName(u"widget_3")
@@ -416,15 +398,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.logoutBut = QPushButton(self.widget_3)
         self.logoutBut.setObjectName(u"logoutBut")
-        icon5 = QIcon()
-        icon5.addFile(u":/feather/icons/feather/log-out.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.logoutBut.setIcon(icon5)
+        icon3 = QIcon()
+        icon3.addFile(u":/feather/icons/feather/log-out.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.logoutBut.setIcon(icon3)
         self.logoutBut.setIconSize(QSize(25, 25))
 
         self.verticalLayout_6.addWidget(self.logoutBut)
 
 
-        self.verticalLayout.addWidget(self.widget_3, 0, Qt.AlignLeft|Qt.AlignBottom)
+        self.verticalLayout.addWidget(self.widget_3, 0, Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignBottom)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -464,10 +446,10 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
-                        "-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_38.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt;\">18/04/2025</span></p></body></html>", None))
         self.pushButton_14.setText("")
         self.postimg3_7.setText("")
@@ -478,10 +460,10 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
-                        "-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_40.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt;\">18/04/2025</span></p></body></html>", None))
         self.pushButton_15.setText("")
         self.postimg3_4.setText("")
@@ -492,10 +474,10 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
-                        "-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_34.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt;\">18/04/2025</span></p></body></html>", None))
         self.pushButton_16.setText("")
         self.postimg3_8.setText("")
@@ -506,10 +488,10 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
-                        "-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_42.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt;\">18/04/2025</span></p></body></html>", None))
         self.pushButton_17.setText("")
         self.postimg3_9.setText("")
@@ -520,10 +502,10 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
-                        "-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_44.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt;\">18/04/2025</span></p></body></html>", None))
         self.pushButton_18.setText("")
         self.postimg3_5.setText("")
@@ -533,14 +515,13 @@ class Ui_MainWindow(object):
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
-                        "-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Sans Serif';\">\u03a4\u03b1 \u03c0\u03b5\u03c1\u03c3\u03b9\u03bd\u03ac \u03b8\u03ad\u03bc\u03b1\u03c4\u03b1 \u03c4\u03c9\u03bd \u03b5\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd \u03c3\u03c4\u03b7\u03bd \u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bo"
+                        "ttom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif';\"><br /></p></body></html>", None))
         self.label_36.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:8pt;\">18/04/2025</span></p></body></html>", None))
         self.pushButton_19.setText("")
         self.label_45.setText(QCoreApplication.translate("MainWindow", u"\u0393\u03c1\u03b1\u03bc\u03bc\u03b9\u03ba\u03ae \u0386\u03bb\u03b3\u03b5\u03b2\u03c1\u03b1 : \u0398\u03ad\u03bc\u03b1\u03c4\u03b1 \u0395\u03be\u03b5\u03c4\u03ac\u03c3\u03b5\u03c9\u03bd", None))
-        self.menuBtn.setText("")
 #if QT_CONFIG(tooltip)
         self.homeBut.setToolTip(QCoreApplication.translate("MainWindow", u"Home", None))
 #endif // QT_CONFIG(tooltip)
@@ -550,12 +531,9 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.profileBut.setText("")
 #if QT_CONFIG(tooltip)
-        self.lessonsBut.setToolTip(QCoreApplication.translate("MainWindow", u"Lessons", None))
-#endif // QT_CONFIG(tooltip)
-        self.lessonsBut.setText("")
-#if QT_CONFIG(tooltip)
         self.logoutBut.setToolTip(QCoreApplication.translate("MainWindow", u"LogOut", None))
 #endif // QT_CONFIG(tooltip)
         self.logoutBut.setText("")
     # retranslateUi
+
 
