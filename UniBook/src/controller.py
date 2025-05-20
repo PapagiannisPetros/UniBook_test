@@ -294,10 +294,9 @@ class Controller:
         self.post_open_window.show()
 
     def show_upload_confirmation(self, post):
-        self.nu_post_open = UploadConfirmationWindow(self)
+        self.nu_post_open = UploadConfirmationWindow(self, post.post_id)
         self.nu_post_open.ui.textBrowser_2.setText(post.title)
         self.nu_post_open.ui.textBrowser.setText(post.description)
-        #self.nu_post_open.ui.post_text.setText(post.description)
         
         self.nu_post_open.show()
 
@@ -548,5 +547,5 @@ class Controller:
     def admin_authentication(self, username, password):
         return self.db.is_valid_admin(username, password)
     
-    def queryApproveUploadPost(self):
-        self.db.uploadPost()
+    def queryApproveUploadPost(self,post_id):
+        return self.db.uploadPost(post_id)

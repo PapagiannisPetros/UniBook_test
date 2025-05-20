@@ -230,12 +230,12 @@ class DatabaseManager:
 
         return result is not None
     
-    def uploadPost(self,course_id):
+    def uploadPost(self, post_id):
         cursor = self.conn.cursor()
-        cursor.execute("'UPDATE Post SET status = 'Uploaded' WHERE course_id = ?'", (course_id))
-        result = cursor.fetchone()
+        cursor.execute("UPDATE Post SET status = 'Uploaded' WHERE post_id = ?", (post_id,))
+        self.conn.commit()  
 
-        return result is not None
+        return True 
 
         
     def create_tables(self):
