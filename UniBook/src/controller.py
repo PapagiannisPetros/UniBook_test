@@ -377,10 +377,10 @@ class Controller:
         self.home_window.hide()
         profile = self.db.query_fetch_profile()
         if profile:
-            self.current_profile = profile  # αποθηκεύουμε το αντικείμενο
+            self.current_profile = profile
             self.display_profile(profile)
         else:
-            QMessageBox.warning(None, "Σφάλμα", "Δεν βρέθηκαν στοιχεία προφίλ.")
+            QMessageBox.warning(None, "Error", "No profile information found.")
 
     def display_profile(self, profile):
         self.profile = ProfileWindow(self)
@@ -409,18 +409,16 @@ class Controller:
         
     def show_edit_profile(self):
         if not self.current_profile:
-            QMessageBox.warning(None, "Σφάλμα", "Τα στοιχεία του προφίλ δεν είναι διαθέσιμα.")
+            QMessageBox.warning(None, "Error", "Profile information is unavailable.")
             return
 
         profile = self.current_profile
         self.edit_profile = EditProfileWindow(self)
 
-        # Χωρισμός ονόματος σε δύο πεδία (όνομα, επώνυμο)
         name_parts = profile.name.split()
         first_name = name_parts[0] if len(name_parts) > 0 else ""
         last_name = name_parts[1] if len(name_parts) > 1 else ""
 
-        # Γέμισμα πεδίων επεξεργασίας
         self.edit_profile.ui.lineEdit.setText(first_name)
         self.edit_profile.ui.lineEdit_2.setText(last_name)
         self.edit_profile.ui.lineEdit_3.setText(str(profile.tel_num))
@@ -428,7 +426,6 @@ class Controller:
         self.edit_profile.ui.lineEdit_5.setText(profile.email)
         self.edit_profile.ui.lineEdit_6.setText(profile.address)
 
-        # Ενημέρωση στατικών labels στην αριστερή στήλη
         self.edit_profile.ui.label_5.setText(f"<b>{profile.name}</b><br>@{profile.am}")
         self.edit_profile.ui.label_7.setText(str(profile.gender))
         self.edit_profile.ui.label_8.setText(f"Born {profile.birth_date}")
@@ -438,6 +435,35 @@ class Controller:
 
         self.edit_profile.show()
 
+    def save_profile_changes(self):
+        first_name = self.edit_profile.ui.lineEdit.text()
+        last_name = self.edit_profile.ui.lineEdit_2.text()
+        tel_num = self.edit_profile.ui.lineEdit_3.text()
+        birth_date = self.edit_profile.ui.lineEdit_4.text()
+        email = self.edit_profile.ui.lineEdit_5.text()
+        address = self.edit_profile.ui.lineEdit_6.text()
+        full_name = f"{first_name} {last_name}"
+
+        success = self.db.update_profile(
+            am=self.db.student.am,
+            name=full_name,
+            email=email,
+            birth_date=birth_date,
+            address=address,
+            tel_num=tel_num
+        )
+        if success:
+            self.current_profile.name = full_name
+            self.current_profile.email = email
+            self.current_profile.birth_date = birth_date
+            self.current_profile.address = address
+            self.current_profile.tel_num = int(tel_num)
+
+            self.edit_profile.hide()
+            self.display_profile(self.current_profile)
+            QMessageBox.information(None, "Success", "Profile updated successfully.")
+        else:
+            QMessageBox.critical(None, "Error", "Update failed.")
 
     def show_upload(self):
         if self.selected_course_id is None:

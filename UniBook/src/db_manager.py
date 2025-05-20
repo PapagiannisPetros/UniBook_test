@@ -483,3 +483,15 @@ class DatabaseManager:
 
         return None
 
+    def update_profile(self, am, name, email, birth_date, address, tel_num):
+        try:
+            self.cursor.execute('''
+                UPDATE Profile
+                SET name = ?, email = ?, birth_date = ?, address = ?, tel_num = ?
+                WHERE am = ?
+            ''', (name, email, birth_date, address, tel_num, am))
+            self.conn.commit()
+            return True
+        except Exception as e:
+            print("DB Error on update_profile:", e)
+            return False

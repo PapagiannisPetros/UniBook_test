@@ -14,7 +14,9 @@ class EditProfileWindow(QMainWindow):
         self.ui.seniorBut.clicked.connect(self.show_senior)
         
         self.ui.cancelBut.clicked.connect(self.cancel)
-    
+
+        self.ui.savechangesBut.clicked.connect(self.save_changes)
+
     def show_rookie(self):
         self.controller.show_rookie()
         
@@ -23,3 +25,6 @@ class EditProfileWindow(QMainWindow):
         
     def cancel(self):
         self.controller.cancel()
+
+    def save_changes(self):
+        self.controller.save_profile_changes()
