@@ -7,3 +7,8 @@ class UploadConfirmationWindow(QMainWindow):
         self.controller = controller
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.ui.pushButton_2.clicked.connect(self.approveUploadPost)
+
+    def approveUploadPost(self):
+        self.controller.queryApproveUploadPost()

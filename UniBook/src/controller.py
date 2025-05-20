@@ -13,6 +13,7 @@ from reportpost_window import ReportPostWindow
 from datetime import datetime
 from models import Message
 from models import Comment
+from upload_confirmation_window import UploadConfirmationWindow
 
 from PySide6.QtWidgets import QWidget, QLabel, QTextBrowser, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QSizePolicy
 from PySide6.QtCore import QSize, Qt
@@ -201,7 +202,7 @@ class Controller:
         
         self.report_post_window.show()
         
-    def _create_post_widget(self, post):
+    def _create_post_widget(self, post, is_uploaded=True):
         post_widget = QWidget()
         post_widget.setMinimumSize(QSize(0, 0))
         post_widget.setMaximumSize(QSize(16777215, 200))
@@ -255,7 +256,10 @@ class Controller:
         info_layout.addWidget(bottom_info)
         
         # Connect button click to controller method
-        open_button.clicked.connect(lambda _, pid=post.post_id: self.post_selected(pid))
+        if is_uploaded:
+            open_button.clicked.connect(lambda _, pid=post.post_id: self.post_selected(pid))
+        else:
+            open_button.clicked.connect(lambda _, pid=post.post_id: self.nu_post_selected(pid))
 
         horizontalLayout.addWidget(info_container)
 
@@ -269,6 +273,14 @@ class Controller:
         if post:
             self.show_post_window(post)
 
+    def nu_post_selected(self, post_id):
+        # Find the selected non-uploaded post
+        post = next((p for p in self.nu_posts_cache if p.post_id == post_id), None)
+
+        if post:
+            self.current_post = post
+            self.show_upload_confirmation(post)
+
     
     def show_post_window(self, post):
         self.post_open_window = PostOpenWindow(self)
@@ -276,9 +288,16 @@ class Controller:
         self.post_open_window.ui.post_date.setText(post.date)
         self.post_open_window.ui.post_text.setText(post.description)
         self.post_open_window.ui.likeButton.setText(str(post.likes))
-        
 
         self.post_open_window.show()
+
+    def show_upload_confirmation(self, post):
+        self.nu_post_open = UploadConfirmationWindow(self)
+        self.nu_post_open.ui.textBrowser_2.setText(post.title)
+        self.nu_post_open.ui.textBrowser.setText(post.description)
+        #self.nu_post_open.ui.post_text.setText(post.description)
+        
+        self.nu_post_open.show()
 
 
     def show_login(self):
@@ -343,7 +362,7 @@ class Controller:
             widget.deleteLater()
 
         for post in nu_posts:
-            layout.addWidget(self._create_post_widget(post))
+            layout.addWidget(self._create_post_widget(post,is_uploaded = False))
         
     def show_rookie(self):
         #self.home.hide()
@@ -431,8 +450,15 @@ class Controller:
         self.post_open = PostOpenWindow(self)
         self.post_open.show()
 
+    def open_not_uploaded_post(self):
+        self.nu_post_open = UploadConfirmationWindow(self)
+        self.nu_post_open.show()
+
     def student_authentication(self, username, password):
         return self.db.is_valid_student(username, password)
 
     def admin_authentication(self, username, password):
         return self.db.is_valid_admin(username, password)
+    
+    def queryApproveUploadPost(self):
+        self.db.uploadPost()

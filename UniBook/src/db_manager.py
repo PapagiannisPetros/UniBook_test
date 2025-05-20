@@ -201,6 +201,13 @@ class DatabaseManager:
             self.admins.append(new_admin)
 
         return result is not None
+    
+    def uploadPost(self,course_id):
+        cursor = self.conn.cursor()
+        cursor.execute("'UPDATE Post SET status = 'Uploaded' WHERE course_id = ?'", (course_id))
+        result = cursor.fetchone()
+
+        return result is not None
 
         
     def create_tables(self):
@@ -395,6 +402,11 @@ class DatabaseManager:
             self.cursor.execute('''
                 INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (1, 1, 'Sample Not Uploaded Post Title', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55, pdf_data, 'Robustness-diagram-v0.1.pdf', 'Not Uploaded'))
+
+            self.cursor.execute('''
+                INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (1, 1, 'Sample Not Uploaded Post Title 2', 'This is a sample post text.', '2025-05-10 10:00:00', 5, 55, pdf_data, 'Robustness-diagram-v0.1.pdf', 'Not Uploaded'))
+
 
             self.cursor.execute('''
                 INSERT INTO Post (course_id, student_id, title, description, date, likes, comments, post_file, file_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)

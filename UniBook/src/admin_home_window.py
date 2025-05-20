@@ -39,3 +39,6 @@ class AdminReportsWindow(QMainWindow):
             button.clicked.connect(lambda _, cid=course_id: self.controller.course_selected(cid,2))
 
             self.ui.verticalLayout_37.addWidget(button)
+
+    def displayPostInfo(self):
+        self.controller.open_not_uploaded_post()
