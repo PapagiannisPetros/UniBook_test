@@ -25,6 +25,15 @@ class Profile:
         self.address = address
         self.tel_num = tel_num
         self.bio = bio
+    
+class Report:
+    def __init__(self,report_id,post_id,reporter_id,report_type,status,report_time):
+        self.report_id = report_id
+        self.post_id = post_id
+        self.reporter_id = reporter_id
+        self.report_type = report_type
+        self.status = status
+        self.report_time = report_time
 
 class Course:
     def __init__(self, course_id, course_name, semester):

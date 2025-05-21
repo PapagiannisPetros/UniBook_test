@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from models import Course, Post, Admin, Student, Chat, Message, Comment, Profile
+from models import Course, Post, Admin, Student, Chat, Message, Comment, Profile, Report
 from datetime import datetime
 
 class DatabaseManager:
@@ -200,6 +200,49 @@ class DatabaseManager:
 
         return posts
         
+    def getReports(self):
+        self.cursor.execute('''
+            SELECT report_id, post_id, reporter_id, report_type, status, report_time
+            FROM Report
+            WHERE status = 'Not Checked'
+        ''')
+        rows = self.cursor.fetchall()
+
+        reports = []
+        for row in rows:
+            report = Report(
+                report_id=row[0],
+                post_id=row[1],
+                reporter_id=row[2],
+                report_type=row[3],
+                status=row[4],
+                report_time=row[5]
+            )
+            reports.append(report)
+
+        return reports
+    
+    def get_post_by_id(self, post_id):
+        self.cursor.execute('''
+            SELECT * FROM Post WHERE post_id = ?
+        ''', (post_id,))
+        row = self.cursor.fetchone()
+
+        if row:
+            post = Post(
+                post_id=row["post_id"],
+                course_id=row["course_id"],
+                student_id=row["student_id"],
+                title=row["title"],
+                description=row["description"],
+                date=row["date"],
+                likes=row["likes"],
+                comments=row["comments"],
+                post_file=row["post_file"],
+                file_name=row["file_name"]
+            )
+            return post
+    
     def save_report(self, post_id, reporter_id, report_type, status, report_time):
         cursor = self.conn.cursor()
         cursor.execute("""

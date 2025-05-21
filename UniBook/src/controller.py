@@ -192,8 +192,8 @@ class Controller:
 
     def save_report(self, report_type, report_time):
         # Save the report details to the database
-        self.db.save_report(self.current_post.post_id, 1, report_type, 'TEST',report_time)
-        print("Report saved successfully.")
+        self.db.save_report(self.current_post.post_id, 1, report_type, 'Not Checked',report_time)
+        print("Report Uploaded Succesfully")
         
     def show_reportPost(self):
         self.report_post_window = ReportPostWindow(self)
@@ -266,6 +266,72 @@ class Controller:
 
         return post_widget
     
+    def create_report_widget(self, report, is_checked=True):
+        # Retrieve the related post using the post_id in the report
+        post = self.db.get_post_by_id(report.post_id)
+
+        report_widget = QWidget()
+        report_widget.setMinimumSize(QSize(0, 0))
+        report_widget.setMaximumSize(QSize(16777215, 200))
+        report_widget.setStyleSheet("background-color: rgb(200, 100, 100);")
+
+        horizontalLayout = QHBoxLayout(report_widget)
+        horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        horizontalLayout.setSpacing(7)
+
+        # Left side: Image placeholder
+        image_container = QWidget(report_widget)
+        image_layout = QVBoxLayout(image_container)
+        image_layout.setContentsMargins(0, 0, 0, 0)
+        post_image = QLabel(image_container)
+        post_image.setMinimumSize(QSize(170, 100))
+        post_image.setAlignment(Qt.AlignCenter)
+        post_image.setText("Image")
+        image_layout.addWidget(post_image)
+        horizontalLayout.addWidget(image_container, 0, Qt.AlignLeft)
+
+        # Right side: Info
+        info_container = QWidget(report_widget)
+        info_layout = QVBoxLayout(info_container)
+        info_layout.setContentsMargins(0, 0, 2, 0)
+
+        top_info = QWidget(info_container)
+        grid = QGridLayout(top_info)
+        grid.setContentsMargins(0, 0, 0, -1)
+
+        title_label = QLabel(f"Report: {report.report_type} | Post: {post.title}", top_info)
+        title_label.setFont(QFont('', 10))
+        grid.addWidget(title_label, 0, 0, 1, 2)
+
+        date_label = QLabel(f"Reported on: {report.report_time}", top_info)
+        grid.addWidget(date_label, 1, 0, 1, 1)
+
+        open_button = QPushButton(top_info)
+        open_button.setIcon(QIcon(":/feather/icons/feather/arrow-right.png"))
+        open_button.setAutoDefault(False)
+        grid.addWidget(open_button, 0, 2, 1, 1)
+
+        info_layout.addWidget(top_info, 0, Qt.AlignTop)
+
+        bottom_info = QWidget(info_container)
+        bottom_layout = QVBoxLayout(bottom_info)
+        bottom_layout.setContentsMargins(0, 0, 2, 2)
+
+        desc_browser = QTextBrowser(bottom_info)
+        desc_browser.setText(f"{post.description}\n\nStatus: {report.status}")
+        bottom_layout.addWidget(desc_browser)
+
+        info_layout.addWidget(bottom_info)
+
+        # Connect open button to the appropriate handler
+        #if is_checked:
+            #open_button.clicked.connect(lambda _, rid=report.report_id: self.controller.review_checked_report(rid))
+    
+
+        horizontalLayout.addWidget(info_container)
+
+        return report_widget
+    
     def post_selected(self, post_id):
         # Find the selected post from the cached posts
         post = next((p for p in self.posts_cache if p.post_id == post_id), None)
@@ -312,7 +378,7 @@ class Controller:
         self.queryFetchCourses()
         self.displayCourses()
 
-    def show_admin_reports(self):
+    def show_admin_window(self):
         self.login.hide()
         self.queryFetchCourses()
         self.admin_window = AdminReportsWindow(self, self.courses_cache)
@@ -364,6 +430,14 @@ class Controller:
 
         for post in nu_posts:
             layout.addWidget(self._create_post_widget(post,is_uploaded = False))
+
+    def display_reports(self):
+        reports = self.db.getReports()
+        self.reports_cache = reports
+
+        layout = self.admin_window.ui.verticalLayout_8
+        for report in reports:
+            layout.addWidget(self.create_report_widget(report,is_checked = False))
         
     def show_rookie(self):
         #self.home.hide()

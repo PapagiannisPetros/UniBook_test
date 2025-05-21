@@ -10,8 +10,10 @@ class AdminReportsWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.course_buttons = []
+
         self.ui.pushButton_3.clicked.connect(self.logout)
-        #self.ui.reportBut.connect(self.add_course_buttons)
+        self.ui.reportBut.clicked.connect(self.reportedPosts)
 
         self.add_course_buttons(courses)
 
@@ -39,6 +41,13 @@ class AdminReportsWindow(QMainWindow):
             button.clicked.connect(lambda _, cid=course_id: self.controller.course_selected(cid,2))
 
             self.ui.verticalLayout_37.addWidget(button)
+            self.course_buttons.append(button)
+
+    def reportedPosts(self):
+        for button in self.course_buttons:
+            button.hide()
+        
+        self.controller.display_reports()
 
     def displayPostInfo(self):
         self.controller.open_not_uploaded_post()
