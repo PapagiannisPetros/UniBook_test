@@ -2,7 +2,7 @@ from PySide6.QtWidgets import QMainWindow,QMessageBox
 from upload_confirmation_ui import Ui_MainWindow  # Adjust the import based on your UI file
 
 class UploadConfirmationWindow(QMainWindow):
-    def __init__(self, controller,post_id):
+    def __init__(self, controller ,post_id):
         super().__init__()
         self.controller = controller
         self.post_id = post_id

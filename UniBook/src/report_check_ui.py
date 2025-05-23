@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'report_check.ui'
+## Form generated from reading UI file 'report_checkvGlnTQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.9.0
 ##
@@ -17,8 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
     QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QTextBrowser, QVBoxLayout, QWidget)
-import _icons_rc
+    QTextBrowser, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,7 +29,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.groupBox = QGroupBox(self.centralwidget)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(10, 50, 475, 611))
+        self.groupBox.setGeometry(QRect(10, 20, 475, 601))
         self.groupBox.setMaximumSize(QSize(500, 16777215))
         font = QFont()
         font.setPointSize(8)
@@ -58,7 +57,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.textBrowser_2)
 
 
-        self.verticalLayout.addWidget(self.widget, 0, Qt.AlignTop)
+        self.verticalLayout.addWidget(self.widget, 0, Qt.AlignmentFlag.AlignTop)
 
         self.widget_4 = QWidget(self.groupBox)
         self.widget_4.setObjectName(u"widget_4")
@@ -67,7 +66,7 @@ class Ui_MainWindow(object):
         self.label_4 = QLabel(self.widget_4)
         self.label_4.setObjectName(u"label_4")
 
-        self.horizontalLayout_5.addWidget(self.label_4, 0, Qt.AlignTop)
+        self.horizontalLayout_5.addWidget(self.label_4, 0, Qt.AlignmentFlag.AlignTop)
 
         self.textBrowser = QTextBrowser(self.widget_4)
         self.textBrowser.setObjectName(u"textBrowser")
@@ -98,7 +97,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.pushButton)
 
 
-        self.verticalLayout.addWidget(self.widget_2, 0, Qt.AlignTop)
+        self.verticalLayout.addWidget(self.widget_2)
 
         self.widget_3 = QWidget(self.groupBox)
         self.widget_3.setObjectName(u"widget_3")
@@ -121,7 +120,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.pushButtonLoadPDF)
 
 
-        self.verticalLayout.addWidget(self.widget_3, 0, Qt.AlignTop)
+        self.verticalLayout.addWidget(self.widget_3, 0, Qt.AlignmentFlag.AlignTop)
 
         self.widget_9 = QWidget(self.groupBox)
         self.widget_9.setObjectName(u"widget_9")
@@ -132,11 +131,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.label_11)
 
-        self.textBrowser1 = QTextBrowser(self.widget_9)
-        self.textBrowser1.setObjectName(u"textBrowser1")
-        self.textBrowser1.setMaximumSize(QSize(16777215, 35))
+        self.textBrowserUsername = QTextBrowser(self.widget_9)
+        self.textBrowserUsername.setObjectName(u"textBrowserUsername")
+        self.textBrowserUsername.setMaximumSize(QSize(16777215, 35))
 
-        self.horizontalLayout.addWidget(self.textBrowser1)
+        self.horizontalLayout.addWidget(self.textBrowserUsername)
 
 
         self.verticalLayout.addWidget(self.widget_9)
@@ -177,12 +176,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.widget_11)
 
-        self.label_5 = QLabel(self.centralwidget)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(50, 10, 431, 31))
-        font1 = QFont()
-        font1.setPointSize(12)
-        self.label_5.setFont(font1)
         self.scrollArea = QScrollArea(self.centralwidget)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setGeometry(QRect(489, 9, 621, 651))
@@ -216,11 +209,22 @@ class Ui_MainWindow(object):
         self.pushButton_4.setGeometry(QRect(740, 660, 171, 31))
         self.pushButton_4.setStyleSheet(u"background-color: rgb(188, 17, 74);\n"
 "color: rgb(0, 0, 0);")
-        self.label_7 = QLabel(self.centralwidget)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(10, 10, 31, 31))
-        self.label_7.setPixmap(QPixmap(u"../24-design/Qss/icons/black/feather/flag.png"))
-        self.label_7.setScaledContents(True)
+        self.widget_12 = QWidget(self.centralwidget)
+        self.widget_12.setObjectName(u"widget_12")
+        self.widget_12.setGeometry(QRect(10, 620, 471, 59))
+        self.horizontalLayout_13 = QHBoxLayout(self.widget_12)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.label_15 = QLabel(self.widget_12)
+        self.label_15.setObjectName(u"label_15")
+
+        self.horizontalLayout_13.addWidget(self.label_15)
+
+        self.textEdit_9 = QTextEdit(self.widget_12)
+        self.textEdit_9.setObjectName(u"textEdit_9")
+        self.textEdit_9.setMaximumSize(QSize(16777215, 35))
+
+        self.horizontalLayout_13.addWidget(self.textEdit_9)
+
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -240,10 +244,8 @@ class Ui_MainWindow(object):
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"Username:    ", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"Date:             ", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"Reported for:", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Report Check</p><p><br/></p></body></html>", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Apply Penalty", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Invalid Report", None))
-        self.label_7.setText("")
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Penalty:", None))
     # retranslateUi
-

@@ -10,6 +10,7 @@ from upload_window import UploadWindow
 from postopen_window import PostOpenWindow
 from db_manager import DatabaseManager
 from reportpost_window import ReportPostWindow
+from report_check_window import ReportCheckWindow
 from datetime import datetime
 from models import Message
 from models import Comment
@@ -34,6 +35,7 @@ class Controller:
         self.selected_course_id =  None
         self.chat_id = None
         self.current_profile = None
+        self.penalty = None
 
         self.login = LoginWindow(self)
         
@@ -324,8 +326,8 @@ class Controller:
         info_layout.addWidget(bottom_info)
 
         # Connect open button to the appropriate handler
-        #if is_checked:
-            #open_button.clicked.connect(lambda _, rid=report.report_id: self.controller.review_checked_report(rid))
+        if  not is_checked:
+            open_button.clicked.connect(lambda _, rid=report.report_id: self.report_selected(rid))
     
 
         horizontalLayout.addWidget(info_container)
@@ -348,6 +350,13 @@ class Controller:
             self.current_post = post
             self.show_upload_confirmation(post)
 
+    def report_selected(self,report_id):
+        report = next((p for p in self.reports_cache if p.report_id == report_id), None)
+
+        if report:
+            self.current_report = report
+            self.show_report_check_window(report)
+
     
     def show_post_window(self, post):
         self.current_post = post
@@ -366,6 +375,19 @@ class Controller:
         
         self.nu_post_open.show()
 
+    def show_report_check_window(self,report):
+        post = self.db.get_post_by_id(report.post_id)
+
+        self.report_open = ReportCheckWindow(self,report.report_id)
+        self.report_open.ui.textBrowser_2.setText(post.title)
+        self.report_open.ui.textBrowser.setText(post.description)
+        self.report_open.ui.textBrowser_3.setText(str(post.post_file))
+        self.report_open.ui.textBrowserUsername.setText(self.db.getPostUsername(post.post_id))
+        self.report_open.ui.textBrowser_6.setText(str(post.date))
+        self.report_open.ui.textBrowser_7.setText(report.report_type)
+        self.penalty = self.report_open.ui.textEdit_9.toPlainText()
+
+        self.report_open.show()
 
     def show_login(self):
         #self.home.hide()
@@ -433,11 +455,15 @@ class Controller:
 
     def display_reports(self):
         reports = self.db.getReports()
-        self.reports_cache = reports
 
-        layout = self.admin_window.ui.verticalLayout_8
-        for report in reports:
-            layout.addWidget(self.create_report_widget(report,is_checked = False))
+        if not reports:
+            QMessageBox.information(None," ","No reports to check!")
+        else:
+            self.reports_cache = reports
+
+            layout = self.admin_window.ui.verticalLayout_8
+            for report in reports:
+                layout.addWidget(self.create_report_widget(report,is_checked = False))
         
     def show_rookie(self):
         #self.home.hide()
@@ -623,3 +649,12 @@ class Controller:
     
     def queryApproveUploadPost(self,post_id):
         return self.db.uploadPost(post_id)
+    
+    def queryRejectReport(self,report_id):
+        return self.db.rejectReport(report_id)
+    
+    def queryApplyPenalty(self,report_id):
+        self.db.querySendPenaltyMessage(report_id,self.penalty)
+        print(self.penalty)
+        self.penalty = None
+        return True

@@ -242,7 +242,19 @@ class DatabaseManager:
                 file_name=row["file_name"]
             )
             return post
-    
+        
+    def getPostUsername(self,post_id):
+        self.cursor.execute('''
+            SELECT u.username FROM Post p JOIN Student s ON p.student_id = s.student_id INNER JOIN
+                             User u ON s.user_id = u.id WHERE p.post_id = ?
+        ''', (post_id,))
+
+        result = self.cursor.fetchone()
+        
+        if result:
+            return str(result[0])
+
+
     def save_report(self, post_id, reporter_id, report_type, status, report_time):
         cursor = self.conn.cursor()
         cursor.execute("""
@@ -279,6 +291,26 @@ class DatabaseManager:
         self.conn.commit()  
 
         return True 
+    
+    def rejectReport(self,report_id):
+        cursor = self.conn.cursor()
+        cursor.execute("UPDATE Report SET status = 'Rejected' WHERE report_id = ?", (report_id,))
+        self.conn.commit()  
+
+        return True 
+    
+    def querySendPenaltyMessage(self,report_id,penalty):
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT p.student_id FROM Report r INNER JOIN Post p ON r.post_id = p.post_id WHERE r.report_id = ?", (report_id,))
+        result = self.cursor.fetchone()
+
+        if result:
+            student_id = result[0]
+            self.cursor.execute("UPDATE Student SET student_message = '?' WHERE student_id = ?", (penalty,student_id,))
+            self.conn.commit()
+
+
+        return True
 
         
     def create_tables(self):
@@ -299,6 +331,7 @@ class DatabaseManager:
                 university VARCHAR(30),
                 department VARCHAR(20),
                 enrollment_year INTEGER,
+                student_message TEXT,
                 FOREIGN KEY(user_id) REFERENCES User(id),
                 FOREIGN KEY(subscription_id) REFERENCES Subscription(subscription_id)
             );
