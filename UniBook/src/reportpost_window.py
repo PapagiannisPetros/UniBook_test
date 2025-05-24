@@ -12,6 +12,14 @@ class ReportPostWindow(QMainWindow):
         
         self.ui.submitBut.clicked.connect(self.send_report_details)
         
+        self.ui.cancelBut.clicked.connect(self.requestDisplayCancelWIndow)  # Close the window without action
+    
+    
+    def requestDisplayCancelWIndow(self):
+        # Override close method to ensure proper cleanup if needed
+        super().close()
+        self.controller.dIsplayCancelWIndow()
+        
     def send_report_details(self):
         # Collect report details
         checked_items = []
@@ -29,7 +37,7 @@ class ReportPostWindow(QMainWindow):
         report_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # Send the report details to the controller
-        self.controller.save_report(result_string, report_time)
+        self.controller.querySaveReport(result_string, report_time)
         
         # Close the window after sending the report
         self.close()

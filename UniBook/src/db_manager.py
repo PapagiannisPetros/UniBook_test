@@ -269,7 +269,7 @@ class DatabaseManager:
         result = cursor.fetchone()
 
         if result:
-            new_student = Student(result["student_id"],result["user_id"],result["subscription_id"],result["am"],result["university"],result["department"],result["enrollment_year"])
+            new_student = Student(result["student_id"],result["user_id"],result["subscription_id"],result["am"],result["university"],result["department"],result["enrollment_year"], result["validation_status"])
             self.student = new_student
 
         return result is not None
@@ -332,6 +332,7 @@ class DatabaseManager:
                 department VARCHAR(20),
                 enrollment_year INTEGER,
                 student_message TEXT,
+                validation_status INTEGER DEFAULT 0,
                 FOREIGN KEY(user_id) REFERENCES User(id),
                 FOREIGN KEY(subscription_id) REFERENCES Subscription(subscription_id)
             );

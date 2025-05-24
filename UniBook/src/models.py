@@ -1,5 +1,5 @@
 class Student:
-    def __init__(self,student_id,user_id,subscription_id,am,university,department,enrollment_year):
+    def __init__(self,student_id,user_id,subscription_id,am,university,department,enrollment_year, validation_status):
         self.student_id = student_id
         self.user_id = user_id
         self.subscription_id = subscription_id
@@ -7,6 +7,7 @@ class Student:
         self.university = university
         self.department = department
         self.enrollment_year = enrollment_year
+        self.validation_status = validation_status
 
 class Admin:
     def __init__(self,admin_id,user_id,name):

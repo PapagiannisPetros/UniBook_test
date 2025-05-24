@@ -13,6 +13,7 @@ from reportpost_window import ReportPostWindow
 from report_check_window import ReportCheckWindow
 from datetime import datetime
 from models import Message
+from models import Report
 from models import Comment
 from upload_confirmation_window import UploadConfirmationWindow
 
@@ -49,7 +50,7 @@ class Controller:
         
         from datetime import datetime
         post_id = self.current_post.post_id
-        student_id = self.db.student.student_id
+        self.student_id = self.db.student.student_id
         send_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
         # Create Comment object
@@ -192,18 +193,48 @@ class Controller:
             return
         return subscription_type
 
-    def save_report(self, report_type, report_time):
+    def dIsplayCancelWIndow(self):
+        QMessageBox.information(self.post_open_window, "Cancelled", "You have cancelled the report submission.")
+    
+    def querySaveReport(self, report_type, report_time):
+        
+         # Create the Report object
+        report = Report(
+            report_id=None,  # Assuming it's auto-incremented in DB
+            post_id=self.current_post.post_id,
+            reporter_id=1,  # Replace with actual student/user ID
+            report_type=report_type,
+            status='Not Checked',
+            report_time=report_time
+        )
+        self.student_reports_cache = report
+        
         # Save the report details to the database
         self.db.save_report(self.current_post.post_id, 1, report_type, 'Not Checked',report_time)
-        print("Report Uploaded Succesfully")
+        QMessageBox.information(self.home_window, "Success", "Report submitted successfully.")
         
     def show_reportPost(self):
+        if self.queryStudentValidation():
+            
+           self.displayReportWindow()
+        else:
+            QMessageBox.warning(self.home_window, "Error", "You cannot report posts as your account is not validated.")
+    
+    def displayReportWindow(self):
         self.report_post_window = ReportPostWindow(self)
         self.report_post_window.ui.post_title.setText(self.current_post.title)
         self.report_post_window.ui.post_time.setText(self.current_post.date)
         self.report_post_window.ui.post_text.setText(self.current_post.description)
-        
+            
         self.report_post_window.show()
+        
+            
+    def queryStudentValidation(self):
+        # Check if the student is validated
+        if self.db.student.validation_status == 1:
+            QMessageBox.warning(self.home_window, "Error", "Your account is not validated. Please contact an admin.")
+            return False
+        return True
         
     def _create_post_widget(self, post, is_uploaded=True):
         post_widget = QWidget()
@@ -419,16 +450,16 @@ class Controller:
         self.selected_course_id = course_id
 
         if(window==1):
-            self.display_posts_for_course(course_id)
+            self.queryFetchPosts(course_id)
         elif(window==2):
             self.display_not_uploaded_posts_for_course(course_id)
         
-    def display_posts_for_course(self, course_id):
+    def queryFetchPosts(self, course_id):
         posts = self.db.get_posts_by_course(course_id)
         self.posts_cache = posts  # Cache the posts in the controller
         
         # Clear previous posts
-        layout = self.home_window.ui.verticalLayout_7
+        layout = self.home_window.ui.verticalLayout_7 # POST WALL
         while layout.count():
             item = layout.takeAt(0)
             widget = item.widget()
