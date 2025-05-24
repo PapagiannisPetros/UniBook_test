@@ -35,8 +35,9 @@ class Ui_MainWindow(object):
         # Get the absolute path to the directory this file is in
         base_dir = os.path.dirname(os.path.abspath(__file__))
         
-        logo_path = os.path.join(base_dir, "images", "logo.png")
-        self.logoLabel.setPixmap(QPixmap(logo_path))
+                # Build absolute path
+        image_path = os.path.join(os.path.dirname(__file__), "../images/logo.png")
+        self.logoLabel.setPixmap(QPixmap(image_path))
         
         self.logoLabel.setScaledContents(True)
         self.unibookLabel = QLabel(self.centralwidget)
@@ -57,8 +58,9 @@ class Ui_MainWindow(object):
         self.backgrounrLabel.setObjectName(u"backgrounrLabel")
         self.backgrounrLabel.setGeometry(QRect(0, 270, 1141, 371))
         
-        background_path = os.path.join(base_dir, "images", "rectangle.png")
-        self.backgrounrLabel.setPixmap(QPixmap(background_path))
+                # Build absolute path
+        image_path = os.path.join(os.path.dirname(__file__), "../images/rectangle.png")
+        self.backgrounrLabel.setPixmap(QPixmap(image_path))
         
         self.backgrounrLabel.setScaledContents(True)
         self.loginBut = QPushButton(self.centralwidget)

@@ -210,7 +210,7 @@ class Controller:
         self.student_reports_cache = report
         
         # Save the report details to the database
-        self.db.save_report(self.current_post.post_id, 1, report_type, 'Not Checked',report_time)
+        self.db.save_report(self.current_post.post_id, self.db.student.student_id, report_type, 'Not Checked',report_time)
         QMessageBox.information(self.home_window, "Success", "Report submitted successfully.")
         
     def show_reportPost(self):
