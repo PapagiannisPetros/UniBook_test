@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("Login Page", u"Login Page", None))
         self.logoLabel.setText("")
         self.unibookLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700; font-style:italic;\">UniBook.</span></p></body></html>", None))
         self.loginLabel.setText(QCoreApplication.translate("MainWindow", u"Log in with your Academic ID", None))

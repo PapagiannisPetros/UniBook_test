@@ -106,7 +106,10 @@ class Controller:
         )
 
         self.db.insert_message(message)
+        self.displaySuccessWindow(self)
         
+    def displaySuccessWindow(self):
+        QMessageBox.information(None, "Success", "Message sent successfully.")
         
     def queryFetchChat(self, course_id):
         if self.selected_course_id is None:
@@ -121,12 +124,12 @@ class Controller:
         if self.home_window.ui.rightMenu.isVisible():
             self.home_window.ui.rightMenu.hide()
         else:
-            chat_display = self.home_window.ui.chatDisplay
-            chat_display.clear()
+            chat_screen = self.home_window.ui.chatDisplay 
+            chat_screen.clear()
 
             for message in messages:
                 time_str = message.send_time  # or format it with datetime
-                chat_display.append(f"<b>Student {message.student_id}</b> ({time_str}):<br>{message.message_text}<br><br>")
+                chat_screen.append(f"<b>Student {message.student_id}</b> ({time_str}):<br>{message.message_text}<br><br>")
 
             self.home_window.ui.rightMenu.show()
             

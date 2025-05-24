@@ -63,10 +63,20 @@ class HomeWindow(QMainWindow):
     def send_message(self):
         message = self.ui.chatInput.text()
         if message:
-            self.handleNewMessage(message)
-            self.display_message("You", message)
-            self.ui.chatInput.clear()
-    
+            if self.checkmessage(message):
+                self.DisplayErrorWIndow()
+            else :
+                self.handleNewMessage(message)
+                self.display_message("You", message)
+                self.ui.chatInput.clear()
+                
+    def DisplayErrorWIndow(self):
+        QMessageBox.warning(self, "Message Too Long", "Your message exceeds the maximum length of 100 characters.") 
+        
+    def checkmessage(self, message):
+        # Check if the message exceeds 100 characters
+        return len(message) > 100
+
     def handleNewMessage(self, message):
         self.controller.querySaveMessage(message)
             
