@@ -18,18 +18,32 @@ class UploadWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         
-        self.ui.pushButtonLoadPDF.clicked.connect(self.load_pdf)
+        self.ui.pushButtonLoadPDF.clicked.connect(self.displayFilePreview)
         self.ui.pushButton_2.clicked.connect(self.uploadPost)
+        self.ui.pushButton_3.clicked.connect(self.displayCancelWindow)
         print("Upload window initialized")
         
-    def load_pdf(self):
+    def displayFilePreview(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self, "Άνοιγμα PDF", "", "PDF Files (*.pdf)"
         )
         if file_path:
-            self.ui.textBrowser_3.setPlainText(file_path)
-            self.display_pdf(file_path)
+            if self.check_type(file_path):
+                self.ui.textBrowser_3.setPlainText(file_path)
+                self.display_pdf(file_path)
+            else:
+                QMessageBox.warning(self, "Error Window", "Παρακαλώ επιλέξτε ένα αρχείο PDF.")
+        else:
+            self.displayCancelWindow(self)
             
+    def displayCancelWindow(self, parent):
+        QMessageBox.information(self, "Cancel Window", "Action Canceled", QMessageBox.Ok)
+        self.close()
+           
+    def check_type(self,file_path):
+        # Check if the file is a PDF
+        return file_path.lower().endswith('.pdf')
+             
     def display_pdf(self, file_path):
         try:
             doc = fitz.open(file_path)

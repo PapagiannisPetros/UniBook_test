@@ -17,7 +17,7 @@ class HomeWindow(QMainWindow):
         self.ui.profileBut.clicked.connect(self.show_profile)
         self.ui.logoutBut.clicked.connect(self.logout)
         self.ui.sendBut.clicked.connect(self.send_message)
-        self.ui.newBut.clicked.connect(self.upload_file)
+        self.ui.newBut.clicked.connect(self.requestDisplayNewPostWindow)
 
         self.display_message("System", "Welcome to the chat!")
         self.add_course_buttons(courses)
@@ -80,8 +80,8 @@ class HomeWindow(QMainWindow):
     def handleNewMessage(self, message):
         self.controller.querySaveMessage(message)
             
-    def upload_file(self):
-        self.controller.show_upload()
+    def requestDisplayNewPostWindow(self):
+        self.controller.displayNewPostWindow()
         
     def post_open(self):
         self.controller.open_post()

@@ -109,7 +109,7 @@ class Controller:
         self.db.insert_message(message)
         self.displaySuccessWindow(self)
         
-    def displaySuccessWindow(self):
+    def displaySuccessWindow():
         QMessageBox.information(None, "Success", "Message sent successfully.")
         
     def queryFetchChat(self, course_id):
@@ -153,8 +153,8 @@ class Controller:
 
         self.db.create_post(course_id, student_id, title, description, post_time, 0, 0, file_data, file_name)
 
-        QMessageBox.information(self.home_window, "Success", "Post uploaded successfully.")
-        
+        self.displaySuccessWindow()
+                
     def download_post(self):
         self.checkSubscription()
     
@@ -244,17 +244,17 @@ class Controller:
         return True
         
     def _create_post_widget(self, post, is_uploaded=True):
-        post_widget = QWidget()
-        post_widget.setMinimumSize(QSize(0, 0))
-        post_widget.setMaximumSize(QSize(16777215, 200))
-        post_widget.setStyleSheet("background-color: rgb(150, 150, 150);")
+        post_wall = QWidget()
+        post_wall.setMinimumSize(QSize(0, 0))
+        post_wall.setMaximumSize(QSize(16777215, 200))
+        post_wall.setStyleSheet("background-color: rgb(150, 150, 150);")
 
-        horizontalLayout = QHBoxLayout(post_widget)
+        horizontalLayout = QHBoxLayout(post_wall)
         horizontalLayout.setContentsMargins(0, 0, 0, 0)
         horizontalLayout.setSpacing(7)
 
         # Left side: Image (placeholder)
-        image_container = QWidget(post_widget)
+        image_container = QWidget(post_wall)
         image_layout = QVBoxLayout(image_container)
         image_layout.setContentsMargins(0, 0, 0, 0)
         post_image = QLabel(image_container)
@@ -266,7 +266,7 @@ class Controller:
         horizontalLayout.addWidget(image_container, 0, Qt.AlignLeft)
 
         # Right side: Info
-        info_container = QWidget(post_widget)
+        info_container = QWidget(post_wall)
         info_layout = QVBoxLayout(info_container)
         info_layout.setContentsMargins(0, 0, 2, 0)
 
@@ -304,7 +304,7 @@ class Controller:
 
         horizontalLayout.addWidget(info_container)
 
-        return post_widget
+        return post_wall
     
     def create_report_widget(self, report, is_checked=True):
         # Retrieve the related post using the post_id in the report
@@ -671,7 +671,7 @@ class Controller:
         else:
             QMessageBox.critical(None, "Error", "Update failed.")
 
-    def show_upload(self):
+    def displayNewPostWindow(self):
         if self.selected_course_id is None:
             QMessageBox.warning(None, "Error", "No course selected.")
             return
