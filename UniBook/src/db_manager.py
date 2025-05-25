@@ -311,6 +311,16 @@ class DatabaseManager:
 
 
         return True
+    
+    def postDeletion(self,post):
+        cursor = self.conn.cursor()
+        cursor.execute("DELETE FROM Post WHERE post_id = ?", (post.post_id,))
+        self.conn.commit()
+
+        del post
+
+        return True
+
 
         
     def create_tables(self):

@@ -9,6 +9,7 @@ from edit_profile_window import EditProfileWindow
 from upload_window import UploadWindow
 from postopen_window import PostOpenWindow
 from db_manager import DatabaseManager
+from edit_post_window import EditPostWindow
 from reportpost_window import ReportPostWindow
 from report_check_window import ReportCheckWindow
 from datetime import datetime
@@ -572,11 +573,11 @@ class Controller:
             view_button.setAutoDefault(False)
             view_button.clicked.connect(lambda _, p=post: self.show_post_window(p))
 
-            # Comment Button
-            comment_button = QPushButton(post_widget)
-            comment_button.setGeometry(QRect(370, 20, 80, 25))
-            comment_button.setText("Edit")
-            comment_button.clicked.connect(lambda _, p=post: self.handleCommentPost(p))
+            #Edit Button
+            edit_button = QPushButton(post_widget)
+            edit_button.setGeometry(QRect(370, 20, 80, 25))
+            edit_button.setText("Edit")
+            edit_button.clicked.connect(lambda _, p=post: self.displayEditPostWindow(p))
 
             post_wall.addWidget(post_widget)
 
@@ -590,6 +591,13 @@ class Controller:
         self.profile.ui.label_10.setText(self.db.student.university)
         self.profile.ui.label_11.setText(str(profile.tel_num))
         self.profile.ui.label_12.setText(profile.email)
+
+    def displayEditPostWindow(self,post):
+        self.post = EditPostWindow(self,post)
+        self.post.ui.textEdit_2.setText(post.title)
+        self.post.ui.textEdit.setText(post.description)
+
+        self.post.show()
 
     def show_payment_rookie(self):
         self.rookie.hide()
@@ -695,3 +703,6 @@ class Controller:
         print(self.penalty)
         self.penalty = None
         return True
+    
+    def queryDeletePost(self,post):
+        return self.db.postDeletion(post)

@@ -22,7 +22,7 @@ class PostOpenWindow(QMainWindow):
         
         self.ui.commentButton.clicked.connect(self.show_commentWindow)
         
-        self.ui.sendBut.clicked.connect (self.newComment)
+        self.ui.sendBut.clicked.connect(self.newComment)
         
     def newComment(self):
         comment_text = self.ui.chatInput.text()
