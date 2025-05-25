@@ -178,12 +178,15 @@ class Controller:
             try:
                 with open(file_path, "wb") as f:
                     f.write(filedata)
-                QMessageBox.information(self.home_window, "Success", f"Downloaded to:\n{file_path}")
+                self.displaySuccessWindow()
             except Exception as e:
                 QMessageBox.critical(self.home_window, "Error", f"Failed to save file:\n{str(e)}")
         else:
-            print("User canceled the save dialog.") 
+            self.dIsplayCancelWIndow()
             
+    def displaySuccessWindow(self):
+        QMessageBox.information(self.home_window, "Success Window", f"Operation completed successfully.")        
+    
     def checkSubscription(self):
         subscription_type = self.db.get_subscription_type_by_student_id(self.current_post.student_id)
         print(f"Subscription type: {subscription_type}")
@@ -192,12 +195,12 @@ class Controller:
             return
 
         if subscription_type.lower() not in ['rookie', 'premium']:
-            QMessageBox.warning(self.home_window, "Error", f"Invalid subscription type: {subscription_type}")
+            QMessageBox.warning(self.home_window, "Upgrade Subscription Window", f"Invalid subscription type: {subscription_type}")
             return
         return subscription_type
 
     def dIsplayCancelWIndow(self):
-        QMessageBox.information(self.post_open_window, "Cancelled", "You have cancelled the report submission.")
+        QMessageBox.warning(self.post_open_window, "Cancelled", "You have cancelled the report submission.")
     
     def querySaveReport(self, report_type, report_time):
         
@@ -521,14 +524,14 @@ class Controller:
             QMessageBox.warning(None, "Error", "No profile information found.")
 
     def displayStudentPosts(self):
-        layout = self.profile.ui.scrollAreaWidgetContents_3.layout()
+        post_wall = self.profile.ui.scrollAreaWidgetContents_3.layout()
         
         # Clear existing posts
-        if layout is None:
-            layout = QVBoxLayout(self.home_window.ui.scrollAreaWidgetContents_3)
+        if post_wall is None:
+            post_wall = QVBoxLayout(self.home_window.ui.scrollAreaWidgetContents_3)
         else:
-            while layout.count():
-                child = layout.takeAt(0)
+            while post_wall.count():
+                child = post_wall.takeAt(0)
                 if child.widget():
                     child.widget().deleteLater()
 
@@ -575,7 +578,7 @@ class Controller:
             comment_button.setText("Edit")
             comment_button.clicked.connect(lambda _, p=post: self.handleCommentPost(p))
 
-            layout.addWidget(post_widget)
+            post_wall.addWidget(post_widget)
 
 
     def display_profile(self, profile):

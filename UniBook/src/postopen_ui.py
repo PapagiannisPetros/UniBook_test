@@ -97,8 +97,8 @@ class Ui_MainWindow(object):
         self.downloadButton_2 = QPushButton(self.widget_6)
         self.downloadButton_2.setObjectName(u"downloadButton_2")
         icon = QIcon()
-        #icon.addFile(u":/feather/icons/feather/arrow-down-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        #self.downloadButton_2.setIcon(icon)
+        icon.addFile(u":/feather/icons/feather/arrow-down-circle.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.downloadButton_2.setIcon(icon)
 
         self.formLayout.setWidget(1, QFormLayout.ItemRole.LabelRole, self.downloadButton_2)
 
