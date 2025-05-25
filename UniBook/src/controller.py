@@ -58,7 +58,7 @@ class Controller:
         comment = Comment(
             comment_id=None,  # Let DB assign it
             post_id=post_id,
-            student_id=student_id,
+            student_id=self.student_id,
             comment_text=comment_text,
             upload_time=send_time
         )
@@ -109,7 +109,7 @@ class Controller:
         self.db.insert_message(message)
         self.displaySuccessWindow(self)
         
-    def displaySuccessWindow():
+    def displaySuccessWindow(self):
         QMessageBox.information(None, "Success", "Message sent successfully.")
         
     def queryFetchChat(self, course_id):
@@ -599,15 +599,22 @@ class Controller:
 
         self.post.show()
 
-    def show_payment_rookie(self):
-        self.rookie.hide()
-        self.payment = PaymentWindow(self)
+    def show_payment(self, subscription_type):
+        self.payment = PaymentWindow(self, subscription_type)
         self.payment.show()
-        
-    def show_payment_senior(self):
-        self.senior.hide()
-        self.payment = PaymentWindow(self)
-        self.payment.show()
+
+    def activate_subscription(self, subscription_type):
+        student_id = self.db.student.student_id
+        result = self.db.upsert_subscription(student_id, subscription_type)
+
+        if subscription_type == "Rookie" and hasattr(self, "rookie") and self.rookie:
+            self.rookie.close()
+        elif subscription_type == "Senior" and hasattr(self, "senior") and self.senior:
+            self.senior.close()
+        else:
+            print("[ERROR] Subscription processing failed.")
+            QMessageBox.critical(None, "Error", "Could not process your subscription.")
+
 
     def cancel(self):
         self.edit_profile.hide()
@@ -691,7 +698,7 @@ class Controller:
 
     def admin_authentication(self, username, password):
         return self.db.is_valid_admin(username, password)
-    
+
     def queryApproveUploadPost(self,post_id):
         return self.db.uploadPost(post_id)
     

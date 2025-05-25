@@ -1,7 +1,11 @@
 import sqlite3
 import os
-from models import Course, Post, Admin, Student, Chat, Message, Comment, Profile, Report
-from datetime import datetime
+
+from PySide6.QtWidgets import QMessageBox
+
+from models import Course, Post, Admin, Student, Chat, Message, Comment, Profile, Report, Subscription
+from datetime import datetime, timedelta
+
 
 class DatabaseManager:
     def __init__(self):
@@ -139,6 +143,63 @@ class DatabaseManager:
         else:
             print("[DEBUG] No subscription type found for the given student_id.")
             return None
+
+    def upsert_subscription(self, student_id, subscription_type):
+        self.cursor.execute("""
+            SELECT Subscription.subscription_id, Subscription.subscription_type, Subscription.start_date, Subscription.end_date
+            FROM Student
+            JOIN Subscription ON Student.subscription_id = Subscription.subscription_id
+            WHERE Student.student_id = ?
+        """, (student_id,))
+        result = self.cursor.fetchone()
+
+        start_date = datetime.now().strftime("%Y-%m-%d")
+        end_date = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d")
+
+        subscription_obj = None
+
+        if result:
+            subscription_id, current_type, old_start, old_end = result["subscription_id"], result["subscription_type"], result["start_date"], result["end_date"]
+
+            if current_type == subscription_type:
+                QMessageBox.information(None, "Info", f"The user already has an active subscription on {subscription_type}.")
+                subscription_obj = Subscription(subscription_id, student_id, current_type, old_start, old_end)
+                self.subscription = subscription_obj
+                return subscription_obj
+
+            self.cursor.execute("""
+                UPDATE Subscription
+                SET subscription_type = ?, start_date = ?, end_date = ?
+                WHERE subscription_id = ?
+            """, (subscription_type, start_date, end_date, subscription_id))
+            self.conn.commit()
+
+            QMessageBox.information(None, "Success", f" Subscription renewed on {subscription_type}.")
+
+            subscription_obj = Subscription(subscription_id, student_id, subscription_type, start_date, end_date)
+            self.subscription = subscription_obj
+            return subscription_obj
+
+        else:
+            self.cursor.execute("""
+                INSERT INTO Subscription (profile_id, subscription_type, start_date, end_date)
+                VALUES (?, ?, ?, ?)
+            """, (student_id, subscription_type, start_date, end_date))
+            new_sub_id = self.cursor.lastrowid
+
+            self.cursor.execute("""
+                UPDATE Student
+                SET subscription_id = ?
+                WHERE student_id = ?
+            """, (new_sub_id, student_id))
+            self.conn.commit()
+
+            QMessageBox.information(None, "Success", f"New subscription activated on {subscription_type}.")
+
+            subscription_obj = Subscription(new_sub_id, student_id, subscription_type, start_date, end_date)
+            self.subscription = subscription_obj
+            return subscription_obj
+
     
     def get_all_courses(self):
         self.cursor.execute("SELECT * FROM Course")
