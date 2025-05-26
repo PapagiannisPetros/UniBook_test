@@ -26,7 +26,6 @@ class HomeWindow(QMainWindow):
         self.ui.lessonsBut.clicked.connect(self.requestDisplayChatWindow)
         
         
-        
     def add_course_buttons(self, courses):
         for course in courses:
             course_id = course.course_id  # Accessing attribute directly

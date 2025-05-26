@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QFileDialog, QVBoxLayout, QLabel
 from PySide6.QtGui import QPixmap, QImage
 from PySide6.QtCore import Qt
 from datetime import datetime
+from PySide6.QtWidgets import QMessageBox
 
 class PostOpenWindow(QMainWindow):
     def __init__(self, controller):
@@ -26,9 +27,24 @@ class PostOpenWindow(QMainWindow):
         
     def newComment(self):
         comment_text = self.ui.chatInput.text()
-        if comment_text:
-            self.controller.saveComment(comment_text)
-            self.ui.chatInput.clear()
+        check = self.checkComment(comment_text)
+        if check is not None:
+            if comment_text:
+                self.controller.querySaveComment(comment_text)
+                self.ui.chatInput.clear()
+            
+    def displayErrorWindow(self):
+        QMessageBox.warning(self, "Error Window", "Please enter a valid comment.")
+    
+    def checkComment(self, comment_text):
+        if not comment_text.strip():
+            QMessageBox.warning(self, "Warning", "Comment cannot be empty.")
+            return
+        
+        if len(comment_text) > 100:
+            self.displayErrorWindow()
+            return
+        return 1
             
     def display_comment(self, author, text):
         comment_display = self.ui.commentDisplay

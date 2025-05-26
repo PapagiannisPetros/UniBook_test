@@ -46,8 +46,9 @@ class Controller:
     def display_comment(self, author, text, timestamp):
         comment_display = self.post_open_window.ui.chatDisplay
         comment_display.append(f"<b>{author}</b> ({timestamp}):<br>{text}<br><br>")
+        self.displaySuccessWindow()
         
-    def saveComment(self, comment_text):
+    def querySaveComment(self, comment_text):
         
         from datetime import datetime
         post_id = self.current_post.post_id
@@ -107,7 +108,7 @@ class Controller:
         )
 
         self.db.insert_message(message)
-        self.displaySuccessWindow(self)
+        self.displaySuccessWindow()
         
     def displaySuccessWindow(self):
         QMessageBox.information(None, "Success", "Message sent successfully.")
@@ -466,7 +467,7 @@ class Controller:
         self.posts_cache = posts  # Cache the posts in the controller
         
         # Clear previous posts
-        layout = self.home_window.ui.verticalLayout_7 # POST WALL
+        layout = self.home_window.ui.verticalLayout_7 # POST WALL #TODO
         while layout.count():
             item = layout.takeAt(0)
             widget = item.widget()
