@@ -381,6 +381,17 @@ class DatabaseManager:
         del post
 
         return True
+    
+
+    def editPost(self,post,title,description):
+        cursor = self.conn.cursor()
+        cursor.execute(
+            "UPDATE Post SET title = ?, description = ? WHERE post_id = ?",
+            (title, description, post.post_id)
+        )
+        self.conn.commit()
+
+        return True
 
 
         

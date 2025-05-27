@@ -714,3 +714,6 @@ class Controller:
     
     def queryDeletePost(self,post):
         return self.db.postDeletion(post)
+    
+    def saveEditPost(self,post,title,description):
+        return self.db.editPost(post,title,description)

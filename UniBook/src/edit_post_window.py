@@ -10,12 +10,24 @@ class EditPostWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.ui.pushButton_4.clicked.connect(lambda :self.deletePost(post))
+        self.ui.pushButton_2.clicked.connect(lambda :self.checkFileTypeSize(post))
 
     def deletePost(self,post):
         if self.controller.queryDeletePost(post):
             QMessageBox.information(self, "Success", f"Post with PostID {post.post_id} deleted successfully!")
             self.close() 
 
+    def checkFileTypeSize(self,post):
+        #if post.file_name.lower().endswith(".pdf"):
+            self.permanentSave(post)
+        #else:
+            #QMessageBox.information(self, "Warning", f"Post with PostID {post.post_id} does not have a file in PDF form!")
 
+    def permanentSave(self,post):
+        example_title = self.ui.textEdit_2.toPlainText()
+        example_description = self.ui.textEdit.toPlainText()
+        if self.controller.saveEditPost(post,example_title,example_description):
+             QMessageBox.information(self, "Success", f"Post with PostID {post.post_id} edited successfully!")
+             self.close()
 
         
