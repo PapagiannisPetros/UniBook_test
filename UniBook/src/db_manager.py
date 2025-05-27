@@ -643,7 +643,7 @@ class DatabaseManager:
     def close(self):
         self.conn.close()
 
-    def query_fetch_profile(self):
+    def get_profile(self):
         if not self.student:
             print("No student loaded.")
 

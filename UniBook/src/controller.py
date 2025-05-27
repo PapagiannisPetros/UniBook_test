@@ -513,9 +513,9 @@ class Controller:
         self.senior = SeniorWindow(self)
         self.senior.show()
 
-    def show_profile(self):
+    def queryFetchProfile(self):
         self.home_window.hide()
-        profile = self.db.query_fetch_profile()
+        profile = self.db.get_profile()
         self.students_posts = self.db.get_students_posts_by_student_id(self.db.student.student_id)
         if profile:
             self.current_profile = profile
@@ -592,6 +592,7 @@ class Controller:
         self.profile.ui.label_10.setText(self.db.student.university)
         self.profile.ui.label_11.setText(str(profile.tel_num))
         self.profile.ui.label_12.setText(profile.email)
+        self.profile.show()
 
     def displayEditPostWindow(self,post):
         self.post = EditPostWindow(self,post)

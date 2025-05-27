@@ -48,7 +48,7 @@ class HomeWindow(QMainWindow):
             self.ui.verticalLayout_37.addWidget(button)
     
     def show_profile(self):
-        self.controller.show_profile()
+        self.controller.queryFetchProfile()
 
 
     def logout(self):
