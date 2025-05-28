@@ -10,8 +10,14 @@ class UploadConfirmationWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.ui.pushButton_2.clicked.connect(lambda: self.approveUploadPost(post_id))
+        self.ui.pushButton_4.clicked.connect(lambda: self.approveUploadPost(post_id))
 
     def approveUploadPost(self,post_id):
         if self.controller.queryApproveUploadPost(post_id):
-            QMessageBox.information(self, "Success", f"Post with PostID {post_id} uploaded successfully!")
+            self.showConfirmationWindowUpload(post_id)
             self.close() 
+
+    def showConfirmationWindowUpload(self,post_id):
+        QMessageBox.information(self, "Success", f"Post with PostID {post_id} uploaded successfully!")
+
+    #def displayCommentWindow(self):

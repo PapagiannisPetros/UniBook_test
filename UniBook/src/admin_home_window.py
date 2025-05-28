@@ -1,9 +1,9 @@
-from PySide6.QtWidgets import QMainWindow,QPushButton
+from PySide6.QtWidgets import QMainWindow,QPushButton,QSizePolicy
 from PySide6.QtGui import QIcon, QFont
 from PySide6.QtCore import QSize
 from admin_home_ui import Ui_MainWindow  # Adjust the import based on your UI file
 
-class AdminReportsWindow(QMainWindow):
+class AdminHomeWindow(QMainWindow):
     def __init__(self, controller, courses):
         super().__init__()
         self.controller = controller
@@ -14,6 +14,9 @@ class AdminReportsWindow(QMainWindow):
 
         self.ui.pushButton_3.clicked.connect(self.logout)
         self.ui.reportBut.clicked.connect(self.reportedPosts)
+        self.ui.uploadBut.clicked.connect(lambda: self.add_course_buttons(courses))
+        self.ui.pushButton_16.setFixedSize(40, 40)
+        self.ui.pushButton_16.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
         self.add_course_buttons(courses)
 
@@ -22,6 +25,11 @@ class AdminReportsWindow(QMainWindow):
         self.close()
 
     def add_course_buttons(self, courses):
+        for button in self.course_buttons:
+            button.hide()
+
+        #self.controller._clear_post_widgets()
+        
         for course in courses:
             course_id = course.course_id  # Accessing attribute directly
             course_name = course.course_name
@@ -47,7 +55,6 @@ class AdminReportsWindow(QMainWindow):
         for button in self.course_buttons:
             button.hide()
         
-        self.controller.display_reports()
-
-    def displayPostInfo(self):
-        self.controller.open_not_uploaded_post()
+        self.controller._clear_post_widgets()
+        
+        #self.controller.display_reports()

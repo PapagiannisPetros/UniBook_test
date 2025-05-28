@@ -16,10 +16,16 @@ class ReportCheckWindow(QMainWindow):
 
     def rejectReport(self,report_id):
         if self.controller.queryRejectReport(report_id):
-            QMessageBox.information(self, "Reject Report", f"Report with ReportID {report_id} got rejected!")
+            self.displayRejectionMessage(report_id)
             self.close() 
+
+    def displayRejectionMessage(self,report_id):
+        QMessageBox.information(self, "Reject Report", f"Report with ReportID {report_id} got rejected!")
 
     def applyPenalty(self,report_id):
         if self.controller.queryApplyPenalty(report_id):
-            QMessageBox.information(self, "Penalty Applied", f"Author of report with ReportID {report_id} got penalized!")
+            self.displayConfirmationWindow(report_id)
             self.close()
+
+    def displayConfirmationWindow(self,report_id):
+        QMessageBox.information(self, "Penalty Applied", f"Author of report with ReportID {report_id} got penalized!")

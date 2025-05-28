@@ -1,6 +1,6 @@
 from login_window import LoginWindow
 from home_window import HomeWindow
-from admin_home_window import AdminReportsWindow  
+from admin_home_window import AdminHomeWindow  
 from profile_window import ProfileWindow
 from rookie_window import RookieWindow
 from senior_window import SeniorWindow
@@ -307,6 +307,16 @@ class Controller:
 
         return post_wall
     
+    def _clear_post_widgets(self):
+        layout = self.admin_window.ui.verticalLayout_8
+        while layout.count():
+            item = layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.setParent(None)
+                widget.deleteLater()
+
+    
     def create_report_widget(self, report, is_checked=True):
         # Retrieve the related post using the post_id in the report
         post = self.db.get_post_by_id(report.post_id)
@@ -442,7 +452,7 @@ class Controller:
     def show_admin_window(self):
         self.login.hide()
         self.queryFetchCourses()
-        self.admin_window = AdminReportsWindow(self, self.courses_cache)
+        self.admin_window = AdminHomeWindow(self, self.courses_cache)
         self.admin_window.show()
         
     def queryFetchCourses(self):
@@ -690,10 +700,6 @@ class Controller:
     def open_post(self):
         self.post_open = PostOpenWindow(self)
         self.post_open.show()
-
-    def open_not_uploaded_post(self):
-        self.nu_post_open = UploadConfirmationWindow(self)
-        self.nu_post_open.show()
 
     def student_authentication(self, username, password):
         return self.db.is_valid_student(username, password)
