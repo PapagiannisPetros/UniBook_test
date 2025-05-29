@@ -13,7 +13,11 @@ class ReportCheckWindow(QMainWindow):
 
         self.ui.pushButton_4.clicked.connect(lambda: self.rejectReport(report_id))
         self.ui.pushButton_2.clicked.connect(lambda: self.applyPenalty(report_id))
+        self.ui.pushButton_3.clicked.connect(lambda: self.closeWindow())
 
+    def closeWindow(self):
+        self.close()
+    
     def rejectReport(self,report_id):
         if self.controller.queryRejectReport(report_id):
             self.displayRejectionMessage(report_id)

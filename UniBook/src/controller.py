@@ -714,13 +714,19 @@ class Controller:
         return self.db.rejectReport(report_id)
     
     def queryApplyPenalty(self,report_id):
-        self.db.querySendPenaltyMessage(report_id,self.penalty)
-        print(self.penalty)
-        self.penalty = None
+        self.db.penaltyApplication(report_id,self.penalty)
+        self.querySendPenaltyMessage(self,report_id)
         return True
     
+    def querySendPenaltyMessage(self,report_id,penalty):
+        self.db.sendPenaltyMessage(report_id,penalty)
+        return True
+        
     def queryDeletePost(self,post):
         return self.db.postDeletion(post)
     
     def saveEditPost(self,post,title,description):
         return self.db.editPost(post,title,description)
+    
+    def queryRejectPost(self,post_id):
+        return self.db.postRejection(post_id)

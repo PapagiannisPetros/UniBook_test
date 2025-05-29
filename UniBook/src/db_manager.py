@@ -360,16 +360,23 @@ class DatabaseManager:
 
         return True 
     
-    def querySendPenaltyMessage(self,report_id,penalty):
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT p.student_id FROM Report r INNER JOIN Post p ON r.post_id = p.post_id WHERE r.report_id = ?", (report_id,))
-        result = self.cursor.fetchone()
+    def penaltyApplication(self,report_id,penalty):
+        
+        print("Penalty applied!\n")
 
-        if result:
-            student_id = result[0]
-            self.cursor.execute("UPDATE Student SET student_message = '?' WHERE student_id = ?", (penalty,student_id,))
-            self.conn.commit()
+        return True
+    
+    def sendPenaltyMessage(self,report_id,penalty):
+        #cursor = self.conn.cursor()
+        #cursor.execute("SELECT p.student_id FROM Report r INNER JOIN Post p ON r.post_id = p.post_id WHERE r.report_id = ?", (report_id,))
+        #result = self.cursor.fetchone()
 
+        #if result:
+         #   student_id = result[0]
+          #  self.cursor.execute("UPDATE Student SET student_message = '?' WHERE student_id = ?", (penalty,student_id,))
+           # self.conn.commit()
+
+        print("Penalty message sent!\n")
 
         return True
     
@@ -379,6 +386,11 @@ class DatabaseManager:
         self.conn.commit()
 
         del post
+
+        return True
+    
+    def postRejection(self,post_id):
+        print("Post Upload Rejected and Message Sent to Student")
 
         return True
     

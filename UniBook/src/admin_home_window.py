@@ -57,4 +57,4 @@ class AdminHomeWindow(QMainWindow):
         
         self.controller._clear_post_widgets()
         
-        #self.controller.display_reports()
+        self.controller.display_reports()
