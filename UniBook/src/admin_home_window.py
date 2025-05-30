@@ -15,8 +15,6 @@ class AdminHomeWindow(QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.logout)
         self.ui.reportBut.clicked.connect(self.reportedPosts)
         self.ui.uploadBut.clicked.connect(lambda: self.add_course_buttons(courses))
-        self.ui.pushButton_16.setFixedSize(40, 40)
-        self.ui.pushButton_16.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
         self.add_course_buttons(courses)
 
@@ -55,6 +53,6 @@ class AdminHomeWindow(QMainWindow):
         for button in self.course_buttons:
             button.hide()
         
-        self.controller._clear_post_widgets()
+        #self.controller._clear_post_widgets()
         
         self.controller.display_reports()

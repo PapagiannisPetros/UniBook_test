@@ -1,4 +1,10 @@
-class Student:
+class User:
+    def __init__(self,id,username,password):
+        self.id = id
+        self.username = username
+        self.password = password
+
+class Student(User):
     def __init__(self, student_id, user_id, subscription_id, am, university, department, enrollment_year, validation_status):
         self.student_id = student_id
         self.user_id = user_id
@@ -10,7 +16,7 @@ class Student:
         self.validation_status = validation_status
 
 
-class Admin:
+class Admin(User):
     def __init__(self, admin_id, user_id, name):
         self.admin_id = admin_id
         self.user_id = user_id
@@ -114,3 +120,5 @@ class Comment:
 
     def __repr__(self):
         return f"<Comment by student {self.author_id} on post {self.post_id}: {self.comment_text}>"
+    
+
